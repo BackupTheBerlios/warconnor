@@ -108,7 +108,7 @@ public class LoadVolume {
 	private static void getFiles(Document document, Element element, File headFile) {
 		if (headFile==null) return;
 		Element oneElement = element;
-		String fileName = headFile.getName();
+		String fileName = pulisciNome(headFile.getName());
 		if (headFile.isDirectory()) {
 			if (fileName.trim().length()>0) {
 				oneElement = document.createElement("Dir");
@@ -129,9 +129,15 @@ public class LoadVolume {
 			element.appendChild(oneElement);
 		}
 	}
-	private static String getFileElementName(String name) {
-		String elementName = name.replaceAll("\\s", "_");
-		elementName = elementName.replaceAll("\\p{Punct}", "");
-		return elementName;
+	private static String pulisciNome(String name) {
+		String pulita = name;
+		String bad = "Á¢¼Ó";
+		int i = pulita.indexOf(bad);
+		if (i>=0) {
+			pulita = pulita.substring(0, i) + pulita.substring(i + bad.length());
+		}
+//		String elementName = name.replaceAll("\\s", "_");
+//		elementName = elementName.replaceAll("\\p{Punct}", "");
+		return pulita;
 	}
 }

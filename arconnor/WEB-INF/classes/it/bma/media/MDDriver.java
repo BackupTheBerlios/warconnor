@@ -48,7 +48,7 @@ public class MDDriver extends BmaDataDriverGeneric {
 	private static void getFiles(Document document, Element element, File headFile) {
 		if (headFile==null) return;
 		Element oneElement = element;
-		String fileName = headFile.getName();
+		String fileName = pulisciNome(headFile.getName());
 		if (headFile.isDirectory()) {
 			if (fileName.trim().length()>0) {
 				oneElement = document.createElement("Dir");
@@ -68,5 +68,24 @@ public class MDDriver extends BmaDataDriverGeneric {
 			oneElement.setAttribute("Name", fileName);
 			element.appendChild(oneElement);
 		}
-	}	
+	}
+	private static String pulisciNome(String name) {
+		String pulita = name;
+		String bad = "Á¢¼Ó";
+		int i = pulita.indexOf(bad);
+		while (i>=0) {
+			pulita = pulita.substring(0, i) + pulita.substring(i + bad.length());
+			i = pulita.indexOf(bad);
+		}
+		bad = "&";
+		i = pulita.indexOf(bad);
+		while (i>=0) {
+			pulita = pulita.substring(0, i) + "e" + pulita.substring(i + bad.length());
+			i = pulita.indexOf(bad);
+		}
+		
+//		String elementName = name.replaceAll("\\s", "_");
+//		elementName = elementName.replaceAll("\\p{Punct}", "");
+		return pulita;
+	}
 }
