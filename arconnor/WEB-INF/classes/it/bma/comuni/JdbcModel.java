@@ -32,6 +32,14 @@ public class JdbcModel extends BmaObject {
 		String temp = BMA_FALSE;
 		if (keyUppercase) temp = BMA_TRUE;
 		root.setAttribute("keyuppercase", temp);
+		Element eSource = xDriver.addElement(root, "JdbcSource");
+		eSource.setAttribute("nome", jSource.getChiave());
+		eSource.setAttribute("driver", jSource.getDriver());
+		eSource.setAttribute("url", jSource.getUrl());
+		eSource.setAttribute("user", jSource.getUser());
+		eSource.setAttribute("pass", jSource.getPass());
+		eSource.setAttribute("schema", jSource.getSchema());
+		eSource.setAttribute("prefix", jSource.getPrefix());
 		Enumeration eTables = tables.elements();
 		while (eTables.hasMoreElements()) {
 			JdbcTable jTable = (JdbcTable)eTables.nextElement();
@@ -48,6 +56,15 @@ public class JdbcModel extends BmaObject {
 		prefix = root.getAttribute("prefix");
 		String temp = root.getAttribute("keyuppercase");
 		keyUppercase = temp.equals(BMA_TRUE);
+		Element eSource = xDriver.getElementByTag(root, "JdbcSource");
+		String nome = eSource.getAttribute("nome");
+		jSource = new BmaJdbcSource(nome);
+		jSource.setDriver(eSource.getAttribute("driver"));
+		jSource.setUrl(eSource.getAttribute("url"));
+		jSource.setUser(eSource.getAttribute("user"));
+		jSource.setPass(eSource.getAttribute("pass"));
+		jSource.setSchema(eSource.getAttribute("schema"));
+		jSource.setPrefix(eSource.getAttribute("prefix"));
 		tables.clear();
 		JdbcTable jTable = new JdbcTable();
 		NodeList list = root.getElementsByTagName(jTable.getXmlTag());

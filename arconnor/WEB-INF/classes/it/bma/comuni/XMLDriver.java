@@ -84,6 +84,14 @@ public class XMLDriver implements BmaErrorCodes {
 			throw new BmaException(BMA_ERR_XML_GENERICO, "Errore di codifica Xml", "IOException: " + io.getMessage(), "XMLDriver");
 		}
 	}
+	public Element getElementByTag(Element parent, String tag) throws BmaException {
+		NodeList list = parent.getElementsByTagName(tag);
+		if (list.getLength()>0) {
+			Node n = list.item(0);
+			if (n.getNodeType()==n.ELEMENT_NODE) return (Element)n;
+		}
+		throw new BmaException(BMA_ERR_XML_GENERICO, "Errore di codifica Xml", "Tag inesistente: " + tag, "XMLDriver");
+	}
 	public Element setRootElement(Document document, String tag) {
 		Element element = document.createElement(tag);
 		document.appendChild(element);
