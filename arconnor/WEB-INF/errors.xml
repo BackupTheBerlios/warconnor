@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<?xml:stylesheet type='text/xsl' ?>
+<Errori>
+<elementi>16</elementi>
+<classe>it.bma.comuni.BmaErrore</classe>
+<Errore><codErrore>E001</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore di Configurazione</msgUtente><msgSistema>Configuration Error</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E002</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>System Error</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E003</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>XML Error</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E004</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>XML Parsing Error</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E005</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC Driver</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E006</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC URL</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E007</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC Connection</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E008</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC SQL</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E009</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC Primary Key</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E010</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>JDBC Foreign Key</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E011</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore di Configurazione</msgUtente><msgSistema>Configuration Error</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E012</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>IO File not found</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E013</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>IO Read File</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E014</codErrore><tipo>A</tipo><nomeOggetto/><msgUtente>Errore Applicazione</msgUtente><msgSistema>IO Write File</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E015</codErrore><tipo>N</tipo><nomeOggetto/><msgUtente>Occorrenza Non Trovata</msgUtente><msgSistema>Not Found</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E016</codErrore><tipo>N</tipo><nomeOggetto/><msgUtente>Chiave di Ricerca non Univoca</msgUtente><msgSistema>Not Unique Read Key</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>E017</codErrore><tipo>N</tipo><nomeOggetto/><msgUtente>Manca un Parametro di Chiamata</msgUtente><msgSistema>QueryString parameter not found</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>EA01</codErrore><tipo>N</tipo><nomeOggetto/><msgUtente>Elemento non trovato</msgUtente><msgSistema>Not found</msgSistema><info/><infoEstese/></Errore>
+<Errore><codErrore>EA02</codErrore><tipo>N</tipo><nomeOggetto/><msgUtente>Lettura non univoca</msgUtente><msgSistema>Not unique readKey</msgSistema><info/><infoEstese/></Errore>
+</Errori>
