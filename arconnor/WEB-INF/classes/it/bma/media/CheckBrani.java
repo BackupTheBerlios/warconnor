@@ -3,14 +3,14 @@ package it.bma.media;
 import it.bma.comuni.*;
 import it.bma.web.*;
 
-public class LoadVolume {
+public class CheckBrani {
 	private final String APP_NAME = "MDA";
 	private BmaUserConfig config = null;
 	private JdbcModel jModel = null;
-	public LoadVolume() {
+	public CheckBrani() {
 		super();
 	}
-	public LoadVolume(BmaUserConfig userConfig, JdbcModel model) {
+	public CheckBrani(BmaUserConfig userConfig, JdbcModel model) {
 		super();
 		setConfig(userConfig);
 		setJModel(model);
@@ -18,32 +18,31 @@ public class LoadVolume {
 	public void setConfig(BmaUserConfig userConfig) { config = userConfig; }
 	public void setJModel(JdbcModel model) { jModel=model; }
 	
-	public String esegui(String drive, String codVolume) throws BmaException {
+	public String esegui(String checkDir) throws BmaException {
 		BmaJdbcSource jSource = config.getFonteApplicazione(APP_NAME);
 		MDDriver driver = new MDDriver();
 		driver.setUserConfig(config);
 		driver.setJdbcSource(jSource);
 		driver.setJModel(jModel);
 		
-		driver.loadVolume(drive, codVolume);
-		return "Ok";
+		String xml = driver.checkBrani(checkDir);
+		return xml;
 	}
 	public static void main(String[] args) {
-		if (args.length!=3) {
-      System.out.println("Usa con argomento <webRealPath> <driveInput> <codVolume>");
+		if (args.length!=2) {
+      System.out.println("Usa con argomenti <webRealPath> <checkDir>");
       return;
     }
 		BmaJsp jsp = new BmaJsp();
     String path = args[0] + jsp.BMA_JSP_CONF_PATH;
-    String drive = args[1];
-    String codVolume = args[2];
+    String checkDir = args[1];
 		try {
-			LoadVolume app = new LoadVolume();
+			CheckBrani app = new CheckBrani();
 			app.config = new BmaUserConfig();
 			app.jModel = new JdbcModel();
 			app.jModel.setKeyUppercase(false);
 			app.config.carica(path, jsp.BMA_JSP_CONF_FILE, path + jsp.BMA_JSP_ERRS_FILE);
-			String result = app.esegui(drive, codVolume);
+			String result = app.esegui(checkDir);
 			System.out.println(result);
 		}
 		catch (BmaException bma) {

@@ -8,6 +8,9 @@ public class MDCartelleVolume extends MDFunzioneEdit {
 		super();
 	}
 	protected java.lang.String ricavaDesContesto(it.bma.comuni.BmaDataForm df) {
-		return "";
+		return df.getValoreCampo("DES_CARTELLA");
+	}
+	public java.lang.String[] getFunzioniEditDettaglio() {
+		return new String[] {"MD_FILETRACCE", "MD_BRANITEMP", "MD_RELOADBRANI"};
 	}
 }

@@ -76,9 +76,9 @@ public BmaDataList eseguiQuery(String sql, String nomeVista) throws BmaException
 			c.nome = rs.getMetaData().getColumnName(i);
 			c.nomeFisico = c.nome;
 			c.nomeUtente = c.nome;
-			c.tipo = rs.getMetaData().getColumnTypeName(i);
-			c.lunghezza = Integer.toString(rs.getMetaData().getScale(i));
-			c.decimali = Integer.toString(rs.getMetaData().getPrecision(i));
+			c.tipo = rs.getMetaData().getColumnTypeName(i).toUpperCase();
+			c.decimali = Integer.toString(rs.getMetaData().getScale(i));
+			c.lunghezza = Integer.toString(rs.getMetaData().getPrecision(i));
 			c.annullabile = rs.getMetaData().isNullable(i)==1;
 			table.getTabella().getColonne().add(c);
 		}
@@ -109,6 +109,23 @@ public BmaDataList eseguiQuery(String sql, String nomeVista) throws BmaException
 		invalida();
 		throw new BmaException(BMA_ERR_NON_PREVISTO, e.getMessage(), sql, this);
 	}
+}
+/* Controlla i valori relativi ad un'occorrenza. Restituisce:<br/>
+ * 0  se la riga è inesistente
+ * -1 se la riga esiste con valori diversi
+ * 1  se la riga esiste con valori uguali
+ */
+public int controllaRiga(BmaDataTable table, Hashtable valori) throws BmaException {
+	Vector dati = eseguiSqlSelect(table.getSqlReadKey(valori));
+	if (dati.size()==0) return 0;
+	else if (dati.size()>1) throw new BmaException(BMA_ERR_JDB_SQL, "Errore in controllo riga", table.getSqlReadKey(valori), table);
+	dati = (Vector)dati.elementAt(0);
+	table.setValori(dati);
+	for (int i=0;i<table.getColonne().size();i++) {
+		BmaDataColumn c = (BmaDataColumn)table.getColonne().elementAt(i);
+		if (!c.valore.equals((String)valori.get(c.nome))) return -1;
+	}
+	return 1;
 }
 public synchronized Vector eseguiSqlSelect(String sql) throws BmaException {
 	if (!isAperta() || !isValida()) {

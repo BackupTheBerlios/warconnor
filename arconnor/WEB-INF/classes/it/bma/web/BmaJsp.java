@@ -62,6 +62,10 @@ public class BmaJsp extends BmaObject implements BmaJspLiterals {
 					campo.setTipoControllo(BMA_CONTROLLO_TEXT);
 					campo.setCaseSensitive(true);
 				}
+				else if (n.equals("XML_")) {
+					campo.setTipoControllo(BMA_CONTROLLO_TEXT);
+					campo.setCaseSensitive(true);
+				}
 				else if (n.equals("OBJ_")) {
 					campo.setTipoControllo(BMA_CONTROLLO_LINK);
 					campo.setCaseSensitive(true);

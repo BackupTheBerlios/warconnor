@@ -7,7 +7,7 @@ public class JdbcModel extends BmaObject {
 	private BmaJdbcSource jSource = new BmaJdbcSource();
 	private String schema = "";
 	private String prefix = "%";
-	private boolean keyUppercase = true;
+	private boolean keyUppercase = false;
 	protected BmaHashtable tables = new BmaHashtable("Tables");
 	public JdbcModel() {
 		super();
@@ -25,8 +25,11 @@ public class JdbcModel extends BmaObject {
 		BmaDataTable dTable = new BmaDataTable();
 		JdbcTable jTable = (JdbcTable)tables.getElement(jName);
 		if (jTable==null) {
-			String prefix = jName + "%";
-			load(jTrx, schema, prefix);
+			jTable = (JdbcTable)tables.getElement(schema + "." + jName);
+			if (jTable==null) {
+				String prefix = jName + "%";
+				load(jTrx, schema, prefix);
+			}
 		}
 		return getDataTable(jName);
 	}
@@ -90,6 +93,7 @@ public class JdbcModel extends BmaObject {
 	public void load(BmaJdbcTrx trx, String schema, String prefix) throws BmaException {
 		this.schema = schema;
 		this.prefix = prefix;
+		BmaHashtable tempTables = new BmaHashtable("Temp");
 		jSource = trx.getFonte();
 		if (jSource.getSchema().trim().length()>0) this.schema = jSource.getSchema();
 		boolean statoConnessione = true;
@@ -121,11 +125,11 @@ public class JdbcModel extends BmaObject {
 				//table.remarks = rs.getString("REMARKS");
 				//if (table.remarks==null) table.remarks = "";
 				//
-				tables.add(table);
+				tempTables.add(table);
 			}
 			rs.close();
 			// LOAD COLUMNS
-			Enumeration et = tables.elements();
+			Enumeration et = tempTables.elements();
 			while (et.hasMoreElements()) {
 				table =(JdbcTable)et.nextElement();
 				// LOAD COLUMNS DATA
@@ -243,6 +247,8 @@ public class JdbcModel extends BmaObject {
 					importTable.fkColumns.put(pkCol, fkCol);
 				}
 				rs.close();
+				// Deve essere l'ultima istruizione
+				tables.add(table);
 			}
 			cn.setAutoCommit(statoConnessione);
 		}

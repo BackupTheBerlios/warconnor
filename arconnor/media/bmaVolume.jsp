@@ -6,20 +6,19 @@
 	BmaDataList elenco = null;
 	BmaDataList elencoMaster = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA);
 	BmaDataForm form = (BmaDataForm)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_FORM);
-	String xslFile = "";
 	if (form!=null) {
 		String xmlNote = form.getValoreCampo("NOT_VOLUME");
 		if (xmlNote==null) xmlNote="";
-		String codTipoVolume = form.getValoreCampo("COD_TIPOVOLUME");
-		if (codTipoVolume.equals("CD-MP3")) xslFile="media/indiceVolume_fo.xsl";
-		else if (codTipoVolume.equals("CD-BACKUP")) xslFile="media/indiceVolume_fo.xsl";
-		else if (codTipoVolume.equals("CD-ALBUM")) xslFile="media/indiceVolume_fo.xsl";
-		else if (codTipoVolume.equals("CD-SHOW")) xslFile="media/indiceVolume_fo.xsl";
-		else if (codTipoVolume.equals("CD-PGM")) xslFile="media/indiceProgrammi_fo.xsl";
 		request.getSession().setAttribute(jsp.BMA_JSP_BEAN_XML, xmlNote);
 	}
 	BmaDataList elencoDetail = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA_DETAIL);
 	String codFunzioneEdit = funzione.getCodFunzione();
+	Properties xslIndiciBase = new Properties();
+	xslIndiciBase.setProperty("CD-BACKUP","media/indiceVolume_fo.xsl");
+	xslIndiciBase.setProperty("CD-ALBUM","media/indiceVolume_fo.xsl");
+	xslIndiciBase.setProperty("CD-SHOW","media/indiceVolume_fo.xsl");
+	xslIndiciBase.setProperty("CD-MP3","media/indiceVolume_fo.xsl");
+	xslIndiciBase.setProperty("CD-PGM","media/indiceProgrammi_fo.xsl");
 %>
 
 <html>
@@ -96,7 +95,6 @@
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=funzione.getDesAzione()%> <%=sessione.getAlias(form.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
-			<a class='Button' href='Xml2PdfServlet?xsl=<%=xslFile%>&dummy=d.pdf' target='_blank'>Indice Volume</a>
 <% 
 		if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_NUOVO)) {
 			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna"));
@@ -123,6 +121,38 @@
 <!-- TABELLA PER IL FORM PRINCIPALE -->
 <!-- END -->
 
+<!-- TABELLA PER IL MENU DETTAGLI -->
+<!-- START -->
+<br>
+<% if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) { 
+		String codTipoVolume = form.getValoreCampo("COD_TIPOVOLUME");
+		String xslBase = xslIndiciBase.getProperty(codTipoVolume); 
+%>
+<table width="578" align="center">
+	<tr>
+		<td class="DataLevel-1" width="100%">
+			<img src='images/pallino_arancio.gif' border='0' align="top">
+			<a class='MenuOpzioni' href='Xml2PdfServlet?xsl=<%=xslBase%>&dummy=d.pdf' target='_blank'>Indice Volume</a>
+			&nbsp;
+<%
+			for (int i=0;i<azioniMenu.getSize();i++) {
+				BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
+
+				if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) { %>
+			<img src='images/pallino_arancio.gif' border='0' align="top">
+			<a class="MenuOpzioni" href='javascript:invia("<%=m.getFunzione()%>","<%=m.getAzione()%>","<%=jsp.BMA_JSP_COMANDO_PREPARA%>","")'><%=m.getLabel()%></a>
+			&nbsp;
+<%
+				}
+			}		
+%>
+		</td>
+	</tr>
+</table>
+<% } %>
+<!-- TABELLA PER IL MENU DETTAGLI -->
+<!-- END -->
+
 
 <!-- TABELLA PER LA LISTA SECONDARIA -->
 <!-- START -->
@@ -130,20 +160,11 @@
 		elenco = elencoDetail;
 		codFunzioneEdit = codFunzioneDettaglio;
 %> 
-<br>
 <table width="578" align="center">
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=sessione.getAlias(elenco.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
 <%		
-			if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) { 
-				for (int i=0;i<azioniMenu.getSize();i++) {
-					BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
-					if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) {
-						out.println(jsp.getHtmlBottone(funzione, m.getFunzione(), m.getAzione(), jsp.BMA_JSP_COMANDO_PREPARA, m.getLabel()));
-					}
-				}		
-			}
 			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_MODELLO_NEW,"","Nuovo da Modello"));
 			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_NUOVO,"","Nuovo"));
 %>

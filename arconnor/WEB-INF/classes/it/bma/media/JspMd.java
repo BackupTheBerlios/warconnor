@@ -12,14 +12,12 @@ public class JspMd extends BmaJsp {
 	}
 	public void impostaMenuPrincipale(BmaSessione sessione, BmaVector azioniMenu) {
 		BmaUtente user = sessione.getUtente();
-		BmaFunzione f;
-		// Menu Principale
-		int liv = 1;
-		
-		f = user.getFunzione("MD_TIPIVOLUME"); 			// Tipologie Volumi
-		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
-		
-		f = user.getFunzione("MD_VOLUMI"); 					// Catalogo Volumi
-		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
+		addMenuSinistra(user, "MD_TIPIVOLUME", 1, azioniMenu);
+		addMenuSinistra(user, "MD_TIPICARTELLE", 1, azioniMenu);
+		addMenuSinistra(user, "MD_VOLUMI", 1, azioniMenu);
+		addMenuSinistra(user, "MD_CARTELLE", 1, azioniMenu);
+		addMenuSinistra(user, "MD_ALBUMAUDIO", 1, azioniMenu);
+		addMenuSinistra(user, "MD_AUTORI", 1, azioniMenu);
+		addMenuSinistra(user, "MD_BRANI", 1, azioniMenu);
 	}
 }

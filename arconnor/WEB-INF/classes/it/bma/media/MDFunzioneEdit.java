@@ -11,9 +11,8 @@ public abstract class MDFunzioneEdit extends it.bma.web.BmaFunzioneEdit {
 		driver = new MDDriver();
 	}
 	protected String getNomeTabella(String funzione) {
-		if (funzione.equals("MD_TIPIVOLUME")) return "MD_TIPIVOLUME";
-		else if (funzione.equals("MD_VOLUMI")) return "MD_VOLUMI";
-		else if (funzione.equals("MD_CARTELLEVOLUME")) return "MD_CARTELLEVOLUME";
-		else return "";
+		if (funzione.equals("MD_LOADMP3")) return "";
+		else if (funzione.equals("MD_RELOADBRANI")) return "";
+		else return funzione;
 	}
 }
