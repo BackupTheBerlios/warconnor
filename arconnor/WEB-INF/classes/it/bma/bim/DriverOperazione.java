@@ -2,6 +2,7 @@ package it.bma.bim;
 // JAVA
 import java.util.*;
 import java.text.*;
+import java.math.BigDecimal;
 // XML
 import org.w3c.dom.*;
 // BMA
@@ -9,7 +10,7 @@ import it.bma.comuni.*;
 import it.bma.web.*;				
 
 public class DriverOperazione extends BmaObject {
-	private final long TIME_STEP = 5;
+	private final long TIME_STEP = 1;
 	private JdbcModel jModel = new JdbcModel();
 	private BmaJdbcTrx jTrx = null;
 	private Document guida = null;
@@ -47,9 +48,16 @@ public class DriverOperazione extends BmaObject {
 		makeIva(guidaOpe, valori, logOperazione);
 		makeRate(guidaOpe, valori, logOperazione);
 		makeMovimenti(guidaOpe, valori, logOperazione);
-		makeCompetenze(guidaOpe, valori, logOperazione);
-		makeProtocolli(guidaOpe, valori, logOperazione);
-		makePartite(guidaOpe, valori, logOperazione);
+		// Aggiorna eventuali riferimenti al documento generati dalla protocollazione
+		String rifDocumento = (String)valori.get("RIF_DOCUMENTO");
+		if (rifDocumento.trim().length()>0) {
+			Element eDoc = (Element)logOperazione.getElementsByTagName("RIF_DOCUMENTO").item(0);
+			eDoc.getFirstChild().setNodeValue(rifDocumento);
+			eDoc = (Element)logOperazione.getElementsByTagName("DAT_DOCUMENTO").item(0);
+			eDoc.getFirstChild().setNodeValue((String)valori.get("DAT_DOCUMENTO"));
+		}
+		// Aggiorna il Database
+		insertDaLog(logOperazione);
 	}
 	private void makeOperazione(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
 		valori.put("COD_ESERCIZIO", getEsercizio((String)valori.get("DAT_OPERAZIONE")));
@@ -81,30 +89,60 @@ public class DriverOperazione extends BmaObject {
 		dato = regolaBase(regola, valori);
 		valori.put("IMP_RITENUTA", dato);
 		
-		insert("OPERAZIONI", valori, nodoLog);
+		insertLog("OPERAZIONI", valori, nodoLog);
 	}
 	private void makeIva(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
 		NodeList guideIva = guidaOpe.getElementsByTagName("iva");
 		for (int i=0;i<guideIva.getLength();i++) {
 			Element guidaIva = (Element)guideIva.item(i);
-			Element regola;
-			String dato = "";
-			
-			regola = (Element)guidaIva.getElementsByTagName("codice").item(0);
-			dato = regolaBase(regola, valori);
-			valori.put("COD_IVA", dato);
-			
+			if (guidaIva.hasChildNodes()) {
+				Element regola;
+				String dato = "";
+
+				regola = (Element)guidaIva.getElementsByTagName("imponibile").item(0);
+				dato = regolaBase(regola, valori);
+				double control = Double.parseDouble(dato);
+				valori.put("IMP_IMPONIBILE", dato);
+
+				regola = (Element)guidaIva.getElementsByTagName("imp_iva").item(0);
+				dato = regolaBase(regola, valori);
+				control = control + Double.parseDouble(dato);
+				valori.put("IMP_IVA", dato);
+
+				if (control>0) {
+					regola = (Element)guidaIva.getElementsByTagName("codice").item(0);
+					dato = regolaBase(regola, valori);
+					valori.put("COD_IVA", dato);
+
+					insertLog("IVAOPE", valori, nodoLog);
+				}
+			}
 		}
 	}
 	private void makeRate(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
 		NodeList guideRata = guidaOpe.getElementsByTagName("rata");
 		for (int i=0;i<guideRata.getLength();i++) {
 			Element guidaRata = (Element)guideRata.item(i);
-		Element regola;
-		String dato = "";
-			System.out.print(i);
-			System.out.print(guidaRata.hasAttributes());
-			System.out.println(guidaRata.hasChildNodes());
+			if (guidaRata.hasChildNodes()) {
+				valori.put("NUM_GG_MORA", "0");
+
+				Element regola;
+				String dato = "";
+
+				regola = (Element)guidaRata.getElementsByTagName("scadenza").item(0);
+				dato = regolaBase(regola, valori);
+				valori.put("DAT_SCADENZA", dato);
+
+				regola = (Element)guidaRata.getElementsByTagName("importo").item(0);
+				dato = regolaBase(regola, valori);
+				valori.put("IMP_SCADENZA", dato);
+
+				regola = (Element)guidaRata.getElementsByTagName("modo_pagamento").item(0);
+				dato = regolaBase(regola, valori);
+				valori.put("DES_MODO_ESI", dato);
+
+				insertLog("RATEFATTURA", valori, nodoLog);
+			}
 		}
 	}
 	private void makeMovimenti(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
@@ -160,27 +198,98 @@ public class DriverOperazione extends BmaObject {
 			dato = regolaBase(regola, valori);
 			valori.put("DES_MOVIMENTO", dato);
 				
-			// Inserisce solo movimenti con importo diverso da zero
+			// Inserisce solo movimenti con importo arrotondato diverso da zero
 			String v = (String)valori.get("IMP_MOVIMENTO");
 			if (v.trim().length()==0) v = "0";
-			double n = Double.parseDouble(v);
+			double n = parseImporto(v);
 			if (n!=0) {
+				valori.put("IMP_MOVIMENTO", Double.toString(n));
 				importoQuadratura = importoQuadratura + n;
 				numeroMovimenti++;
-				insert("MOVIMENTI", valori, nodoLog);
+				insertLog("MOVIMENTI", valori, nodoLog);
+		
+				makeProtocolli(guidaCau, valori, nodoLog);
+				makePartite(guidaCau, valori, nodoLog);
+				makeCompetenze(guidaCau, valori, nodoLog);
+				
 			}
 		}
 		// Controllo Movimenti e Quadratura
 		if (numeroMovimenti<2) throw new BmaException("Operazione zoppa", "Numero Movimenti=" + Integer.toString(numeroMovimenti));
+		importoQuadratura = round(importoQuadratura, 2);
 		if (importoQuadratura!=0) throw new BmaException("Operazione non quadrata", "Saldo=" + Double.toString(importoQuadratura));
 	}
-	private void makeCompetenze(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
+	private void makeCompetenze(Element guidaMov, Hashtable valori, Element nodoLog) throws BmaException {
+		NodeList guideComp = guidaMov.getElementsByTagName("competenza");
+		for (int i=0;i<guideComp.getLength();i++) {
+			Element guidaComp = (Element)guideComp.item(i);
+			if (guidaComp.hasChildNodes()) {
+				Element regola;
+				String dato = "";
+
+				regola = (Element)guidaComp.getElementsByTagName("inizio").item(0);
+				dato = regolaBase(regola, valori);
+				valori.put("DAT_INIZIO_COMP", dato);
+
+				regola = (Element)guidaComp.getElementsByTagName("fine").item(0);
+				dato = regolaBase(regola, valori);
+				valori.put("DAT_FINE_COMP", dato);
+
+				insertLog("COMPETENZE", valori, nodoLog);
+			}
+		}
 	}
-	private void makeProtocolli(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
+	private void makeProtocolli(Element guidaMov, Hashtable valori, Element nodoLog) throws BmaException {
+		NodeList guideProt = guidaMov.getElementsByTagName("protocollo");
+		for (int i=0;i<guideProt.getLength();i++) {
+			Element guidaProt = (Element)guideProt.item(i);
+			
+			String dato = regolaValore(guidaProt, "Auto");
+			if (dato!=null) {
+				valori.put("COD_TIPO_PROT", dato);
+				valori.put("NUM_PROTOCOLLO", maxProtocollo(valori));
+				valori.put("DAT_PROTOCOLLO", (String)valori.get("DAT_REGISTRAZIONE"));
+				
+				insertLog("NUMERI_PROT", valori,  nodoLog);
+				String codEsercizio = (String)valori.get("COD_ESERCIZIO");
+				String numProtocollo = (String)valori.get("NUM_PROTOCOLLO");
+				valori.put("RIF_DOCUMENTO", codEsercizio.substring(2) + "/" + numProtocollo);
+				valori.put("DAT_DOCUMENTO", (String)valori.get("DAT_REGISTRAZIONE"));
+			}
+		}
 	}
-	private void makePartite(Element guidaOpe, Hashtable valori, Element nodoLog) throws BmaException {
+	private void makePartite(Element guidaMov, Hashtable valori, Element nodoLog) throws BmaException {
+		NodeList guidePart = guidaMov.getElementsByTagName("partita");
+		for (int i=0;i<guidePart.getLength();i++) {
+			Element guidaPart = (Element)guidePart.item(i);
+			
+			String dato = regolaValore(guidaPart, "Crea");
+			if (dato!=null) {
+				valori.put("PKT_PARTITA_RIF", (String)valori.get("PKT_MOVIMENTO"));
+				valori.put("RIF_PARTITA", (String)valori.get(dato));
+				valori.put("FLG_CHIUSURA", "N");
+				valori.put("DAT_ACCOPPIAMENTO", (String)valori.get("DAT_REGISTRAZIONE"));
+				insertLog("PARTITE", valori,  nodoLog);
+			}
+			dato = regolaValore(guidaPart, "Abbina");
+			if (dato!=null) {
+				valori.put("RIF_PARTITA", (String)valori.get(dato));
+				String pktPartitaRif = partitaRiferimento(valori);
+				if (pktPartitaRif==null) pktPartitaRif = (String)valori.get("PKT_MOVIMENTO");
+				valori.put("PKT_PARTITA_RIF", pktPartitaRif);
+				valori.put("FLG_CHIUSURA", "N");
+				insertLog("PARTITE", valori,  nodoLog);
+			}
+		}
 	}
 	// Motore Regole
+	private String regolaValore(Element regola, String nome) throws BmaException {
+		if (regola==null) throw new BmaException("Regola assente", "");
+		if (!regola.hasAttributes()) return null;
+		String desRegola = regola.getAttribute("Regola");
+		if (!desRegola.equals(nome)) return null;
+		return regola.getAttribute("Valore");
+	}
 	private String regolaBase(Element regola, Hashtable valori) throws BmaException {
 		if (regola==null) throw new BmaException("Regola assente", "");
 		if (!regola.hasAttributes()) return "";
@@ -239,12 +348,57 @@ public class DriverOperazione extends BmaObject {
 		nodo.appendChild(testo);
 	}
 	// Accesso al database
-	protected void insert(String tabella, Hashtable valori, Element nodoLog) throws BmaException {
+	private String partitaRiferimento(Hashtable valori) throws BmaException {
+		String rifPartita = (String)valori.get("RIF_PARTITA");
+		if (rifPartita==null) throw new BmaException("Riferimento partita non specificato", "");
+		String codNatura = (String)valori.get("COD_NATURA");
+		if (codNatura==null) throw new BmaException("Conto partita non specificato", "");
+		String sql = "";
+		sql = "SELECT A.RIF_PARTITA " +
+					" FROM PARTITE A, MOVIMENTI B " +
+					" WHERE A.PKT_MOVIMENTO = B.PKT_MOVIMENTO " +
+					" AND		B.COD_NATURA='" + codNatura + "' " +
+					" AND		A.RIF_PARTITA='" + rifPartita + "'";
+		Vector dati = jTrx.eseguiSqlSelect(sql);
+		if (dati.size()!=1) return null;
+		dati = (Vector)dati.elementAt(0);
+		return (String)dati.elementAt(0);		
+	}
+	private String maxProtocollo(Hashtable valori) throws BmaException {
+		String codTipoProt = (String)valori.get("COD_TIPO_PROT");
+		if (codTipoProt==null) throw new BmaException("Protocollo non specificato", "");
+		String codEsercizio = (String)valori.get("COD_ESERCIZIO");
+		if (codEsercizio==null) throw new BmaException("Esercizio non specificato", "");
+		String sql = "";
+		sql = "SELECT MAX(NUM_PROTOCOLLO) " +
+					" FROM	NUMERI_PROT " +
+					" WHERE	COD_TIPO_PROT='" + codTipoProt + "' " +
+					" AND		COD_ESERCIZIO='" + codEsercizio + "' ";
+		Vector dati = jTrx.eseguiSqlSelect(sql);
+		if (dati.size()!=1) throw new BmaException("Errore nel calcolo del numero protocollo", "");
+		dati = (Vector)dati.elementAt(0);
+		String s = (String)dati.elementAt(0);
+		if (s==null || s.length()==0) return "1";
+		int n = Integer.parseInt(s);
+		return Integer.toString(n + 1);
+	}
+	private void insertDaLog(Element nodoLog) throws BmaException {
+		Vector list = getChildElements(nodoLog);
+		for (int i=0;i<list.size();i++) {
+			Element eTab = (Element)list.elementAt(i);
+			BmaDataTable tabella = jModel.getDataTable(eTab.getNodeName());
+			for (int j=0;j<tabella.getColonne().size();j++) {
+				BmaDataColumn col = (BmaDataColumn)tabella.getColonne().elementAt(j);
+				Element eCol = (Element)eTab.getElementsByTagName(col.getNome()).item(0);
+				String s = eCol.getFirstChild().getNodeValue();
+				col.setValore(s);
+			}
+			jTrx.eseguiSqlUpdate(tabella.getSqlInsert());
+		}
+	}
+	private void insertLog(String tabella, Hashtable valori, Element nodoLog) throws BmaException {
 		BmaDataTable table = jModel.getDataTable(jTrx, tabella);
 		table.setValori(valori);
-//		jTrx.eseguiSqlUpdate(table.getSqlInsert());
-		
-		// Aggiorna il documento di log
 		Element logTabella = getNewElement(nodoLog, tabella);
 		for (int i=0; i<table.getColonne().size();i++) {
 			BmaDataColumn c = (BmaDataColumn)table.getColonne().elementAt(i);
@@ -299,10 +453,16 @@ public class DriverOperazione extends BmaObject {
 			throw new BmaException("Data Errata: " + myDate, pe.getMessage()); 
 		}
 	}
+	public double round(double v, int scale) {
+		BigDecimal bDec = new BigDecimal(v);
+		bDec = bDec.setScale(scale, bDec.ROUND_HALF_UP);
+		return bDec.doubleValue();
+	}
 	public double parseImporto(String myImporto) throws BmaException {
 		try {
-			double d = Double.parseDouble(myImporto);
-			return d;
+			BigDecimal bd = new BigDecimal(myImporto);
+			bd = bd.setScale(2, bd.ROUND_HALF_UP);
+			return bd.doubleValue();
 		}
 		catch (NumberFormatException nf) {
 			throw new BmaException("Importo Errato: " + myImporto, nf.getMessage()); 

@@ -120,6 +120,26 @@ public class JdbcModel extends BmaObject {
 		}
 		return dTable;
 	}
+	/** Restituisce uno o più alias della colonna di riferimento nella tabella indicata 
+	 *	Gli alias sono determinati in base alle FK della taballa quando una FK ha nella
+	 *	chiave dell'entità padre una colonna con nuome uguale a quello di riferimento;
+	 *	l'alias è il nome che la colonna assume nella tabella corrente */
+	public Vector getAlias(String column, String table) {
+		JdbcTable jTable = (JdbcTable)tables.getElement(table);
+		Vector alias = new Vector();
+		if (jTable==null) return alias;
+		for(int i=0;i<jTable.importedKeys.size();i++) {
+			JdbcImportedKey ofk = (JdbcImportedKey)jTable.importedKeys.elementAt(i);
+			Enumeration e = ofk.fkColumns.keys();
+			while(e.hasMoreElements()) {
+				String pk = (String)e.nextElement();
+				String fk = (String)ofk.fkColumns.get(pk);
+				if (pk.equalsIgnoreCase(column) &&
+						!fk.equalsIgnoreCase(column)) alias.add(fk);
+			}
+		}
+		return alias;
+	}
 	public BmaJdbcSource getJSource() {
 		return jSource;
 	}

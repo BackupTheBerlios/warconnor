@@ -257,7 +257,9 @@ public class BmaJdbcTrx extends BmaObject {
 	}
 	private boolean isConstraintException(SQLException esql) {
 		if (esql == null) return false;
-		return (esql.getSQLState().compareTo(fkSqlStateMin) >= 0 && esql.getSQLState().compareTo(fkSqlStateMax) < 0);
+		String state = esql.getSQLState();
+		if (state==null) return false;
+		return (state.compareTo(fkSqlStateMin) >= 0 && state.compareTo(fkSqlStateMax) < 0);
 	}
 	public boolean isValida() {
 		return valida;

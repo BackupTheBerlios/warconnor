@@ -306,11 +306,11 @@ public void setValori(Hashtable valori) {
 		String valore = (String)valori.get(c.nome);
 		if (valore==null) valore = "";
 		if (c.getTipoSemplice().equals(BMA_SQL_TYS_NUM)) {
-			if (valore.trim().length()==0) valore = "0";
-			double vd = Double.parseDouble(valore);
-			valore = Double.toString(vd);
+			c.setValoreNumerico(valore);
 		}
-		c.valore = valore;
+		else {
+			c.valore = valore;
+		}
 	}
 }
 public void setValori(Vector rigaValori) {

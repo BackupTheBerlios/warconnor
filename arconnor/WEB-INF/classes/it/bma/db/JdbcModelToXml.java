@@ -17,7 +17,7 @@ public class JdbcModelToXml {
 		BmaJdbcTrx trx = new BmaJdbcTrx(source);
 		JdbcModel jModel = new JdbcModel();
 		try {
-
+			if (1==1) throw new BmaException("Un Test", "Di Errore");
 			source.fromXmlFile(filePath + fileSource);
 			String dbName = source.getChiave();
 			trx.open("IO");
