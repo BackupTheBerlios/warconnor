@@ -6,20 +6,20 @@
 	BmaDataList elenco = null;
 	BmaDataList elencoMaster = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA);
 	BmaDataForm form = (BmaDataForm)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_FORM);
+	String xslFile = "";
 	if (form!=null) {
 		String xmlNote = form.getValoreCampo("NOT_VOLUME");
 		if (xmlNote==null) xmlNote="";
-		int i = xmlNote.indexOf("?>");
-		if (i>0) {
-			xmlNote = "<?xml-stylesheet type='text/xsl' href='media/indiceVolume.xsl'?>" + '\n' +
-								xmlNote.substring(i+2);
-			xmlNote = xmlNote.replaceAll("\\&", "e");
-			request.getSession().setAttribute(jsp.BMA_JSP_BEAN_XML, new BmaParametro(jsp.BMA_JSP_BEAN_XML, xmlNote));
-		}
+		String codTipoVolume = form.getValoreCampo("COD_TIPOVOLUME");
+		if (codTipoVolume.equals("CD-MP3")) xslFile="media/indiceVolume_fo.xsl";
+		else if (codTipoVolume.equals("CD-BACKUP")) xslFile="";
+		else if (codTipoVolume.equals("CD-ALBUM")) xslFile="";
+		else if (codTipoVolume.equals("CD-SHOW")) xslFile="";
+		else if (codTipoVolume.equals("CD-PGM")) xslFile="";
+		request.getSession().setAttribute(jsp.BMA_JSP_BEAN_XML, xmlNote);
 	}
 	BmaDataList elencoDetail = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA_DETAIL);
 	String codFunzioneEdit = funzione.getCodFunzione();
-
 %>
 
 <html>
@@ -96,7 +96,7 @@
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=funzione.getDesAzione()%> <%=sessione.getAlias(form.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
-			<a class='Button' href='xmlOutput.jsp' target='_blank'>Indice Volume</a>
+			<a class='Button' href='Xml2PdfServlet?xsl=<%=xslFile%>&dummy=d.pdf' target='_blank'>Indice Volume</a>
 <% 
 		if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_NUOVO)) {
 			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna"));
