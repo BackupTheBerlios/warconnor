@@ -48,6 +48,7 @@ public interface BmaLiterals {
   public final String BMA_CONTROLLO_LIBERO= "Libero";
   public final String BMA_CONTROLLO_BOOLEAN= "Boolean";
   public final String BMA_CONTROLLO_TEXT= "Text";
+  public final String BMA_CONTROLLO_FILE= "File";
   public final String BMA_CONTROLLO_LINK= "Link";
   public final String BMA_CONTROLLO_LISTA= "Lista";
   public final String BMA_CONTROLLO_RANGE= "Range";

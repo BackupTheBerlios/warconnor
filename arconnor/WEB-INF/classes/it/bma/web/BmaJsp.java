@@ -222,6 +222,13 @@ public class BmaJsp extends BmaObject implements BmaJspLiterals {
 							" name=\"" + campo.getNome() + "\"" +
 							" rows=\"5\">" + campo.getValore() + "</textarea>" + '\n';
 		} 
+		else if (campo.getTipoControllo().equals(BMA_CONTROLLO_FILE)) {
+			h = h + "<input " + cls + " type=\"File\"" +
+							" name=\"" + campo.getNome() + "\"" +
+							" value=\"" + campo.getValore() + "\"" +
+							" maxlength=\"" + campo.getLunghezza() + "\"" +
+							" size=\"" + s + "\">" + '\n';
+		} 
 		else if (campo.getTipoControllo().equals(BMA_CONTROLLO_LINK)) {
 			if (azione.equals(BMA_JSP_AZIONE_NUOVO) || 
 				 (azione.equals(BMA_JSP_AZIONE_MODIFICA) && campo.getValore().trim().length()==0)) {

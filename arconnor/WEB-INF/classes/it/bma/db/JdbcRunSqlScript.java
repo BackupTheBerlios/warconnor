@@ -16,7 +16,7 @@ public class JdbcRunSqlScript {
 //		source.setDriver("com.ibm.db2.jcc.DB2Driver");
 //		source.setUrl("jdbc:db2://PCWIN002:50000/PDAS");
 		source.setDriver("COM.ibm.db2.jdbc.net.DB2Driver");
-		source.setUrl("jdbc:db2://PCWIN001/PDAS");
+		source.setUrl("jdbc:db2://PCWIN001/PDAS_PC1");
 		source.setUser("db2admin");
 		source.setPass("db2admin");
 		source.setSchema("");
