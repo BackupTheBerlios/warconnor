@@ -12,10 +12,10 @@
 		if (xmlNote==null) xmlNote="";
 		String codTipoVolume = form.getValoreCampo("COD_TIPOVOLUME");
 		if (codTipoVolume.equals("CD-MP3")) xslFile="media/indiceVolume_fo.xsl";
-		else if (codTipoVolume.equals("CD-BACKUP")) xslFile="";
-		else if (codTipoVolume.equals("CD-ALBUM")) xslFile="";
-		else if (codTipoVolume.equals("CD-SHOW")) xslFile="";
-		else if (codTipoVolume.equals("CD-PGM")) xslFile="";
+		else if (codTipoVolume.equals("CD-BACKUP")) xslFile="media/indiceVolume_fo.xsl";
+		else if (codTipoVolume.equals("CD-ALBUM")) xslFile="media/indiceVolume_fo.xsl";
+		else if (codTipoVolume.equals("CD-SHOW")) xslFile="media/indiceVolume_fo.xsl";
+		else if (codTipoVolume.equals("CD-PGM")) xslFile="media/indiceProgrammi_fo.xsl";
 		request.getSession().setAttribute(jsp.BMA_JSP_BEAN_XML, xmlNote);
 	}
 	BmaDataList elencoDetail = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA_DETAIL);

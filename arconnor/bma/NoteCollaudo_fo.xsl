@@ -11,22 +11,23 @@
         </fo:simple-page-master>
       </fo:layout-master-set>
       <fo:page-sequence master-reference="simpleA4">
-			
 				<fo:static-content flow-name="xsl-region-before">
-<!--				
-					<fo:external-graphic src="c:/Progetti/warconnor_cvs/arconnor/bma/images/00057.jpg"/>
+					<fo:block text-align-last="justify" font-size="16pt" font-weight="bold">
+<!--										
+border-after-style="solid" border-after-width="1pt" 
+										space-before.minimum="1em"
+										space-before.optimum="1.5em"
+										space-before.maximum="2em"
 -->
-					<fo:block text-align="right" font-size="16pt" font-weight="bold">
-						<xsl:text>Note Collaudo Funzioni Prodotti</xsl:text>
+						<fo:external-graphic src="url('images/00057.jpg')" width="35mm" height="9mm"/>
+						<fo:leader leader-pattern="dots"/>
+						Note Collaudo Funzioni Prodotti
 					</fo:block>
 				</fo:static-content>			
 
 				<fo:static-content flow-name="xsl-region-after">
 					<fo:block text-align="center" font-size="9pt">
-						<fo:page-number/>
-<!--					
-						- <fo:page-number/> / <fo:page-number-citation ref-id="last-paragraph"/> -
--->
+						- <fo:page-number/> / <fo:page-number-citation ref-id="last-page"/> -
 					</fo:block>
 				</fo:static-content>				
 			
@@ -38,43 +39,90 @@
     </fo:root>
 	</xsl:template>
 	
-	<xsl:attribute-set name="blocco.data">
-		<!-- Indent 
-		<xsl:attribute name="margin-left">
-			<xsl:value-of select="@Livello"/>
-			<xsl:text>em</xsl:text>
-		</xsl:attribute>
-		-->
-		<!-- Space Before -->
-		<xsl:attribute name="space-before">
-			<xsl:choose>
-				<xsl:when test="@Livello=0">3em</xsl:when>
-				<xsl:when test="@Livello=1">2em</xsl:when>
-				<xsl:when test="@Livello=2">1em</xsl:when>
-				<xsl:otherwise>1em</xsl:otherwise>
-			</xsl:choose>
-		</xsl:attribute>
+	<!-- Stile per il titolo dipendente dal livello del blocco -->
+	<xsl:attribute-set name="style.titolo">
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="font-size">
 			<xsl:choose>
-				<xsl:when test="@Livello=0">16pt</xsl:when>
-				<xsl:when test="@Livello=1">14pt</xsl:when>
-				<xsl:when test="@Livello=2">12pt</xsl:when>
-				<xsl:otherwise>10pt</xsl:otherwise>
+				<xsl:when test="@Livello=0">14pt</xsl:when>
+				<xsl:when test="@Livello=1">12pt</xsl:when>
+				<xsl:when test="@Livello=2">10pt</xsl:when>
+				<xsl:otherwise>8pt</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
+		<xsl:attribute name="color">
+			<xsl:choose>
+				<xsl:when test="@Livello=0">red</xsl:when>
+				<xsl:when test="@Livello=1">blue</xsl:when>
+				<xsl:when test="@Livello=2">black</xsl:when>
+				<xsl:otherwise>green</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>		
+		<xsl:attribute name="margin-left">
+			<xsl:choose>
+				<xsl:when test="@Livello=0">0mm</xsl:when>
+				<xsl:when test="@Livello=1">5mm</xsl:when>
+				<xsl:when test="@Livello=2">10mm</xsl:when>
+				<xsl:otherwise>10mm</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
+		<xsl:attribute name="space-after">0.66em</xsl:attribute>
+		<xsl:attribute name="break-before">
+			<xsl:choose>
+				<xsl:when test="@Livello=0">page</xsl:when>
+				<xsl:otherwise>auto</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
+		<xsl:attribute name="keep-with-next.within-page">
+			<xsl:choose>
+				<xsl:when test="@Livello=0">auto</xsl:when>
+				<xsl:otherwise>always</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
 	</xsl:attribute-set>
+	<!-- Stile per tabella  -->
+	<xsl:attribute-set name="style.tabella">
+		<xsl:attribute name="table-layout">fixed</xsl:attribute>
+		<xsl:attribute name="border-collapse">collapse</xsl:attribute>
+		<xsl:attribute name="width">100%</xsl:attribute>
+	</xsl:attribute-set>
+	<!-- Stile per tabella: intestazione primaria  -->
+	<xsl:attribute-set name="style.tabella.header">
+		<xsl:attribute name="background-color">#DDDDDD</xsl:attribute>
+		<xsl:attribute name="border-style">solid</xsl:attribute>
+		<xsl:attribute name="border-width">thin</xsl:attribute>
+		<xsl:attribute name="padding-start">0.3em</xsl:attribute>
+		<xsl:attribute name="padding-end">0.2em</xsl:attribute>
+		<xsl:attribute name="padding-before">2pt</xsl:attribute>
+		<xsl:attribute name="padding-after">2pt</xsl:attribute>
+	</xsl:attribute-set>	
+	<!-- Stile per tabella: celle primarie  -->
+	<xsl:attribute-set name="style.tabella.data">
+		<xsl:attribute name="border-style">solid</xsl:attribute>
+		<xsl:attribute name="border-width">thin</xsl:attribute>
+		<xsl:attribute name="padding-start">0.3em</xsl:attribute>
+		<xsl:attribute name="padding-end">0.2em</xsl:attribute>
+		<xsl:attribute name="padding-before">2pt</xsl:attribute>
+		<xsl:attribute name="padding-after">2pt</xsl:attribute>
+	</xsl:attribute-set>	
+	<!-- Stile per tabella: celle secondarie  -->
+	<xsl:attribute-set name="style.tabella.data2">
+		<xsl:attribute name="padding-start">0.3em</xsl:attribute>
+		<xsl:attribute name="padding-end">0.2em</xsl:attribute>
+		<xsl:attribute name="padding-before">2pt</xsl:attribute>
+		<xsl:attribute name="padding-after">2pt</xsl:attribute>
+	</xsl:attribute-set>	
 	
 	<xsl:template match="Blocco">
 		<xsl:if test="@Titolo='Funzione'">
 			<xsl:if test="count(./Funzione/NoteCollaudo/NotaCollaudo)>0">
-				<fo:block xsl:use-attribute-sets="blocco.data">
+				<fo:block xsl:use-attribute-sets="style.titolo">
 					<xsl:apply-templates select="Funzione"/>
 				</fo:block>
 			</xsl:if>
 		</xsl:if>
 		<xsl:if test="not(@Titolo='Funzione')">
-			<fo:block xsl:use-attribute-sets="blocco.data">
+			<fo:block xsl:use-attribute-sets="style.titolo">
 				<xsl:value-of select="@Titolo"/>
 			</fo:block>
 		</xsl:if>
@@ -82,43 +130,61 @@
 	
  	<xsl:template match="Funzione">
     <xsl:value-of select="./Descrizione"/>
-		<fo:block font-weight="normal" font-size="10pt" space-before.optimum="3pt" space-after.optimum="15pt">
-			<fo:table table-layout="fixed">
-				<fo:table-column column-width="1cm"/>
-				<fo:table-column column-width="1cm"/>
-				<fo:table-column column-width="2cm"/>
-				<fo:table-column column-width="2cm"/>
-				<fo:table-column column-width="5cm"/>
-				<fo:table-column column-width="5cm"/>
+
+		<fo:block font-weight="normal"
+					margin-left="0mm"
+					font-size="8pt" 
+					space-after.optimum="5pt">
+			<fo:table xsl:use-attribute-sets="style.tabella">
+				<fo:table-column column-width="10mm"/>
+				<fo:table-column column-width="proportional-column-width(5)"/>
+				<fo:table-column column-width="proportional-column-width(5)"/>
+				<fo:table-column column-width="proportional-column-width(10)"/>
+				<fo:table-column column-width="proportional-column-width(10)"/>
+				<fo:table-column column-width="proportional-column-width(20)"/>
+				<fo:table-column column-width="proportional-column-width(50)"/>
 				<fo:table-body>
 					<xsl:apply-templates select="NoteCollaudo"/>
 				</fo:table-body>
 			</fo:table>
 		</fo:block>
+<!--		</fo:block> -->
 	</xsl:template>
 	
  	<xsl:template match="NoteCollaudo">
+		<fo:table-row>
+			<fo:table-cell/>
+			<fo:table-cell xsl:use-attribute-sets="style.tabella.header">
+				<xsl:attribute name="number-columns-spanned">2</xsl:attribute>
+				<fo:block>Riferimenti</fo:block>
+			</fo:table-cell>
+			<fo:table-cell xsl:use-attribute-sets="style.tabella.header">
+				<fo:block>Data</fo:block>
+			</fo:table-cell>
+			<fo:table-cell xsl:use-attribute-sets="style.tabella.header">
+				<fo:block>Utente</fo:block>
+			</fo:table-cell>
+			<fo:table-cell xsl:use-attribute-sets="style.tabella.header">
+				<xsl:attribute name="number-columns-spanned">2</xsl:attribute>
+				<fo:block>Nota</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
 		<xsl:for-each select="NotaCollaudo">
 			<fo:table-row>
-				<fo:table-cell number-columns-spanned="2" border-style="solid" border-width="0.5pt">
-					<fo:block>
-						<xsl:value-of select="./@Id"/>
-					</fo:block>
+				<fo:table-cell/>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data">
+					<xsl:attribute name="number-columns-spanned">2</xsl:attribute>
+					<fo:block><xsl:value-of select="./@Id"/></fo:block>
 				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block>
-						<xsl:value-of select="./@Data"/>
-					</fo:block>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data">
+					<fo:block><xsl:value-of select="./@Data"/></fo:block>
 				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block>
-						<xsl:value-of select="./@User"/>
-					</fo:block>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data">
+					<fo:block><xsl:value-of select="./@User"/></fo:block>
 				</fo:table-cell>
-				<fo:table-cell number-columns-spanned="2">
-					<fo:block font-size="8pt">
-						<xsl:apply-templates select="./Nota"/>
-					</fo:block>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data">
+					<xsl:attribute name="number-columns-spanned">2</xsl:attribute>
+					<fo:block><xsl:apply-templates select="./Nota"/></fo:block>
 				</fo:table-cell>
 			</fo:table-row>
 			<xsl:apply-templates select="./Interventi"/>
@@ -126,37 +192,29 @@
 	</xsl:template>
  	<xsl:template match="Interventi">
 		<fo:table-row>
-			<fo:table-cell number-columns-spanned="6">
-				<fo:block font-size="8pt" font-style="italic"><xsl:text>Interventi:</xsl:text></fo:block>
+			<fo:table-cell/>
+			<fo:table-cell xsl:use-attribute-sets="style.tabella.data2" number-columns-spanned="6">
+				<fo:block font-style="italic"><xsl:text>Interventi:</xsl:text></fo:block>
 			</fo:table-cell>
 		</fo:table-row>
 		<xsl:for-each select="Intervento">
 			<fo:table-row>
 				<fo:table-cell/>
-				<fo:table-cell>
-					<fo:block font-size="8pt">
-						<xsl:value-of select="./@Id"/>
-					</fo:block>
+				<fo:table-cell/>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data2">
+					<fo:block><xsl:value-of select="./@Id"/></fo:block>
 				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block font-size="8pt">
-						<xsl:value-of select="./@Data"/>
-					</fo:block>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data2">
+					<fo:block><xsl:value-of select="./@Data"/>
+				</fo:block></fo:table-cell>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data2">
+					<fo:block><xsl:value-of select="./@User"/>
+				</fo:block></fo:table-cell>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data2">
+					<fo:block><xsl:value-of select="./Descrizione"/></fo:block>
 				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block font-size="8pt">
-						<xsl:value-of select="./@User"/>
-					</fo:block>
-				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block font-size="8pt">
-						<xsl:value-of select="./Descrizione"/>
-					</fo:block>
-				</fo:table-cell>
-				<fo:table-cell>
-					<fo:block font-size="8pt">
-						<xsl:apply-templates select="./Nota"/>
-					</fo:block>
+				<fo:table-cell xsl:use-attribute-sets="style.tabella.data2">
+					<fo:block><xsl:apply-templates select="./Nota"/></fo:block>
 				</fo:table-cell>
 			</fo:table-row>
 		</xsl:for-each>
@@ -165,7 +223,6 @@
 	<xsl:template match="Nota">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
 	
 	<xsl:template match="br|BR"><fo:block/></xsl:template>
 	<xsl:template match="b|B">

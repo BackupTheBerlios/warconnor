@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <FunzioniProdotti>
-    <Blocco Id="0" NuovaPagina="N" Titolo="Introduzione">
+    <Blocco Id="0" Livello="0" NuovaPagina="N" Titolo="Introduzione">
         <Funzione/>
         <Immagine/>
         <TestoBlocco/>
     </Blocco>
-    <Blocco Id="0.1" NuovaPagina="N" Titolo="Scopo del documento">
+    <Blocco Id="0.1" Livello="1" NuovaPagina="N" Titolo="Scopo del documento">
         <Funzione/>
         <Immagine/>
         <TestoBlocco>Questo allegato descrive il contenuto funzionale
-            dell&apos;applicazione per la gestione della <i>Nuova Scheda
-            Prodotto</i> - in breve <b>Prodotti</b>
+            dell&apos;applicazione per la gestione della Nuova Scheda
+            Prodotto - in breve <b>Prodotti</b>
             <br/> E&apos; redatto da Banksiel nella versione riportata
             in testata e forma parte integrante dell&apos;applicazione.</TestoBlocco>
     </Blocco>
-    <Blocco Id="0.2" NuovaPagina="N" Titolo="Struttura dell&apos;applicazione">
+    <Blocco Id="0.2" Livello="1" NuovaPagina="N" Titolo="Struttura dell&apos;applicazione">
         <Funzione/>
         <Immagine/>
         <TestoBlocco>L&apos;applicazione <b>Prodotti</b> è strutturata
             nei seguenti moduli applicativi: <ul>
-                <li>Modulo <b>Gestione Prodotto</b> (base)</li>
+                <li>Modulo Gestione Prodotto (base)</li>
                 <li>Modulo Dati Tecnici Assicurazioni</li>
                 <li>Modulo Organizzazione</li>
                 <li>Modulo Cliente</li>
@@ -36,588 +36,1594 @@
             </ul> Ciascun contesto è poi articolato secondo i moduli
             sopra descritti.</TestoBlocco>
     </Blocco>
-    <Blocco Id="1" NuovaPagina="N" Titolo="Contesto Amministrativo">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco>Prova</TestoBlocco>
-    </Blocco>
-    <Blocco Id="1.1" NuovaPagina="N" Titolo="Modulo Codifiche">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.08" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.09" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.10" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.11" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.12" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.13" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.14" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.15" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.16" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.17" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.18" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.19" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.20" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.21" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.22" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.23" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.1.24" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.2.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3" NuovaPagina="N" Titolo="Modulo Organizzazione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.08" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.3.09" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4" NuovaPagina="N" Titolo="Modulo Cliente">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.4.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5" NuovaPagina="N" Titolo="Modulo Commerciale">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="1.5.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2" NuovaPagina="N" Titolo="Contesto Ricerca e selezione prodotto">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="2.1.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3" NuovaPagina="N" Titolo="Contesto di prodotto">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1" NuovaPagina="N" Titolo="Modulo Gestione Prodotto">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.08" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.09" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.10" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.1.11" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.08" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.09" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.10" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.11" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.12" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.13" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.2.14" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3" NuovaPagina="N" Titolo="Modulo Organizzazione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.3.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4" NuovaPagina="N" Titolo="Modulo Cliente">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.4.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5" NuovaPagina="N" Titolo="Modulo Commerciale">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.01" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.02" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.03" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.04" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.05" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.06" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
-        <Immagine/>
-        <TestoBlocco/>
-    </Blocco>
-    <Blocco Id="3.5.07" NuovaPagina="N" Titolo="Funzione">
-        <Funzione/>
+    <Blocco Id="1" Livello="0" NuovaPagina="N" Titolo="Contesto Amministrativo">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1" Livello="1" NuovaPagina="N" Titolo="Modulo Codifiche">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-CONDIZIONE">
+            <Descrizione>Tipi Condizione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Condizione</Attivazione>
+            <Nota>Definisce la codifica delle tipologie di
+                condizione.<br/> In generale occorre distinguere almeno
+                le <b>Condizioni Generali</b>, riferibili direttamente
+                al prodotto, dalle <b>Condizioni Aggiuntive o
+                Particolari</b> riferibili ad una garanzia;
+                nell&apos;ambito di queste due classi è poi possibile un
+                ulteriore dettaglio per un classificazione più analitica.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo>
+                <NotaCollaudo Data="23/12/2003" Id="1" User="N-A">
+                    <Nota>
+                        <i>Nota di carattere generale</i>
+                        <br/>
+                        <b>Richiesta Modifica</b>
+                        <br/> Evidenziare i campi che risultano errati a
+                        fronte di una richiesta di aggiornamento.</Nota>
+                    <Interventi/>
+                </NotaCollaudo>
+            </NoteCollaudo>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-CARATTERISTICA">
+            <Descrizione>Tipi Caratteristica</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Caratteristica</Attivazione>
+            <Nota>Codifica le tipologie di caratteristica di oggetto
+                assicurabile.<br/> In generale si possono censire
+                tipologie in modo simmetrico alle tipologie di oggetto assicurabile.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-GARANZIA">
+            <Descrizione>Tipi Garanzia</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Garanzia</Attivazione>
+            <Nota>Definisce le tipologie di garanzia prestata.<br/>
+                <ul>Esistono due possibili approcci nella definizione
+                    delle garanzie: <li>Le garanzie s&apos;intendono
+                        solo come garanzie principali e tutto ciò che
+                        specifica la prestazione assicurativa è
+                        classificato come &quot;Condizione Particolare o Aggiuntiva&quot;;</li>
+                    <li>Esistono Garanzie principali e Garanzie
+                        Aggiuntive, le une e le altre con le rispettive
+                        condizioni; la possibilità di concederle e le
+                        loro dipendenze sono governate dalle Regole di Vendita&quot;</li>
+                </ul> L&apos;approccio più semplice è il primo che
+                prevede il censimento di una sola tipologia di garanzia:
+                quella <b>Principale</b>.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-OGGETTO">
+            <Descrizione>Tipi Oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Oggetto</Attivazione>
+            <Nota>Definisce le tipologie di oggetto assicurabile.<br/>
+                E&apos; bene distingue almeno <b>Beni</b>, <b>Ruoli di
+                persone</b> e <b>Attività o Eventi</b>. La
+                classificazione degli oggetti assicurabili è tuttavia
+                estendibile a piacere.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="LIVELLI-DEROGA">
+            <Descrizione>Livelli di Deroga</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Livelli di Deroga</Attivazione>
+            <Nota>Definisce i diversi livelli di deroga per
+                l&apos;abilitazione dei valori di caratteristiche o
+                condizioni e per l&apos;abilitazione di regole di
+                vendita o regole tariffarie.<br/> Una gestione
+                particolare riguarda i livelli di flessibilità e le
+                convenzioni. Nel prodotto infatti questi vengono
+                associati a specifici livelli di deroga al fine di
+                raggruppare gli specifici valori di condizione e regole
+                di vendita o tariffarie.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-ALLEGATO">
+            <Descrizione>Tipi Allegato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Allegato</Attivazione>
+            <Nota>Definisce le tipologie di documento allegato al
+                prodotto.<br/> Ha carattere informativo e può
+                riguardare, ad esempio, le diverse applicazioni con cui
+                sono redatti i documenti oppure i loro formati.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-STATO">
+            <Descrizione>Tipi Stato Prodotto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Stato Prodotto</Attivazione>
+            <Nota>Definisce le tipologie di ciclo di vita del prodotto.<br/>
+            </Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.08" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-DESCRIZIONE">
+            <Descrizione>Tipi Descrizione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Descrizione</Attivazione>
+            <Nota>Definisce e distingue le possibili tipologie di
+                descrizione alternative del prodotto.<br/> Ciascuna
+                tipologia indica anche lo scopo o il destinatario della
+                particolare descrizione.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.09" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-IDENTIFICATIVO">
+            <Descrizione>Tipi Identificativo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Identificativo</Attivazione>
+            <Nota>Definisce le possibili tipologie di identificativo
+                alternativo del prodotto.<br/> Ciascuna tipologia indica
+                anche chi (persona o applicazione) normalmente utilizza
+                quell&apos;identificativo per riconoscere il prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.10" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-AGGREGATO">
+            <Descrizione>Tipi Aggregato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Aggregato</Attivazione>
+            <Nota>Definisce le tipologie di aggregazione dei premi.<br/>
+                <ul>Esempi: <li>Rami di Bilancio</li>
+                    <li>Imponibili per imposte</li>
+                    <li>...</li>
+                </ul>
+            </Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.11" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="AGGREGATI-PREMI">
+            <Descrizione>Aggregati Premi</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Aggregato / Aggregati Premi</Attivazione>
+            <Nota>Definisce le voci di aggregazione dei premi
+                nell&apos;ambito della tipologia precedentemente
+                selezionata.<br/> Le voci di aggregazione corrispondono
+                ai singoli elementi in cui far confluire per ciascun
+                prodotto le diverse componenti di premio.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.12" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-RESPONSABILE">
+            <Descrizione>Tipi Responsabile</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Responsabile</Attivazione>
+            <Nota>Definisce le tipologie di responsabile per la gestione
+                del prodotto</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.13" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-MODULO">
+            <Descrizione>Tipi Modulo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Modulo</Attivazione>
+            <Nota>Definisce le tipologie di modulo utilizzabile dal prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.14" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-DOCUMENTO">
+            <Descrizione>Tipi Documento</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Documento</Attivazione>
+            <Nota>Definisce le tipologie di documento richiesto dal
+                prodotto.<br/> Nell&apos;ambito di ciascun tipo di
+                documento sono definibili gli effetivi documenti che
+                sono considerati tra loro equivalenti. In altre parole,
+                l&apos;indicazione dei documenti richiesti in generale
+                per la vendita del prodotto o, più in particolare, per
+                uno specifico ruolo del cliente nella sottoscrizione del
+                contratto, avviene per Tipo di Documento e non per
+                singolo possibile documento. Ad esempio il tipo
+                &quot;Identità Personale&quot; ha come documenti
+                equivalenti: &quot;Carta Identità&quot;,
+                &quot;Passaporto&quot;, ecc.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.15" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-ARGOMENTO">
+            <Descrizione>Tipi Argomento</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Argomento</Attivazione>
+            <Nota>Definisce la tipologie di argomento di vendita.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.16" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TIPI-OPZIONE">
+            <Descrizione>Tipi Opzione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Tipi Opzione</Attivazione>
+            <Nota>Definisce le tipologie di opzione di vendita.<br/> Le
+                tipologie di opzione di vendita vanno considerate in
+                combinazione con le Regole di vendita.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.17" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ENTI-EMITTENTI">
+            <Descrizione>Enti Emittenti</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Enti Emittenti</Attivazione>
+            <Nota>Definisce i possibili Enti emittenti dei
+                prodotti.<br/> Se si desidera censire anche i prodotti
+                della concorrenza per i confronti, occorre censire qui
+                le compagnie concorrenti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.18" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="INFO">
+            <Descrizione>Informazioni Generiche</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Informazioni</Attivazione>
+            <Nota>Definisce possibili informazioni generiche associabili
+                al prodotto e non diversamente gestite dall&apos;applicazione</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.19" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="APPLICAZIONI">
+            <Descrizione>Applicazioni</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Applicazioni</Attivazione>
+            <Nota>Definisce le applicazioni di gestione dei moduli</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.20" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CANALI-VENDITA">
+            <Descrizione>Canali di Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Canali Vendita</Attivazione>
+            <Nota>Definisce i canali di vendita del prodotto.<br/> Il
+                censimento dei canali va effettuato anche in relazione
+                ai suoi possibili utilizzi. (Vedi funzione
+                &quot;Utilizzi Canale&quot;)</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.21" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="UTILIZZI-CANALE">
+            <Descrizione>Utilizzi Canale</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Utilizzi Canale</Attivazione>
+            <Nota>Definisce i possibili utilizzi dei canali di
+                vendita.<br/> L&apos;associazione tra canale e suo
+                utilizzo è effettuata a livello di prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.22" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="REGOLE-VENDITA">
+            <Descrizione>Regole di Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Regole Vendita</Attivazione>
+            <Nota>Definisce le regole di vendita associabili ad una
+                garanzia o ad un&apos;opzione del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.23" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="DATI">
+            <Descrizione>Dati dei modulo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Codifiche / Dati Modulo</Attivazione>
+            <Nota>Definisce i dati utilizzabili nei moduli</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.24" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="REGOLE-MODULO">
+            <Descrizione>Regole Compilazione Moduli</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Regole Modulo</Attivazione>
+            <Nota>Definisce le regole di compilazione dei moduli.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2" Livello="1" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CONDIZIONI">
+            <Descrizione>Condizioni</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Anagrafica Condizioni</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle condizioni generali
+                e particolari</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CARATTERISTICHE">
+            <Descrizione>Caratteristiche Oggetti Assicurati</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Anagrafica Caratteristiche</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle caratteristiche
+                degli oggetti assicurabili</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="GARANZIE">
+            <Descrizione>Garanzie</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Anagrafica Garanzie</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle Garanzie</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="OGGETTI">
+            <Descrizione>Oggetti Assicurabili</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Anagrafica Oggetti</Attivazione>
+            <Nota>Definisce l&apos;anagrafica degli oggetti assicurabili</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TARIFFE">
+            <Descrizione>Tariffe</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Tariffe</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle tariffe</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="REGOLE-TARIFFARIE">
+            <Descrizione>Regole Tariffarie</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Regole Tariffarie</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle regole di tipo tariffario.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="TABELLE-TARIFFE">
+            <Descrizione>Tabelle Tariffe</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / DatiTecnici / Tabelle Tariffe</Attivazione>
+            <Nota>Definisce le tabelle dati allegate alle regole
+                tariffarie.<br/> L&apos;associazione tra regola
+                tariffaria e tabella che la supporta avviene attraverso
+                il censimento di un parametro opportuno. In altri
+                termini, nella definizione di una regola  (ad esempio
+                quella che determina il tasso in base
+                all&apos;ubicazione del rischio e alla categoria) si può
+                omettere l&apos;indicazione dei parametri relativi ad
+                ogni combinazione ubicazione/categoria e censire un
+                unico parametro che faccia riferimento ad una tabella
+                allegata contenente i valori.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3" Livello="1" NuovaPagina="N" Titolo="Modulo Organizzazione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="POSIZIONI">
+            <Descrizione>Posizioni Aziendali</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Posizioni Aziendali</Attivazione>
+            <Nota>Definisce le posizioni aziendali responsabili del
+                prodotto.<br/> Tale responsabilità è definita sia in
+                termini generali che in relazione a specifici stati  del
+                ciclo di vita del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="STATI">
+            <Descrizione>Stati Ciclo di Vita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Stati Ciclo di Vita</Attivazione>
+            <Nota>Definisce gli stati per i cicli di vita delle tariffe
+                e commerciale.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="AUTORIZZA-TARIFFE">
+            <Descrizione>Autorizzazioni Tariffe</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Stati / Autorizzazioni</Attivazione>
+            <Nota>Definisce le posizioni che approvano le tariffe.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="STATI-PRINCIPALI">
+            <Descrizione>Stati Principali del ciclo di vita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Stati Principali</Attivazione>
+            <Nota>Elenca gli stati del ciclo di vita principale del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="APPROVAZIONI">
+            <Descrizione>Approvazioni</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Stati Principali / Approvazioni</Attivazione>
+            <Nota>Definisce gli stati in cui una posizione aziendale può
+                far evolvere i prodotti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="NORMATIVE">
+            <Descrizione>Normative</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Normative</Attivazione>
+            <Nota>Definisce le normative sia interne (circolari) che
+                esterne (leggi, regolamenti, ecc.) a cui possono far
+                riferimento i prodotti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ALLEGATI-NORME">
+            <Descrizione>Allegati Normativa</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Normative / Allegati</Attivazione>
+            <Nota>Consente di allegare documenti ad una normativa.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.08" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="MODULI">
+            <Descrizione>Moduli</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Moduli</Attivazione>
+            <Nota>Definisce i moduli utilizzabili dai prodotti.<br/>
+            </Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.09" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="DATI-MODULO">
+            <Descrizione>Dati per un modulo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Moduli / Dati</Attivazione>
+            <Nota>Definisce i dati utilizzati da un modulo</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4" Livello="1" NuovaPagina="N" Titolo="Modulo Cliente">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="RUOLI-CLIENTE">
+            <Descrizione>Ruoli Cliente</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Ruoli Cliente</Attivazione>
+            <Nota>Definisce i possibili ruoli previsti dai contratti</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="IDONEITA">
+            <Descrizione>Condizioni di Idoneità</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Condizioni di Idoneità</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle condizioni di
+                idoneità che deve soddisfare il cliente.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="DOCUMENTI-RICHIESTI">
+            <Descrizione>Documenti Richiesti</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Documenti Richiesti</Attivazione>
+            <Nota>Definisce i possibili documenti equivalenti
+                nell&apos;ambito di ciascuna tipologia di documento richiesto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="OBIETTIVI-MERCATO">
+            <Descrizione>Obiettivi di Mercato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Obiettivi Mercatro</Attivazione>
+            <Nota>Definisce l&apos;anagrafica degli obiettivi di mercato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="SEGMENTI-MERCATO">
+            <Descrizione>Segmenti di Mercato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Segmenti Mercato</Attivazione>
+            <Nota>Definisce l&apos;anagrafica dei segmenti di mercato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="OBIETTIVI-SEGMENTO">
+            <Descrizione>Obiettivi Segmento</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Segmenti Mercato / Obiettivi</Attivazione>
+            <Nota>Definisce gli obiettivi di mercato di interesse per un
+                segmento di mercato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ARGOMENTI-SEGMENTO">
+            <Descrizione>Argomenti Segmento</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Cliente / Segmenti Mercato / Argomenti</Attivazione>
+            <Nota>Definisce gli argomenti di vendita di interesse per un
+                segmento di mercato</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5" Livello="1" NuovaPagina="N" Titolo="Modulo Commerciale">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ARGOMENTI-VENDITA">
+            <Descrizione>Argomenti di Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Commerciale / Argomenti</Attivazione>
+            <Nota>Definisce l&apos;anagrafica degli argomenti di vendita</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PUNTI-VENDITA">
+            <Descrizione>Punti di Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Commerciale / Punti di Vendita</Attivazione>
+            <Nota>Definisce l&apos;anagrafica dei punti vendita</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CONVENZIONI-PUNTI">
+            <Descrizione>Convenzioni Punto Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Commerciale / Punti Vendita / Convenzioni</Attivazione>
+            <Nota>Definisce quali convenzioni sono valide per un punto vendita</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CONVENZIONI">
+            <Descrizione>Flessibilità e Convenzioni</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Commerciale / Convenzioni</Attivazione>
+            <Nota>Definisce i livelli di flessibilità e le
+                convenzioni.<br/> A livello di prodotto, la convenzione
+                va associata ad un opportuno livello di deroga al fine
+                di raggruppare i valori di condizione o le regole
+                tariffarie e di vendita cha la caratterizzano.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="OPZIONI-VENDITA">
+            <Descrizione>Opzioni di Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Commerciale / Opzioni Di Vendita</Attivazione>
+            <Nota>Definisce l&apos;anagrafica delle opzioni di
+                vendita.<br/> Il censimento delle opzioni di vendita va
+                effettuato anche in relazione alle possibili regole di vendita.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2" Livello="0" NuovaPagina="N" Titolo="Contesto Ricerca e selezione prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ATTIVITA-APERTE">
+            <Descrizione>Attività aperte</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home</Attivazione>
+            <Nota>Presenta la lista delle attività di sviluppo aperte
+                per la posizione aziendale dell&apos;utente corrente.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ANAGRAFICA-PRODOTTI">
+            <Descrizione>Anagrafica Prodotti</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Gestione Prodotto / Anagrafica Prodotti</Attivazione>
+            <Nota>Presenta la lista completa dei prodotti censiti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="RICERCA-SEMPLICE">
+            <Descrizione>Ricerca Semplice</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Gestione Prodotto / Ricerca Semplice</Attivazione>
+            <Nota>Produce una lista di prodotti in base ad una parte del
+                codice o della descrizione.<br/> E&apos; possibile
+                specificare anche lo stato del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="RICERCA-AVANZATA">
+            <Descrizione>Ricerca Avanzata</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Gestione Prodotto / Ricerca Avanzata</Attivazione>
+            <Nota>Produce una lista di prodotti in base ad uno o più
+                parametri di ricerca (descrizioni o identificativi
+                alternativi, segmenti di mercato coinvolti, oggetti o
+                garanzie prestate, argomenti di vendita utilizzati,
+                obiettivi soddisfatti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PL-PRODOTTI">
+            <Descrizione>Lista Prodotti</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Gestione Prodotto / Ricerca&#x2026;</Attivazione>
+            <Nota>Elenca i prodotti secondo i criteri di ricerca.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PRODOTTO">
+            <Descrizione>Dettaglio Prodotto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Gestione Prodotto / Ricerca&#x2026; Dettaglio</Attivazione>
+            <Nota>Visualizza i dati di sintesi del prodotto.<br/>
+                Supporta le operazioni per la gestione
+                dell&apos;anagrafica base dei prodotti con indicazione
+                dell&apos;Ente Emittente, dello Stato e degli indicativi
+                di struttura e di proprietà del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo>
+                <NotaCollaudo Data="23/12/2003" Id="1" User="N-A">
+                    <Nota>
+                        <b>Anomalia</b>
+                        <br/> In <i>Inserimento Prodotto</i> il menu a
+                        destra è quello di Prodotto (come se si fosse
+                        già selezionato un prodotto).<br/> Se viene
+                        attivata un&apos;opzione del menu, apre la
+                        relativa finestra con i dati dell&apos;ultimo
+                        prodotto selezionato.</Nota>
+                    <Interventi/>
+                </NotaCollaudo>
+                <NotaCollaudo Data="23/12/2003" Id="2" User="N-A">
+                    <Nota>
+                        <b>Richiesta Modifica</b>
+                        <br/>
+                        <i>Pagina <b>Home</b>
+                        </i>
+                        <br/> La finestra deve prevedere il pulsante
+                        <b>Esci</b> per la chiusura dell&apos;applicazione.</Nota>
+                    <Interventi>
+                        <Intervento Data="23/12/2003" Id="1" User="N-A">
+                            <Descrizione>Soluzione</Descrizione>
+                            <Nota>Il pulsante non è necessario in quanto
+                                l&apos;applicazione è attivata dalla
+                                    <i>Intranet Cattolica</i> con
+                                l&apos;apertura di una nuova finestra
+                                del browser.<br/> Per chiudere
+                                l&apos;applicazione è sufficiente
+                                chiudere la relativa finestra.</Nota>
+                        </Intervento>
+                    </Interventi>
+                </NotaCollaudo>
+            </NoteCollaudo>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3" Livello="0" NuovaPagina="N" Titolo="Contesto di prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1" Livello="1" NuovaPagina="N" Titolo="Modulo Gestione Prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="MODIFICA-STATO">
+            <Descrizione>Modifica Stato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Modifica Stato</Attivazione>
+            <Nota>Consente di modificare lo stato del prodotto. Evolve
+                il prodotto nel suo ciclo di vita.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="DUPLICA">
+            <Descrizione>Duplica</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Duplica</Attivazione>
+            <Nota>Consente di creare una copia di un prodotto esistente
+                con la possibilità di selezionare quali tipologie di
+                informazioni duplicare.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-REVISIONE">
+            <Descrizione>Revisione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Revisioni-Dettaglio</Attivazione>
+            <Nota>Elenca le attività di revisione del prodotto in
+                edizione o revisione.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="SCHEDA">
+            <Descrizione>Scheda</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Scheda Prodotto</Attivazione>
+            <Nota>Produce la scheda stampabile secondo uno dei formati impostati.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="CONFRONTO">
+            <Descrizione>Confronto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Confronto Prodotti</Attivazione>
+            <Nota>Evidenzia le differenze tra due prodotti (compara due
+                schede) con la possibilità di selezionare quali
+                tipologie di informazioni comparare.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="ATTIVITA-SVILUPPO">
+            <Descrizione>Attività di sviluppo prodotto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Home / Organizzazione / Attività</Attivazione>
+            <Nota>Definisce le attività di sviluppo del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-ALLEGATI">
+            <Descrizione>Allegati</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Documenti Allegati-Dettaglio</Attivazione>
+            <Nota>Definisce i documenti allegati al prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.08" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-DESCRIZIONI">
+            <Descrizione>Descrizione alternativa</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Descrizioni Alternative-Dettaglio</Attivazione>
+            <Nota>Definisce le descrizioni alternative del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.09" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-IDENTIFICATIVO">
+            <Descrizione>Identificativo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Identificativi Alternativi-Dettaglio</Attivazione>
+            <Nota>Definisce gli identificativi alternativi del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.10" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-INFO">
+            <Descrizione>Informazione generica</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Informazioni Generiche-Dettaglio</Attivazione>
+            <Nota>Definisce le informazioni generiche aggiuntive del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.11" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-REG-AGG">
+            <Descrizione>Regola di aggregazione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Gestione Prodotto / Regole Aggregazione-Dettaglio</Attivazione>
+            <Nota>Definisce le regole di aggregazione dei premi.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2" Livello="1" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-CONDIZIONI">
+            <Descrizione>Condizione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Condizioni-Dettaglio</Attivazione>
+            <Nota>Definisce le condizioni del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-VAL-COND">
+            <Descrizione>Valori Condizione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Condizioni-Dettaglio
+                / Valori</Attivazione>
+            <Nota>Definisce i valori della condizione.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-GARANZIE">
+            <Descrizione>Garanzia con Regole Vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Garanzie-Dettaglio</Attivazione>
+            <Nota>Definisce le garanzie del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-REG-GAR">
+            <Descrizione>Regole Vendita Garanzia</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Garanzie-Dettaglio /
+                Regole Vendita</Attivazione>
+            <Nota>Definisce le regole di vendita della garanzia.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-COND-GAR">
+            <Descrizione>Condizioni Garanzia</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Garanzie-Dettaglio / Condizioni</Attivazione>
+            <Nota>Definisce le condizioni della garanzia.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-VAL-COND-GAR">
+            <Descrizione>Valori Condizione Garanzia</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Garanzie-Dettaglio /
+                Condizioni / Valori</Attivazione>
+            <Nota>Definisce i valori della condizione della garanzia.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-OGGETTI">
+            <Descrizione>Oggetto Assicurato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio</Attivazione>
+            <Nota>Definisce gli oggetti assicurati.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.08" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-CARATTERISTICHE">
+            <Descrizione>Caratteristica Oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio / Caratteristiche</Attivazione>
+            <Nota>Definisce le caratteristiche dell&apos;oggetto assicurato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.09" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-VAL-CAR">
+            <Descrizione>Valore caratteristica oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio /
+                Caratteristiche / Valori</Attivazione>
+            <Nota>Definisce i valori della caratteristica
+                dell&apos;oggetto assicurato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.10" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-GAR-OGG">
+            <Descrizione>Garanzia Oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio / Garanzie</Attivazione>
+            <Nota>Definisce le garanzie per l&apos;oggetto assicurato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.11" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-COND-GAR-OGG">
+            <Descrizione>Condizione garanzia oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio /
+                Garanzie / Condizioni</Attivazione>
+            <Nota>Definisce le condizioni della garanzia per
+                l&apos;oggetto assicurato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.12" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-VAL-COND-GAR-OGG">
+            <Descrizione>Valore Condizione garanzia oggetto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Oggetti-Dettaglio /
+                Garanzie / Condizioni / Valori</Attivazione>
+            <Nota>Definisce i valori della condizione della garanzia per
+                l&apos;oggetto assicurato.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.13" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-REG-TAR">
+            <Descrizione>Regola tariffaria</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Regole Tariffarie-Dettaglio</Attivazione>
+            <Nota>Definisce le regole tariffarie del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.14" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-PAR-REG-TAR">
+            <Descrizione>Parametro regola tariffaria</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Dati Tecnici / Regole
+                Tariffarie-Dettaglio / Parametri</Attivazione>
+            <Nota>Definisce i parametri della regola tariffaria.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3" Livello="1" NuovaPagina="N" Titolo="Modulo Organizzazione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-RESPONSABILE">
+            <Descrizione>Responsabile</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Responsabili-Dettaglio</Attivazione>
+            <Nota>Definisce le posizioni aziendali responsabili del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-NORMATIVE">
+            <Descrizione>Normativa</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Normative-Dettaglio</Attivazione>
+            <Nota>Definisce le normative interne ed esterne che regolano
+                il prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-MODULI">
+            <Descrizione>Modulo con Dati</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Moduli-Dettaglio</Attivazione>
+            <Nota>Definisce i moduli del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-REG-MOD">
+            <Descrizione>Regola modulo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Moduli-Dettaglio / Regole</Attivazione>
+            <Nota>Definisce le regole di compilazione dei moduli per il prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-STATI">
+            <Descrizione>Stato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Stati-Dettaglio</Attivazione>
+            <Nota>Descrive uno stato del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-AUTORIZZAZIONI">
+            <Descrizione>Autorizzazione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Organizzazione / Stati-Dettaglio / Autorizzazioni</Attivazione>
+            <Nota>Descrive l&apos;autorizzazione.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4" Livello="1" NuovaPagina="N" Titolo="Modulo Cliente">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-RUOLI">
+            <Descrizione>Ruolo</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Ruoli-Dettaglio</Attivazione>
+            <Nota>Definisce i ruoli del cliente nel contratto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-DOC-RUOLO">
+            <Descrizione>Documenti Ruolo cliente</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Ruoli-Dettaglio /
+                Documenti Richiesti</Attivazione>
+            <Nota>Definisce i documenti richiesti in relazione ad un
+                ruolo del cliente.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-IDONEITA">
+            <Descrizione>Condizione idoneità</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Condizioni Idoneità-Dettaglio</Attivazione>
+            <Nota>Definisce le condizioni di idoneità della clientela.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-VAL-IDONEITA">
+            <Descrizione>Valore condizione di idoneità</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Condizioni
+                Idoneità-Dettaglio / Valori</Attivazione>
+            <Nota>Definisce i valori delle condizioni di idoneità.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-DOCUMENTI">
+            <Descrizione>Documento richiesto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Documenti Richiesti-Dettaglio</Attivazione>
+            <Nota>Definisce i documenti richiesti dal prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-OBIETTIVI">
+            <Descrizione>Obiettivo di mercato</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Obiettivi-Dettaglio</Attivazione>
+            <Nota>Definisce gli obiettivi aziendali raggiungibili dal prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-SEGMENTI">
+            <Descrizione>Segmento</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Cliente / Segmenti Mercato-Dettaglio</Attivazione>
+            <Nota>Definisce i segmenti di mercato indicati per il prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5" Livello="1" NuovaPagina="N" Titolo="Modulo Commerciale">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.01" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-ARGOMENTI">
+            <Descrizione>Argomento di vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Argomenti-Dettaglio</Attivazione>
+            <Nota>Definisce gli argomenti di vendita del prodotto</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.02" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-CANALI">
+            <Descrizione>Canale di vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Canali-Dettaglio</Attivazione>
+            <Nota>Definisce i canali di vendita del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.03" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-CONVENZIONI">
+            <Descrizione>Convenzione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Convenzioni-Dettaglio</Attivazione>
+            <Nota>Definisce le flessibilità o le convenzioni del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.04" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-OPZIONE">
+            <Descrizione>Opzione di vendita</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Opzioni-Dettaglio</Attivazione>
+            <Nota>Definisce le opzioni di vendita del prodotto.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.05" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-PROD-OPZIONE">
+            <Descrizione>Prodotto in Opzione</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Opzioni-Dettaglio /
+                Prodotti in Opzione</Attivazione>
+            <Nota>Definisce i prodotti in opzione.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.06" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-CONCORRENTI">
+            <Descrizione>Prodotto concorrente</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Prodotti Concorrenti-Dettaglio</Attivazione>
+            <Nota>Definisce i prodotti concorrenti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.07" Livello="2" NuovaPagina="N" Titolo="Funzione">
+        <Funzione Id="PD-ARG-CONFRONTO">
+            <Descrizione>Argomenti Confronto</Descrizione>
+            <Immagine/>
+            <ProfiloAzioni/>
+            <Attivazione>Prodotto / Commerciale / Prodotti
+                Concorrenti-Dettaglio / Argomenti</Attivazione>
+            <Nota>Definisce gli argomenti per il confronto con i
+                prodotti concorrenti.</Nota>
+            <NotaTecnica/>
+            <NoteCollaudo/>
+        </Funzione>
         <Immagine/>
         <TestoBlocco/>
     </Blocco>
