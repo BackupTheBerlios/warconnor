@@ -17,6 +17,7 @@ public class BmaSessione extends it.bma.comuni.BmaObject implements BmaJspLitera
 	private BmaHashtable aliasLabels = new BmaHashtable("AlialsLabels");
 	private BmaHashtable beansTemporanei = new BmaHashtable("BeansTemporanei");
 	private BmaHashtable beansApplicativi = new BmaHashtable("BeansApplicativi");
+	private BmaDataDriverGeneric dataDriver = null;
 	private BmaVector funzioni = new BmaVector("Funzioni");
 	public BmaSessione(String httpSessionId) {
 		super();
@@ -24,6 +25,8 @@ public class BmaSessione extends it.bma.comuni.BmaObject implements BmaJspLitera
 		ultimoAccesso = oraInizio;
 		chiave = httpSessionId;
 	}
+	public BmaDataDriverGeneric getDataDriver() { return dataDriver; }
+	public void setDataDriver(BmaDataDriverGeneric driver) { dataDriver = driver; }
 	public void aggiorna() {
 		ultimoAccesso = new Date().getTime();
 		beansTemporanei.clear();

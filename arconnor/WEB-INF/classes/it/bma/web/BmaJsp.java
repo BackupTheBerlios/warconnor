@@ -14,6 +14,12 @@ public class BmaJsp extends BmaObject implements BmaJspLiterals {
 	}
 	public void impostaMenuPrincipale(BmaSessione sessione, BmaVector azioniMenu) {
 	}
+	public void addMenuSinistra(BmaUtente user, String codFunzione, int livello, BmaVector azioniMenu) {
+		BmaFunzione f = user.getFunzione(codFunzione);
+		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) { 
+			azioniMenu.add(new BmaMenu(livello, f, BMA_JSP_MENU_SINISTRA));
+		}
+	}
 	public void applicaStandard(Vector listaCampi) {
 		for (int i = 0; i < listaCampi.size(); i++){
 			BmaDataColumn campo = (BmaDataColumn)listaCampi.elementAt(i);

@@ -173,7 +173,11 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 	}
 	public final void eseguiPrepara(String codComando) throws it.bma.comuni.BmaException {
 		// Prepara il driver dati
-		if (driver==null) driver = new BmaDataDriverGeneric();
+		if (driver==null) driver = sessione.getDataDriver();
+		if (driver==null)	{
+			driver = new BmaDataDriverGeneric();
+			sessione.setDataDriver(driver);
+		}
 		BmaUserConfig config = sessione.getUserConfig();
     String app = sessione.getUtente().getCodApplicazione();
 		BmaJdbcSource jSource = config.getFonteApplicazione(app);
@@ -286,6 +290,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 		BmaDataList dlDetail = (BmaDataList)this.getBean(BMA_JSP_BEAN_LISTA_DETAIL);
 		if (dlDetail==null) {
 			String nomeTabella = getNomeTabella(fDettaglio);
+			if (nomeTabella==null || nomeTabella.trim().length()==0) return;
 			dlDetail = new BmaDataList(nomeTabella);
 			Hashtable condizioni = new Hashtable();
 			Enumeration e = getChiaviContesto().keys();

@@ -57,35 +57,13 @@ public class Xml2PdfServlet extends HttpServlet implements it.bma.comuni.BmaLite
 			else {
 				String filePath = request.getSession().getServletContext().getRealPath(xslFile);
 				isXsl = new FileInputStream(filePath);
-/*				
-				File fileXsl = new File(filePath);
-				FileInputStream fis = new FileInputStream(fileXsl);
-				byte[] buffer = new byte[(int)fileXsl.length()];
-				fis.read(buffer);
-				fis.close();
-				isXsl = new ByteArrayInputStream(buffer);
-*/
 			}
-			response.setContentType("application/pdf");
+			response.setContentType("application/pdf;charset=ISO-8859-1");
 			ByteArrayOutputStream out = makePdf();
       byte[] content = out.toByteArray();
-/*			
-			String test = request.getSession().getServletContext().getRealPath("media/test.pdf");
-			FileOutputStream fos = new FileOutputStream(test);
-			fos.write(content);
-			fos.close();
-			response.sendRedirect("media/test.pdf");
-*/
       response.setContentLength(content.length);
       response.getOutputStream().write(content);
       response.getOutputStream().flush();
-/*
-			response.setContentType("application/pdf;charset=UTF-8");
-			PrintWriter pw = response.getWriter();
-			String charOut = new String(content);
-			pw.write(charOut);
-			pw.flush();
-*/
 		}
 		catch (BmaException e) {
 			BmaErrore err = e.getErrore();
@@ -94,26 +72,6 @@ public class Xml2PdfServlet extends HttpServlet implements it.bma.comuni.BmaLite
 	}
 	private ByteArrayOutputStream makePdf() throws BmaException {
 		try {
-/*
-			InputSource xmlSource = new InputSource(isXml);
-			InputSource xslSource = new InputSource(isXsl);
-			XSLTInputHandler input = new XSLTInputHandler(xmlSource, xslSource);
-			
-      ByteArrayOutputStream out = new ByteArrayOutputStream();
-			
-			Driver driver = new Driver();
-			Logger logger = new ConsoleLogger(ConsoleLogger.LEVEL_INFO);
-			driver.setLogger(logger);
-			driver.setRenderer(Driver.RENDER_PDF);
-			driver.setOutputStream(out);
-			
-			XMLReader reader = input.getParser();
-			InputSource source = input.getInputSource();
-      driver.render(reader, source);
-			
-			return out;
-*/
-			
 			Source xmlSource = new StreamSource(isXml);
 			Source xslSource = new StreamSource(isXsl);
 
