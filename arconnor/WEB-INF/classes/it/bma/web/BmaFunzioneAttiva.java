@@ -16,9 +16,9 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	private BmaHashtable datiInput = new BmaHashtable("DatiInput");
 	private BmaHashtable contesto = new BmaHashtable("Contesto");
 	private BmaHashtable beans = new BmaHashtable("Beans");
-	protected BmaVector azioniMenu = new BmaVector("Azioni");
-	protected BmaSessione sessione;
-	protected BmaJsp jsp = new BmaJsp();
+	public BmaVector azioniMenu = new BmaVector("Azioni");
+	public BmaSessione sessione;
+	public BmaJsp jsp = new BmaJsp();
 	public boolean statoBeanLista = true;
 	public BmaFunzioneAttiva() {
 		super();
