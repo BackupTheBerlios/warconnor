@@ -9,6 +9,7 @@ public abstract class BmaServizioDb extends BmaFunzioneServizi {
 		jsp = new JspDb();
 	}
 	public String getNomeServizio(String funzione) {
+		if (funzione.equals("DBEDIT")) return "BmaDataModel";
 		if (funzione.equals("DBLOADORD")) return "BmaDataModel";
 		else if (funzione.equals("DBREPLAY")) return "BmaDataReplay";
 		else return "";

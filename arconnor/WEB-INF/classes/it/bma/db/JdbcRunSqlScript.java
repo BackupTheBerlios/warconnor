@@ -13,8 +13,10 @@ public class JdbcRunSqlScript {
     }
     String fileName = args[0];    
 		BmaJdbcSource source = new BmaJdbcSource("TEST");
+//		source.setDriver("com.ibm.db2.jcc.DB2Driver");
+//		source.setUrl("jdbc:db2://PCWIN002:50000/PDAS");
 		source.setDriver("COM.ibm.db2.jdbc.net.DB2Driver");
-		source.setUrl("jdbc:db2://BKPD0755/PDLOC");
+		source.setUrl("jdbc:db2://PCWIN001/PDAS");
 		source.setUser("db2admin");
 		source.setPass("db2admin");
 		source.setSchema("");
@@ -31,6 +33,7 @@ public class JdbcRunSqlScript {
 			file.close();
 			trx.open("IO");
 			int i = streamIn.indexOf(COMMAND_TERMINATOR);
+
 			while(i>=0) {
 				String sql = streamIn.substring(0, i).trim();
 				streamIn = streamIn.substring(i + 1);
@@ -38,6 +41,7 @@ public class JdbcRunSqlScript {
 				System.out.println(sql);
 				i = streamIn.indexOf(COMMAND_TERMINATOR);
 			}
+
 			trx.chiudi();
 			System.out.println("Ok");
 		}
@@ -58,5 +62,5 @@ public class JdbcRunSqlScript {
 			System.out.println(e.getErrore().getMsgSistema());
 			System.out.println(e.getErrore().getMsgUtente());
 		}
-	}
+	}	
 }

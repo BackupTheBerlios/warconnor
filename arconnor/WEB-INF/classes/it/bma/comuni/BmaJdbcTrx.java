@@ -275,28 +275,28 @@ protected boolean open(String user,
 		throw new BmaException(BMA_ERR_JDB_URL, BMA_MSG_JDB_ERROREDATI, esql.getMessage(), this);
 	}
 
-	if (db.equals(JDBC_DB_ORACLE)) {
+	if (db.equalsIgnoreCase(JDBC_DB_ORACLE)) {
 		commitSupported = true;
 		pkErrorState = "23000";
 		pkErrorCode = 1;
 		fkSqlStateMin = "23000";
 		fkSqlStateMax = "24000";
 	}
-	else if (db.equals(JDBC_DB_DB2NT)) {
+	else if (db.equalsIgnoreCase(JDBC_DB_DB2NT)) {
 		commitSupported = true;
 		pkErrorState = "23505";
 		pkErrorCode = -803;
 		fkSqlStateMin = "23000";
 		fkSqlStateMax = "24000";
 	}
-	else if (db.equals(JDBC_DB_SQLSERVER)) {
+	else if (db.equalsIgnoreCase(JDBC_DB_SQLSERVER)) {
 		commitSupported = true;
 		pkErrorState = "23000";
 		pkErrorCode = 2627;
 		fkSqlStateMin = "23000";
 		fkSqlStateMax = "24000";
 	}
-	else if (db.equals(JDBC_DB_SQLBASE)) {
+	else if (db.equalsIgnoreCase(JDBC_DB_SQLBASE)) {
 		commitSupported = false;
 		pkErrorState = "23000";
 		pkErrorCode = 1;

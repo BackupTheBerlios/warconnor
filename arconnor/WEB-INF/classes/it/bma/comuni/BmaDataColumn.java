@@ -202,6 +202,10 @@ public void setValoreInterno(String valoreLetto) throws BmaException {
 
 	// Intercetta i numeri
 	else if (getTipoSemplice().equalsIgnoreCase(BMA_SQL_TYS_NUM)) {
+		int h = valoreLetto.indexOf(",");
+		if (h>=0) {
+			valoreLetto = valoreLetto.substring(0,h) + "." + valoreLetto.substring(h+1);
+		}
 		if (decimali.trim().length()==0 || Integer.parseInt(decimali)==0) {
 			long n = Long.parseLong(valoreLetto);
 			valore = Long.toString(n);

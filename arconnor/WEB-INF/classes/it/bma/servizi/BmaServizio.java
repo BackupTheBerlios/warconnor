@@ -12,7 +12,7 @@ public abstract class BmaServizio extends BmaServizioInterno {
 	protected void applicaStandardDati(BmaDataTable tabella) {
 		for (int i = 0; i < tabella.getColonne().size(); i++){
 			BmaDataColumn c = (BmaDataColumn)tabella.getColonne().elementAt(i);
-			c.setCaseSensitive(!c.isChiave());
+//			c.setCaseSensitive(!c.isChiave());
 			String n = c.getNome();
 			if (n.length()>4) n = n.substring(0, 4);
 			if (n.equals("FLG_")) {

@@ -128,6 +128,7 @@ public class BmaDataReplay extends BmaServizio {
 		BmaJdbcSource jTarget = userConfig.getJdbcSource(targetSource);
 		if (jTarget==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO,"Target Source not found",targetSource,this);
 		// Carica la lista completa delle tabelle
+		jModel.setKeyUppercase(false);
 		BmaVector loadOrder = jModel.getLoadOrder();
 		for (int i = 0; i < loadOrder.getSize(); i++){
 			BmaValuesList bvl = (BmaValuesList)loadOrder.getElement(i);
