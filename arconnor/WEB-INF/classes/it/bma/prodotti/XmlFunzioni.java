@@ -22,7 +22,7 @@ import org.apache.fop.apps.FOPException;
 import org.apache.fop.messaging.MessageHandler;
 
 public class XmlFunzioni {
-	private static BmaParametro par = new BmaParametro();
+	private static JspProdotti jsp = new JspProdotti();
   public XmlFunzioni() {
     super();
   }
@@ -42,12 +42,12 @@ public class XmlFunzioni {
 		BmaJdbcTrx jTrx = new BmaJdbcTrx(source);
     XmlFunzioni app = new XmlFunzioni();
 		try {
-/*      
+      
       jTrx.open("System");
       String xml = app.makeXmlFunzioni(jTrx);
       jTrx.chiudi();
       source.writeFile(xml, baseDir + "FunzioniProdotti.xml", false);
-*/
+
 			app.makePdf(baseDir + "FunzioniProdotti.xml", baseDir + argXsl, baseDir + "FunzioniProdotti.pdf");
 			System.out.println("Ok");
 		}
@@ -169,8 +169,83 @@ public class XmlFunzioni {
     eFunzione = document.createElement("NotaTecnica");
 		if (notTecnica.trim().length()>0) parseXhtml(eFunzione, notTecnica);
     nodoFunzione.appendChild(eFunzione);
+    // Add Note Collaudo
+    eFunzione = document.createElement("NoteCollaudo");
+		bloccoNoteCollaudo(jTrx, eFunzione, codFunzione);
+    nodoFunzione.appendChild(eFunzione);
     
   }
+	private void bloccoNoteCollaudo(BmaJdbcTrx jTrx, Element nodoNote, String codFunzione) throws BmaException {
+    Document document = nodoNote.getOwnerDocument();
+    String sql = "";
+    sql = "SELECT NUM_PROGRESSIVO, COD_UTENTE, " +
+          "       DAT_NOTA, NOT_COLLAUDO " +
+          " FROM  PM_NOTECOLLAUDO " +
+          " WHERE COD_FUNZIONE='" + codFunzione + "'" +
+					" AND		IND_STATO='A' " +
+					" ORDER BY NUM_PROGRESSIVO ";
+    Vector dati = jTrx.eseguiSqlSelect(sql);
+		for (int i=0;i<dati.size();i++) {
+			Vector riga = (Vector)dati.elementAt(i);
+			String numProgressivo = (String)riga.elementAt(0);
+			String codUtente = (String)riga.elementAt(1);
+			String datNota = (String)riga.elementAt(2);
+			String notCollaudo = (String)riga.elementAt(3);
+			
+			Element myNodo = document.createElement("NotaCollaudo");
+			myNodo.setAttribute("Id", numProgressivo);
+			myNodo.setAttribute("User", codUtente);
+			datNota = jsp.getDataEsterna(datNota);
+			myNodo.setAttribute("Data", datNota);
+			// Add Nota
+			Element eNote = document.createElement("Nota");
+			if (notCollaudo.trim().length()>0) parseXhtml(eNote, notCollaudo);
+			myNodo.appendChild(eNote);
+			// Add Interventi
+			eNote = document.createElement("Interventi");
+			bloccoInterventi(jTrx, eNote, codFunzione, numProgressivo);
+			myNodo.appendChild(eNote);
+			
+			nodoNote.appendChild(myNodo);
+		}
+	}
+	private void bloccoInterventi(BmaJdbcTrx jTrx, Element nodoInterventi, String codFunzione, String numProgressivo) throws BmaException {
+    Document document = nodoInterventi.getOwnerDocument();
+    String sql = "";
+    sql = "SELECT NUM_INTERVENTO, COD_UTENTE, " +
+          "       DAT_INTERVENTO, DES_INTERVENTO, " +
+					"				NOT_INTERVENTO " +
+          " FROM  PM_INTERVENTI " +
+          " WHERE COD_FUNZIONE='" + codFunzione + "'" +
+					" AND		NUM_PROGRESSIVO='" + numProgressivo + "' " +
+					" ORDER BY NUM_INTERVENTO ";
+    Vector dati = jTrx.eseguiSqlSelect(sql);
+		for (int i=0;i<dati.size();i++) {
+			Vector riga = (Vector)dati.elementAt(i);
+			String numIntervento = (String)riga.elementAt(0);
+			String codUtente = (String)riga.elementAt(1);
+			String datIntervento = (String)riga.elementAt(2);
+			String desIntervento = (String)riga.elementAt(3);
+			String notIntervento = (String)riga.elementAt(4);
+			
+			Element myNodo = document.createElement("Intervento");
+			myNodo.setAttribute("Id", numIntervento);
+			myNodo.setAttribute("User", codUtente);
+			datIntervento = jsp.getDataEsterna(datIntervento);
+			myNodo.setAttribute("Data", datIntervento);
+			// Add Descrizione
+			Element eIntervento = document.createElement("Descrizione");
+			Text eText = document.createTextNode(desIntervento);
+			eIntervento.appendChild(eText);
+			myNodo.appendChild(eIntervento);
+			// Add Nota
+			eIntervento = document.createElement("Nota");
+			if (notIntervento.trim().length()>0) parseXhtml(eIntervento, notIntervento);
+			myNodo.appendChild(eIntervento);
+			
+			nodoInterventi.appendChild(myNodo);
+		}
+	}
 	private void parseXhtml(Element myNode, String xml) throws BmaException {
 		String s = "<?xml version='1.0' encoding='ISO-8859-1'?><xml>" + xml + "</xml>";
 		ByteArrayInputStream htmlStream = new ByteArrayInputStream(s.getBytes());
