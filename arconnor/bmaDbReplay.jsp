@@ -5,7 +5,7 @@
 	BmaDataList elenco = null;
 	BmaDataList elencoMaster = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA);
 	BmaDataForm form = (BmaDataForm)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_FORM);
-	BmaVector tables = (BmaVector)sessione.getBeanApplicativo("tablesNames");
+	BmaValuesList tables = (BmaValuesList)sessione.getBeanApplicativo("loadTables");
 	String campoSelezionate = jsp.BMA_JSP_PREFISSO_MULTI + "TabelleSelezionate"; 
 	BmaValuesList selTabObj = (BmaValuesList)sessione.getBeanApplicativo(campoSelezionate);
 	if (selTabObj==null) selTabObj = new BmaValuesList(campoSelezionate);
@@ -116,7 +116,9 @@
 
 <!-- BOX DI SELEZIONE DELLE TABELLE -->
 <!-- START -->
-<% if (tables!=null) { %>
+<% if (tables!=null) { 
+		String[] nomi = tables.getValues();
+%>
 <table class="Bordo" width="100%" class="Input" align="center">
 	<tr>
 		<td class="DetailLabel" width="40%">Elenco Tabelle</td>
@@ -125,10 +127,8 @@
 	</tr><tr>
 		<td class="DetailData" align="center">
 			<select class="DetailData" multiple size="10" name="Tutte">
-	<% for (int i=0;i<tables.getSize();i++) { 
-			String sTable = tables.getString(i);
-	%>
-				<option class="DetailData" value="<%=sTable%>"><%=sTable%></option>
+	<%	for (int i=0;i<nomi.length;i++) {	%>
+				<option class="DetailData" value="<%=nomi[i]%>"><%=nomi[i]%></option>
 	<% } %>
 			</select>
 		</td>
