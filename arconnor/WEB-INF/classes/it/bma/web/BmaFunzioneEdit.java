@@ -5,11 +5,15 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
+	protected BmaDataDriverGeneric driver = null;
 	public BmaFunzioneEdit() {
 		super();
 	}
 	protected abstract String getNomeTabella(String funzione);
-	protected void completaModulo(BmaDataForm dataForm) throws BmaException {
+	protected void completaModulo(BmaDataForm modulo) throws BmaException {
+		// Exit routine
+	}
+	protected void exitAggiorna(Hashtable valori, String comando) throws BmaException {
 		// Exit routine
 	}
 	public String[] getFunzioniEditDettaglio() {
@@ -132,17 +136,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 			azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_AZIONE_DETTAGLIO, BMA_JSP_MENU_AZIONE));
 		}
 	}
-	protected BmaDataDriverGeneric getDriver() throws BmaException {
-		BmaDataDriverGeneric driver = new BmaDataDriverGeneric();
-		BmaUserConfig config = sessione.getUserConfig();
-    String app = sessione.getUtente().getCodApplicazione();
-		BmaJdbcSource jSource = config.getFonteApplicazione(app);
-		driver.setUserConfig(config);
-		driver.setJdbcSource(jSource);	
-		return driver;
-	}
 	public final void eseguiAggiona(String codComando) throws BmaException {
-		BmaDataDriverGeneric driver = getDriver();
 		Hashtable valori = new Hashtable();
 		String nomeTabella = getNomeTabella(this.getCodFunzione());
 		if (this.getCodAzione().equals(BMA_JSP_AZIONE_NUOVO)) {
@@ -152,6 +146,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				verificaDatiInput(df);
 				if (verificaVariazioni(df)) {	// Chiamata per valorizzare i dati del modulo
 					mergeValoriModuloContesto(df, valori);
+					exitAggiorna(valori, BMA_SQL_INSERT);
 					driver.aggiorna(nomeTabella, valori, BMA_SQL_INSERT);
 				}
 			}
@@ -163,6 +158,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				verificaDatiInput(df);
 				if (verificaVariazioni(df)) {
 					mergeValoriModuloContesto(df, valori);
+					exitAggiorna(valori, BMA_SQL_UPDATE);
 					driver.aggiorna(nomeTabella, valori, BMA_SQL_UPDATE);
 				}
 			}
@@ -170,12 +166,20 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				BmaDataForm df = (BmaDataForm)sessione.getBeanApplicativo(BMA_JSP_BEAN_FORM);
 				if (df==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente","",this);
 				mergeValoriModuloContesto(df, valori);
+				exitAggiorna(valori, BMA_SQL_DELETE);				
 				driver.aggiorna(nomeTabella, valori, BMA_SQL_DELETE);
 			}
 		}
 	}
 	public final void eseguiPrepara(String codComando) throws it.bma.comuni.BmaException {
-
+		// Prepara il driver dati
+		if (driver==null) driver = new BmaDataDriverGeneric();
+		BmaUserConfig config = sessione.getUserConfig();
+    String app = sessione.getUtente().getCodApplicazione();
+		BmaJdbcSource jSource = config.getFonteApplicazione(app);
+		driver.setUserConfig(config);
+		driver.setJdbcSource(jSource);	
+		
 		/* Controlla lo stato delle liste */
 		if (!statoBeanLista) {
 			if (getBean(BMA_JSP_BEAN_LISTA_DETAIL)==null) {
@@ -216,7 +220,6 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				String nomeTabella = getNomeTabella(this.getCodFunzione());
 				dl = (BmaDataList)this.getBean(BMA_JSP_BEAN_LISTA);
 				if (dl==null) {
-					BmaDataDriverGeneric driver = getDriver();
 					Hashtable condizioni = new Hashtable();
 					Enumeration e = getChiaviContesto().keys();
 					while (e.hasMoreElements()) {
@@ -250,6 +253,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				tb.setValori(new Hashtable());
 				BmaDataForm df = new BmaDataForm(dl.getTabella());
 				impostaContestoForm(df);
+				completaModulo(df);
 				jsp.applicaStandard(df.getDati().getVector());
 				sessione.setBeanApplicativo(BMA_JSP_BEAN_FORM, df);
 			}
@@ -263,6 +267,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				if (kSel==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Campo Selezione Assente","",this);
 				aggiornaContesto(dl.getChiaviContesto(kSel));
 				impostaContestoForm(df);
+				completaModulo(df);
 				jsp.applicaStandard(df.getDati().getVector());
 				df.setValori(dl.getValori(kSel));
 				this.setDesContesto(ricavaDesContesto(df));
@@ -288,7 +293,6 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				String k = (String)e.nextElement();
 				condizioni.put(k, getChiaveContesto(k));
 			}
-			BmaDataDriverGeneric driver = getDriver();
 			dlDetail = driver.getDataList(nomeTabella, condizioni);
 			jsp.applicaStandard(dlDetail.getTabella().getColonne());
 			this.setBean(BMA_JSP_BEAN_LISTA_DETAIL, dlDetail);

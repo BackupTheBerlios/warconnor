@@ -17,6 +17,9 @@ public class BmaDataForm extends BmaObject {
 	public BmaVector getDati() {
 		return dati;
 	}
+	public BmaDataField getDato(String nome) {
+		return (BmaDataField)dati.getElement(nome);
+	}
 	public java.lang.String getNome() {
 		return nome;
 	}

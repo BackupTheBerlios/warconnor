@@ -25,8 +25,6 @@
 <body onload=<%=jsp.getOnLoadScript(sessione)%>>
 
 <%@ include file="incSchema.jsp"%>
-		BmaFunzioneAttiva temp = sessione.getFunzioneAttivante();
-		if (temp!attivante.getClass().isInstance(this))) return false;
 
 <div class="Bordo" style="position: absolute; 
 													top: 100; left: 205; 

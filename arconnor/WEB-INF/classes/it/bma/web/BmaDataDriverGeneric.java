@@ -31,6 +31,29 @@ public class BmaDataDriverGeneric extends BmaObject {
 			throw bma;
 		}
 	}
+	public BmaDataList getDataList(String sql, String nomeQuery) throws BmaException {
+		BmaDataList list = null;
+		BmaJdbcTrx jTrx = new BmaJdbcTrx(jSource);
+		try {
+			jTrx.open("System");
+			list = jTrx.eseguiQuery(sql, nomeQuery);
+			jTrx.chiudi();
+			return list;
+		}
+		catch (BmaException bma) {
+			if (jTrx.isAperta()) jTrx.invalida();
+			throw bma;
+		}
+	}
+	public Hashtable getValoriControllo(String sql) throws BmaException {
+		Hashtable valori = new Hashtable();
+		BmaDataList list = getDataList(sql, "ValoriControllo");
+		for (int i=0;i<list.getValori().size();i++) {
+			Vector riga = (Vector)list.getValori().elementAt(i);
+			valori.put((String)riga.elementAt(0), (String)riga.elementAt(1));
+		}
+		return valori;
+	}
 	public void aggiorna(String tabella, Hashtable valori, String azione) throws BmaException {
 		BmaJdbcTrx jTrx = new BmaJdbcTrx(jSource);
 		try {

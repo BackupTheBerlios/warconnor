@@ -166,6 +166,7 @@ public String getSqlLista(String condizioni) {
 	if (sql.length() > 0) {
 		sql = "SELECT " + sql + " FROM " + nomeFisico + " " + cond;
 		if (orderBy.trim().length()>0) sql = sql + " ORDER BY " + orderBy;
+		else if (getNaturalOrderBy().length()>0) sql = sql + " ORDER BY " + getNaturalOrderBy();
 	}
 	return sql;
 }
@@ -188,13 +189,19 @@ public String getSqlNomiColonne() {
 		BmaDataColumn dColumn = (BmaDataColumn) colonne.elementAt(i);
 		sql = sql + ", " + dColumn.nomeFisico;
 	}
-	if (sql.length() > 0) {
-		sql = sql.substring(2);
+	if (sql.length() > 0) return sql.substring(2);
+	else return "1";
+}
+public String getNaturalOrderBy() {
+	String order = "";
+	for (int i = 0; i < colonne.size(); i++) {
+		BmaDataColumn dColumn = (BmaDataColumn) colonne.elementAt(i);
+		if (dColumn.isChiave()) {
+			order = order + ", " + dColumn.nomeFisico;
+		}
 	}
-	else {
-		sql = "1";
-	}
-	return sql;
+	if (order.length() > 0) return order.substring(2);
+	else return "";
 }
 public String getSqlReadKey() {
 	String cond = getCondizioniChiave();

@@ -15,7 +15,11 @@ public class JspMd extends BmaJsp {
 		BmaFunzione f;
 		// Menu Principale
 		int liv = 1;
-		f = user.getFunzione("MDLOAD"); 					// Catalogo Volumi
+		
+		f = user.getFunzione("MD_TIPIVOLUME"); 			// Tipologie Volumi
+		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
+		
+		f = user.getFunzione("MD_VOLUMI"); 					// Catalogo Volumi
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
 	}
 }
