@@ -18,7 +18,14 @@ public abstract class BmaServizioInterno extends BmaObject implements BmaJspLite
 			trx.open("system");
 			if (jModel==null) {
 				jModel = new JdbcModel();
-				jModel.load(trx, jSource.getSchema(), jSource.getPrefix());
+				String xmlModels = userConfig.getParametroApplicazione("XML-JDBCMODELS");
+				if (xmlModels!=null && xmlModels.indexOf(nSource)>=0) {
+					String xmlFile = userConfig.getConfigPath() + nSource + "_model.xml";
+					jModel.xmlDomLoad(xmlFile);
+				}
+				else {
+					jModel.load(trx, jSource.getSchema(), jSource.getPrefix());
+				}
 			}
 			String output = esegui(trx);
 	/*		

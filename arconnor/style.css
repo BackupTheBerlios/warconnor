@@ -124,11 +124,18 @@ td.LabelLevel-4 {
 td.DataLevel-4  { font-size :  9px; background-color : #E5E5E5; color: black; font-weight: bold; }
 
 a.MenuCorrente {
-	background-color: #FFFF9C;
+	background-color: #E5E5E5;
 	font-style: normal;
 	font-weight: bold;
-	font-size : 11px;
-	color : #9C0000;
+	font-size: 11px;
+	color: #9C0000;
+}
+a.MenuOpzioni {
+	background-color: #E5E5E5;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	color: #9C0000;
 }
 a.Menu {
 	background-color: #BBBBFF;
