@@ -216,8 +216,9 @@ public class JdbcModel extends BmaObject {
 					String pkRef = rs.getString("PK_NAME");
 					if (pkRef==null) pkRef = "";
 					//-14
-					String defer = rs.getString("DEFERRABILITY");
-					if (defer==null) defer = "";
+					/* Commentato perche su DB2 7.1 non funziona */
+					//String defer = rs.getString("DEFERRABILITY");
+					//if (defer==null) defer = "";
 
 					if (control.length()==0 || !control.equals(pkSchem + BMA_KEY_SEPARATOR + pkName)) {
 						importTable = new JdbcImportedKey();
@@ -234,7 +235,9 @@ public class JdbcModel extends BmaObject {
 					importTable.deleteRule = delRul;
 					importTable.fkName = fkRef;
 					importTable.pkName = pkRef;
-					importTable.defferrability = defer;
+					
+					/* Commentato perche su DB2 7.1 non funziona */
+					//importTable.defferrability = defer;
 
 					importTable.fkColumns.put(pkCol, fkCol);
 				}
