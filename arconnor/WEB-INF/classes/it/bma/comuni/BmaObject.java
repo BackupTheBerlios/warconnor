@@ -496,7 +496,7 @@ protected Vector parseXmlTagVector(String text, String tag, int start) throws Bm
 			Vector v = parseXmlList(temp, "valore");
 			for (int i = 0; i < v.size(); i++){
 				String tagElement = (String) v.elementAt(i);
-				String valore = new String(tagElement);
+				String valore = parseXmlTag(tagElement, "valore",  0);
 				ht.add(valore);
 			}
 		}
