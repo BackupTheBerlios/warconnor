@@ -23,6 +23,11 @@ public class BmaValuesList extends BmaObject {
 	public void setName(String aName) {
 		name = aName;
 	}
+	public void sort() {
+		String[] v = getValues();
+		Arrays.sort(v);
+		setValues(v);
+	}
 	public String[] getValues() {
 		if (values==null || values.trim().length()==0) return new String[0];
 		return values.split(VALUES_TOKEN);

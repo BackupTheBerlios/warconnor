@@ -7,7 +7,7 @@ public class BmaDbReplay extends BmaServizioDb {
 		super();
 	}
 	public boolean eseguiComando() throws BmaException {
-		String beanListaTabelle = "tablesNames";
+		String beanListaTabelle = "loadTables";
 		String beanSelezionate = BMA_JSP_PREFISSO_MULTI + "TabelleSelezionate"; 
 		//
 		String codSelezione = getParametri().getString(BMA_JSP_CAMPO_SELEZIONE);
@@ -31,9 +31,9 @@ public class BmaDbReplay extends BmaServizioDb {
 			is.setInfoServizio("loadTables", BMA_TRUE);
 			String codServizio = getNomeServizio(getCodFunzione());
 			BmaOutputServizio os = eseguiServizio(codServizio, is);
-			BmaVector v = new BmaVector(beanListaTabelle);
-			v.fromXml(os.getXmlOutput());
-			sessione.setBeanApplicativo(beanListaTabelle, v);
+			BmaValuesList list = new BmaValuesList("loadTables");
+			list.fromXml(os.getXmlOutput());
+			sessione.setBeanApplicativo(beanListaTabelle, list);
 			sessione.setBeanApplicativo(BMA_JSP_BEAN_FORM, modulo);
 		}
 		else if (codSelezione.equals("EseguiReplay")) {
@@ -134,6 +134,22 @@ public class BmaDbReplay extends BmaServizioDb {
 		campo.setLunghezza("20");
 		campo.setTipoControllo(BMA_CONTROLLO_LISTA);
 		campo.setValoriControllo(sessione.getUserConfig().getListaUrlFonti());
+		modulo.getDati().add(campo);
+		/* Ordine di caricamento */
+		campo = new BmaDataField();
+		campo.setNome("IND_LOADORDER");
+		campo.setDescrizione("Ordine di Caricamento");
+		campo.setTipo(BMA_SQL_TYP_CHAR);
+		campo.setLunghezza("1");
+		campo.setTipoControllo(BMA_CONTROLLO_LISTA);
+		Hashtable numLivello = new Hashtable();
+		numLivello.put("0","Tutti i Livelli");
+		for (int i=1;i<10;i++) {
+			String s = Integer.toString(i);
+			numLivello.put(s,"Livello - " + s);
+		}
+		campo.setValoriControllo(numLivello);
+		campo.setValore("0");
 		modulo.getDati().add(campo);
 		/* Sorgente Replay Mode */
 		campo = new BmaDataField();

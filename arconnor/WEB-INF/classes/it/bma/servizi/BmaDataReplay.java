@@ -117,7 +117,7 @@ public class BmaDataReplay extends BmaServizio {
 	public String esegui(BmaJdbcTrx trx) throws BmaException {
 		// Parametri
 		String loadTables = input.getInfoServizio("loadTables");
-		if (loadTables!=null && loadTables.equals(BMA_TRUE)) return tableList();
+		if (loadTables!=null && loadTables.equals(BMA_TRUE)) return getTableList();
 		//
 		String targetSource = input.getInfoServizio("COD_TARGET");
 		replayMode = input.getInfoServizio("IND_REPLAYMODE");
@@ -127,8 +127,16 @@ public class BmaDataReplay extends BmaServizio {
 		if (targetSource==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO,"Target Source","",this);
 		BmaJdbcSource jTarget = userConfig.getJdbcSource(targetSource);
 		if (jTarget==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO,"Target Source not found",targetSource,this);
+		// Carica la lista completa delle tabelle
+		BmaVector loadOrder = jModel.getLoadOrder();
+		for (int i = 0; i < loadOrder.getSize(); i++){
+			BmaValuesList bvl = (BmaValuesList)loadOrder.getElement(i);
+			String[] s = bvl.getValues();
+			for (int j = 0; j < s.length; j++){
+				tableNames.add(s[j]);
+			}
+		}
 		// Determina statements da eseguire
-		loadNames();
 		BmaJdbcTrx trxTarget = new BmaJdbcTrx(jTarget);
 		try {
 			trxTarget.open("system");
@@ -181,25 +189,24 @@ public class BmaDataReplay extends BmaServizio {
 			}
 		}
 	}
-	private void loadNames() {
+	private String getTableList() {
 		BmaVector loadOrder = jModel.getLoadOrder();
-		for (int i = 0; i < loadOrder.getSize(); i++){
-			BmaValuesList bvl = (BmaValuesList)loadOrder.getElement(i);
-			String[] s = bvl.getValues();
-			for (int j = 0; j < s.length; j++){
-				tableNames.add(s[j]);
+		BmaValuesList listAll = new BmaValuesList("loadTables");
+		String numLivello = input.getInfoServizio("IND_LOADORDER");
+		if (numLivello==null || numLivello.trim().length()==0 || numLivello.equals("0")) {
+			for (int i = 0; i < loadOrder.getSize(); i++) {
+				BmaValuesList lx = (BmaValuesList)loadOrder.getElement(i);
+				String[] s = lx.getValues();
+				for (int j = 0; j < s.length; j++) {
+					listAll.addValue(s[j]);
+				}
 			}
 		}
-	}
-	private String tableList() {
-		BmaVector table = new BmaVector("tablesNames");
-		loadNames();
-		Object list[] = tableNames.toArray();
-		Arrays.sort(list);
-		for (int i = 0; i < list.length; i++){
-			String s = (String)list[i];
-			table.setString(s);
+		else {
+			int i = Integer.parseInt(numLivello) - 1;
+			if (i < loadOrder.getSize()) listAll = (BmaValuesList)loadOrder.getElement(i);
 		}
-		return table.toXml();
+		listAll.sort();
+		return listAll.toXml();
 	}
 }
