@@ -20,7 +20,6 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	protected BmaSessione sessione;
 	protected BmaJsp jsp = new BmaJsp();
 	public boolean statoBeanLista = true;
-	public boolean tipoDettaglio = false;
 	public BmaFunzioneAttiva() {
 		super();
 	}
@@ -30,7 +29,6 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 		this.codFunzione = codFunzione;
 		this.codAzione = codAzione;
 	}
-	public abstract String getFunzioneEditDettaglio();
 	public BmaJsp getJsp() { return jsp; }
 	protected void aggiornaContesto(Hashtable valori) {
 		Enumeration e = valori.keys();

@@ -7,25 +7,8 @@ public class PDProfili extends PDFunzioneEdit {
 	public PDProfili() {
 		super();
 	}
-	public java.lang.String getFunzioneEditDettaglio() {
-		return "PDPROFUTENTE";
-	}
-	protected void impostaAzioni() {
-		azioniMenu.clear();
-		jsp.impostaMenuPrincipale(sessione, azioniMenu);
-		impostaMenuEdit();
-		BmaFunzione f = sessione.getUtente().getFunzione(getFunzioneEditDettaglio());
-		if (f==null) return;
-		
-		int liv = this.getLivelloMenu() + 1;
-
-		if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_NUOVO)) azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_NUOVO, jsp.BMA_JSP_MENU_AZIONE));
-		if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_MODIFICA)) {
-			azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_MODIFICA, jsp.BMA_JSP_MENU_AZIONE));
-		}
-		else if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_DETTAGLIO)) {
-			azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_DETTAGLIO, jsp.BMA_JSP_MENU_AZIONE));
-		}
+	public java.lang.String[] getFunzioniEditDettaglio() {
+		return new String[] {"PDPROFUTENTE"};
 	}
 	protected java.lang.String ricavaDesContesto(it.bma.comuni.BmaDataForm df) {
 		return df.getValoreCampo("DES_PROFILO");

@@ -46,6 +46,16 @@
 			<nome>FONTE-TARGET</nome>
 			<valore>AR2002</valore>
 		</ParametroConfigurazione>
+		<ParametroConfigurazione>
+			<tipo>FONTE-APPLICAZIONE</tipo>
+			<nome>DBA</nome>
+			<valore>BIM</valore>
+		</ParametroConfigurazione>
+		<ParametroConfigurazione>
+			<tipo>FONTE-APPLICAZIONE</tipo>
+			<nome>PDAS</nome>
+			<valore>PDAS</valore>
+		</ParametroConfigurazione>
 	</Parametri>
 	<FontiJdbc>
 		<elementi>2</elementi>
@@ -54,6 +64,24 @@
 			<nome>BIM</nome>
 			<driver>ianywhere.ml.jdbcodbc.IDriver</driver>
 			<url>jdbc:odbc:dsn=BIM</url>
+			<user>DBA</user>
+			<pass>sql</pass>
+			<schema>DBA</schema>
+			<prefix>%</prefix>
+		</FonteJdbc>
+		<FonteJdbc>
+			<nome>BKPD0755-BIM</nome>
+			<driver>com.sybase.jdbc2.jdbc.SybDriver</driver>
+			<url>jdbc:sybase:Tds:BKPD0755:2638?ServiceName=BIM</url>
+			<user>DBA</user>
+			<pass>sql</pass>
+			<schema>DBA</schema>
+			<prefix>%</prefix>
+		</FonteJdbc>
+		<FonteJdbc>
+			<nome>MEDIA</nome>
+			<driver>ianywhere.ml.jdbcodbc.IDriver</driver>
+			<url>jdbc:odbc:dsn=MEDIA</url>
 			<user>DBA</user>
 			<pass>sql</pass>
 			<schema>DBA</schema>
@@ -69,12 +97,30 @@
 			<prefix>PD_%</prefix>
 		</FonteJdbc>
 		<FonteJdbc>
-			<nome>PRODOTTI-DB2</nome>
+			<nome>PDAS-PCWIN001</nome>
 			<driver>COM.ibm.db2.jdbc.net.DB2Driver</driver>
-			<url>jdbc:db2://BKPD0755/PDAS</url>
+			<url>jdbc:db2://PCWIN001/PDAS_PC1</url>
 			<user>db2admin</user>
 			<pass>db2admin</pass>
 			<schema>DB2ADMIN</schema>
+			<prefix>PD_%</prefix>
+		</FonteJdbc>
+		<FonteJdbc>
+			<nome>PDAS-PCWIN002</nome>
+			<driver>COM.ibm.db2.jdbc.net.DB2Driver</driver>
+			<url>jdbc:db2://PCWIN002/PDAS</url>
+			<user>db2admin</user>
+			<pass>db2admin</pass>
+			<schema>DB2ADMIN</schema>
+			<prefix>PD_%</prefix>
+		</FonteJdbc>
+		<FonteJdbc>
+			<nome>PDCATTOLICA</nome>
+			<driver>sun.jdbc.odbc.JdbcOdbcDriver</driver>
+			<url>jdbc:odbc:LDB2TS000</url>
+			<user>db2ts000</user>
+			<pass>db2ts000</pass>
+			<schema></schema>
 			<prefix>PD_%</prefix>
 		</FonteJdbc>
 		<FonteJdbc>

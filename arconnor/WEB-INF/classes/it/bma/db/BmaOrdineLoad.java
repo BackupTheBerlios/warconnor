@@ -50,9 +50,6 @@ public class BmaOrdineLoad extends BmaServizioDb {
 		}
 		sessione.setBeanApplicativo(BMA_JSP_BEAN_LISTA, lista);
 	}
-	public String getFunzioneEditDettaglio() {
-		return "";
-	}
 	public BmaDataForm impostaModulo() throws BmaException {
 		BmaDataForm modulo = new BmaDataForm("ORDINE-LOAD");
 		BmaDataField campo = null;

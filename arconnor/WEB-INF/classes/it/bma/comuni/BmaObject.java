@@ -229,6 +229,16 @@ public String getClassName(String n) {
 	}
 	return n;
 }
+public boolean extendsClass(String className) {
+	Class c = getClass();
+	while (c!=null) {
+		String cn = getClassName(c.getName());
+		if (className.equals(cn)) return true;
+		c = c.getSuperclass();
+	}
+	return false;
+}
+
 private java.lang.reflect.Field[] getMyFields(java.lang.reflect.Field[] oldList, Class cls) {
 	java.lang.reflect.Field[] myList = cls.getDeclaredFields();
 	java.lang.reflect.Field[] newList = new java.lang.reflect.Field[oldList.length + myList.length];

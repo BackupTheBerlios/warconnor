@@ -65,9 +65,6 @@ public class MdLoad extends MdServizio {
  		sessione.setBeanApplicativo(BMA_JSP_BEAN_LISTA, lista);
 */
 	}
-	public String getFunzioneEditDettaglio() {
-		return "";
-	}
 	private Hashtable getTipiVolume() {
 		// Da sviluppare il richiamo al servizio
 		Hashtable result = new Hashtable();

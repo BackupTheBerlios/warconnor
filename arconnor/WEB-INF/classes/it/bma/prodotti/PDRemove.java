@@ -17,10 +17,6 @@ public class PDRemove extends it.bma.web.BmaFunzioneServizi {
 	public void gestisciOutputServizio(it.bma.web.BmaOutputServizio os) throws it.bma.comuni.BmaException {
 	}
 	
-	public String getFunzioneEditDettaglio() {
-		return "";
-	}
-	
 	public String getNomeServizio(String funzione) {
 		return "ProdottoOperativo";
 	}

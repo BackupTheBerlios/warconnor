@@ -1,6 +1,8 @@
 <%@ include file="incInit.jsp"%>
 
 <%
+	BmaFunzioneEdit funzioneEdit = (BmaFunzioneEdit)funzione;
+	String codFunzioneDettaglio = funzioneEdit.getFunzioneDettaglioPrimaria();
 	BmaDataList elenco = null;
 	BmaDataList elencoMaster = (BmaDataList)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_LISTA);
 	BmaDataForm form = (BmaDataForm)sessione.getBeanApplicativo(jsp.BMA_JSP_BEAN_FORM);
@@ -23,6 +25,8 @@
 <body onload=<%=jsp.getOnLoadScript(sessione)%>>
 
 <%@ include file="incSchema.jsp"%>
+		BmaFunzioneAttiva temp = sessione.getFunzioneAttivante();
+		if (temp!attivante.getClass().isInstance(this))) return false;
 
 <div class="Bordo" style="position: absolute; 
 													top: 100; left: 205; 
@@ -82,29 +86,24 @@
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=funzione.getDesAzione()%> <%=sessione.getAlias(form.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
-		<% if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_NUOVO)) { %>
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna")%>		
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla")%>		
-		<% } %>
-		<% if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODELLO_NEW)) { %>
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna")%>		
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla")%>		
-		<% } %>
-		<% if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) { %>
-			<%
-				for (int i=0;i<azioniMenu.getSize();i++) {
-					BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
-					if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) { %>
-					<%=jsp.getHtmlBottone(funzione, m.getFunzione(), m.getAzione(), jsp.BMA_JSP_COMANDO_PREPARA, m.getLabel())%>
-				<%}%>		
-			<%}%>		
-		<% if (funzione.isAmmessa(jsp.BMA_JSP_AZIONE_MODELLO_RES)) { %>
-			<%=jsp.getHtmlBottone(funzione, "", jsp.BMA_JSP_AZIONE_MODELLO_RES, jsp.BMA_JSP_COMANDO_AGGIORNA, "Ripristina Modello")%>		
-		<% } %>
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna")%>		
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla")%>		
-			<%=jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ELIMINA, "Elimina")%>
-		<% } %>		
+<% 
+		if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_NUOVO)) {
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna"));
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla"));
+		}
+		else if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODELLO_NEW)) {
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna"));
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla"));
+		}
+		else if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) {
+			if (funzione.isAmmessa(jsp.BMA_JSP_AZIONE_MODELLO_RES)) {
+				out.println(jsp.getHtmlBottone(funzione, "", jsp.BMA_JSP_AZIONE_MODELLO_RES, jsp.BMA_JSP_COMANDO_AGGIORNA, "Ripristina Modello"));
+			}
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_AGGIORNA, "Aggiorna"));
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ANNULLA, "Annulla"));
+			out.println(jsp.getHtmlBottone(funzione, "", "", jsp.BMA_JSP_COMANDO_ELIMINA, "Elimina"));
+		}
+%>		
 		</td>
 	</tr>
 </table>
@@ -118,15 +117,25 @@
 <!-- START -->
 <% if (elencoDetail!=null) { 
 		elenco = elencoDetail;
-		codFunzioneEdit = funzione.getFunzioneEditDettaglio();
+		codFunzioneEdit = codFunzioneDettaglio;
 %> 
 <br>
 <table width="578" align="center">
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=sessione.getAlias(elenco.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
-			<%=jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_MODELLO_NEW,"","Nuovo da Modello")%>
-			<%=jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_NUOVO,"","Nuovo")%>
+<%		
+			if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) { 
+				for (int i=0;i<azioniMenu.getSize();i++) {
+					BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
+					if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) {
+						out.println(jsp.getHtmlBottone(funzione, m.getFunzione(), m.getAzione(), jsp.BMA_JSP_COMANDO_PREPARA, m.getLabel()));
+					}
+				}		
+			}
+			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_MODELLO_NEW,"","Nuovo da Modello"));
+			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_NUOVO,"","Nuovo"));
+%>
 		</td>
 	</tr>
 </table>

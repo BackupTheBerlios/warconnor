@@ -12,7 +12,4 @@ public class DBHOME extends BmaFunzioneAttiva {
 		jsp.impostaMenuPrincipale(sessione, azioniMenu);
 		return false;
 	}
-	public String getFunzioneEditDettaglio() {
-		return "";
-	}
 }

@@ -5,13 +5,26 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
-/**
- * BmaFunzioneEdit constructor comment.
- */
 	public BmaFunzioneEdit() {
 		super();
 	}
 	protected abstract String getNomeTabella(String funzione);
+	protected void completaModulo(BmaDataForm dataForm) throws BmaException {
+		// Exit routine
+	}
+	public String[] getFunzioniEditDettaglio() {
+		return new String[0];
+	}
+	public String getFunzioneDettaglioPrimaria() {
+		String[] lDettagli = getFunzioniEditDettaglio();
+		if (lDettagli.length==0) return "";
+		else return lDettagli[0];
+	}
+	public BmaFunzioneEdit getFunzioneAttivante() {
+		BmaFunzioneAttiva attivante = sessione.getFunzioneAttivante();
+		if (attivante==null || !attivante.extendsClass("BmaFunzioneEdit")) return null;
+		return (BmaFunzioneEdit)attivante;
+	}
 	public boolean eseguiComando() throws BmaException {
 		String codComando = getParametri().getString(BMA_JSP_CAMPO_COMANDO);
 		if (codComando.trim().length()==0) codComando = BMA_JSP_COMANDO_PREPARA;
@@ -39,7 +52,37 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 			throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Comando non previsto: " + codComando, "", this); 
 		}
 	}
-	protected abstract void impostaAzioni();
+	protected void impostaAzioni() {
+		azioniMenu.clear();
+		jsp.impostaMenuPrincipale(sessione, azioniMenu);
+		impostaMenuEdit();
+		impostaAzioniDettaglio();
+		String[] lDettagli = getFunzioniEditDettaglio();
+		if (lDettagli.length==0) return;
+		BmaFunzione f = sessione.getUtente().getFunzione(lDettagli[0]);
+		if (f==null) return;
+		
+		int liv = this.getLivelloMenu() + 1;
+
+		if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_NUOVO)) azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_NUOVO, jsp.BMA_JSP_MENU_AZIONE));
+		if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_MODIFICA)) {
+			azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_MODIFICA, jsp.BMA_JSP_MENU_AZIONE));
+		}
+		else if (f.isAzioneAmmessa(jsp.BMA_JSP_AZIONE_DETTAGLIO)) {
+			azioniMenu.add(new BmaMenu(liv, f, jsp.BMA_JSP_AZIONE_DETTAGLIO, jsp.BMA_JSP_MENU_AZIONE));
+		}
+	}
+	protected void impostaAzioniDettaglio() {
+		BmaUtente user = sessione.getUtente();
+		int liv = this.getLivelloMenu() + 1;
+		String[] lDettagli = getFunzioniEditDettaglio();
+		for (int i=1;i<lDettagli.length;i++) {
+			BmaFunzione f = user.getFunzione(lDettagli[i]);
+			if (f!=null) {
+				azioniMenu.add(new BmaMenu(liv, f, f.getAzioneDefault(), jsp.BMA_JSP_MENU_BARRA));
+			}
+		}
+	}
 	protected void impostaMenuAnnulla() {
 		BmaUtente user = sessione.getUtente();
 		BmaFunzioneAttiva fa = sessione.getFunzioneAttivante();
@@ -148,21 +191,19 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 		 * alla modalità di chiamata 
 		 */
 		BmaDataList dl = null;
-		BmaFunzioneAttiva attivante = sessione.getFunzioneAttivante();	
+		BmaFunzioneEdit attivante = getFunzioneAttivante();	
 		if (attivante!=null) {
 			aggiornaContesto(attivante.getChiaviContesto());
-			if (attivante.getCodFunzione().equals(this.getCodFunzione())) {
-				tipoDettaglio = attivante.tipoDettaglio;
+			if (attivante.getCodFunzione().equals(getCodFunzione())) {
 				dl = (BmaDataList)attivante.getBean(BMA_JSP_BEAN_LISTA);
 				this.setBean(BMA_JSP_BEAN_LISTA, dl);
 			}
-			else if (attivante.getFunzioneEditDettaglio().equals(this.getCodFunzione())) {
-				tipoDettaglio = true;
+			else if (getCodFunzione().equals(attivante.getFunzioneDettaglioPrimaria())) {
 				dl = (BmaDataList)attivante.getBean(BMA_JSP_BEAN_LISTA_DETAIL);
 				this.setBean(BMA_JSP_BEAN_LISTA, dl);
 			}
 		}
-		if (!tipoDettaglio) {
+		else {
 			initContesto(sessione.getUtente());
 			this.setDesContesto("");
 		}
@@ -197,6 +238,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				tb.setValori(new Hashtable());
 				BmaDataForm df = new BmaDataForm(dl.getTabella());
 				impostaContestoForm(df);
+				completaModulo(df);
 				jsp.applicaStandard(df.getDati().getVector());
 				sessione.setBeanApplicativo(BMA_JSP_BEAN_FORM, df);
 			}
@@ -234,8 +276,8 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 	}
 	protected abstract String ricavaDesContesto(BmaDataForm df);
 	private void setDetailList(String kSel) throws it.bma.comuni.BmaException {
-		String fDettaglio = getFunzioneEditDettaglio();
-		if (fDettaglio==null || fDettaglio.trim().length()==0) return;
+		String fDettaglio = getFunzioneDettaglioPrimaria();
+		if (fDettaglio.length()==0) return;
 		BmaDataList dlDetail = (BmaDataList)this.getBean(BMA_JSP_BEAN_LISTA_DETAIL);
 		if (dlDetail==null) {
 			String nomeTabella = getNomeTabella(fDettaglio);

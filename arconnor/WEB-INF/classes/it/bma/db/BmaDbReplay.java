@@ -113,9 +113,6 @@ public class BmaDbReplay extends BmaServizioDb {
 		}
 		sessione.setBeanApplicativo(BMA_JSP_BEAN_LISTA, lista);
 	}
-	public String getFunzioneEditDettaglio() {
-		return "";
-	}
 	public BmaDataForm impostaModulo() throws BmaException {
 		BmaDataForm modulo = new BmaDataForm("DB-REPLAY");
 		BmaDataField campo = null;

@@ -87,7 +87,7 @@ public abstract class BmaConfigurazione extends BmaObject {
   
 	public BmaJdbcSource getJdbcSource(String nomeFonte) {
     if (nomeFonte==null || nomeFonte.trim().length()==0) nomeFonte = getFonteDefault();
-    return (BmaJdbcSource)fontiJdbc.getElement(fonteDefault);
+    return (BmaJdbcSource)fontiJdbc.getElement(nomeFonte);
 	}
 	public BmaHashtable getFontiJdbc() {
 		return fontiJdbc;
