@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>A.R. Connor - LOGIN</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+<!-- BOX INTESTAZIONE -->
+<div class="Bordo" style="position: absolute; 
+													top: 5; left: 5; 
+													width: 199; height: 58;
+													overflow: hidden;">
+	<img src="images/AR.jpg">
+</div>
+<!-- BOX DATI DI COLLEGAMENTO -->
+<div class="Bordo" style="position: absolute; 
+													top: 5; left: 205; 
+													width: 600; height: 58;
+													overflow: hidden;">
+			<table width="100%">
+				<tr><td class="MasterLabel" colspan="3" align="right">Portale di A.R. Connor</td></tr>
+				<tr>
+					<td class="DetailLabel" width="15%">&nbsp;</td>
+					<td class="DetailLabel" width="70%">&nbsp;</td>
+					<td class="DetailLabel" width="15%" align="center">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="DetailData">&nbsp;</td>
+					<td class="DetailData">&nbsp;</td>
+					<td class="DetailData" align="center">&nbsp;</td>
+				</tr>
+			</table> 
+</div>
+<!-- BOX NAVIGAZIONE CON RIGA MASSAGGIO LOGIN -->
+<div class="Bordo" style="position: absolute; 
+													top: 68; left: 5; 
+													width: 800; height: 28;
+													overflow: auto;
+													background-color: #E5E5E5;">
+	<table width="100%"><tr><td class="Warning" width="100%" align="right">&nbsp;</td></tr></table>
+</div>
+<!-- BOX LOGIN -->
+<div class="Bordo" style="position: absolute; 
+												top: 100; left: 5; 
+												width: 199; height: 99;
+												overflow: hidden;
+												background-color: #BBBBFF;">
+	<form method="post" action="BmaServlet">
+	<input type='hidden' name='formName' value='login'>
+	<table width="100%">
+		<tr>
+			<td class="DetailTitle" colspan="2">Area Riservata</td>
+		</tr><tr>
+			<td class="DetailLabel" width="50%">User:</td>
+			<td width="50%">
+				<input class="DetailData" type="text" size='12' name="user" value="">
+			</td>
+		</tr><tr>
+			<td class='DetailLabel'>Password:</td>
+			<td>
+				<input class='DetailData' type='password' size='12' name='pswd' value=''>
+			</td>
+		</tr><tr>
+			<td class='DetailLabel' colspan="2" align="center">
+				<input class="DetailData" type="submit" name="Ok" value="Invia">
+			</td>
+		</tr>
+	</table>
+	</form>
+</div>
+<!-- BOX MENU -->
+<div class="Bordo" style="position: absolute; 
+													top: 200; left: 5; 
+													width: 199; height: 380;
+													overflow: auto;
+													background-color: #BBBBFF;">
+</div>
+<!-- BOX CENTRALE -->
+<div class="Bordo" style="position: absolute; 
+													top: 100; left: 205; 
+													width: 600; height: 480;
+													overflow: auto;">
+													
+</div>
+</body>
+</html>
