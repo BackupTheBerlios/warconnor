@@ -17,12 +17,14 @@ import org.apache.avalon.framework.logger.ConsoleLogger;
 import org.apache.avalon.framework.logger.Logger;
 
 //FOP
+import org.apache.fop.configuration.Configuration;
 import org.apache.fop.apps.Driver;
 import org.apache.fop.apps.FOPException;
 import org.apache.fop.messaging.MessageHandler;
 
 public class XmlFunzioni {
 	private static JspProdotti jsp = new JspProdotti();
+	private static String baseDir = "C:/Progetti/warconnor_cvs/arconnor/bma/";
   public XmlFunzioni() {
     super();
   }
@@ -32,7 +34,6 @@ public class XmlFunzioni {
       return;
     }
     String argXsl = args[0];
-		String baseDir = "C:/Progetti/warconnor_cvs/arconnor/bma/";
 		BmaJdbcSource source = new BmaJdbcSource("PDAS");
 		source.setDriver("ianywhere.ml.jdbcodbc.IDriver");
 		source.setUrl("jdbc:odbc:dsn=PDAS");
@@ -42,7 +43,7 @@ public class XmlFunzioni {
 		BmaJdbcTrx jTrx = new BmaJdbcTrx(source);
     XmlFunzioni app = new XmlFunzioni();
 		try {
-      
+     
       jTrx.open("System");
       String xml = app.makeXmlFunzioni(jTrx);
       jTrx.chiudi();
@@ -182,7 +183,7 @@ public class XmlFunzioni {
           "       DAT_NOTA, NOT_COLLAUDO " +
           " FROM  PM_NOTECOLLAUDO " +
           " WHERE COD_FUNZIONE='" + codFunzione + "'" +
-					" AND		IND_STATO='A' " +
+					" AND		IND_STATO='N' " +
 					" ORDER BY NUM_PROGRESSIVO ";
     Vector dati = jTrx.eseguiSqlSelect(sql);
 		for (int i=0;i<dati.size();i++) {
@@ -298,7 +299,8 @@ public class XmlFunzioni {
 		OutputStream out = null;
 		try {
 			out = new java.io.FileOutputStream(pdf);
-			//Setup input and output files            
+			Configuration fopConfig = new org.apache.fop.configuration.Configuration();
+			fopConfig.put("baseDir", baseDir);
 			Driver driver = new Driver();
 
 			Logger logger = new ConsoleLogger(ConsoleLogger.LEVEL_INFO);

@@ -16,15 +16,15 @@ public class JspProdotti extends BmaJsp {
 		int liv = 1;
 		f = user.getFunzione("PDFUNZIONI"); 			// Funzioni
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
-
 		f = user.getFunzione("PDPROFILI"); 				// Profili
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
-
 		f = user.getFunzione("PDCICLI");					// Cicli
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
-
 		f = user.getFunzione("PDREMOVE"); 				// Remove Prodotto
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
-
+		f = user.getFunzione("PM_BLOCCHI"); 				// Blocchi
+		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
+		f = user.getFunzione("PM_FUNZIONI"); 				// PM_FUNZIONI
+		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
 	}
 }

@@ -13,6 +13,10 @@ public abstract class PDFunzioneEdit extends it.bma.web.BmaFunzioneEdit {
 		else if (funzione.equals("PDPROFUTENTE")) return "PD_PROFILOFUNZIONI";
 		else if (funzione.equals("PDFUNZIONI")) return "PD_FUNZIONI";
 		else if (funzione.equals("PDCICLI")) return "PD_CICLOSTATI";
+		else if (funzione.equals("PM_BLOCCHI")) return "PM_BLOCCHI";
+		else if (funzione.equals("PM_FUNZIONI")) return "PM_FUNZIONI";
+		else if (funzione.equals("PM_NOTECOLLAUDO")) return "PM_NOTECOLLAUDO";
+		else if (funzione.equals("PM_INTERVENTI")) return "PM_INTERVENTI";
 		else return "";
 	}
 }

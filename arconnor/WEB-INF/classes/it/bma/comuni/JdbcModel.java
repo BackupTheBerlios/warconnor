@@ -110,6 +110,7 @@ public class JdbcModel extends BmaObject {
 				//
 				table.tableSchem = rs.getString("TABLE_SCHEM");
 				if (table.tableSchem==null) table.tableSchem = "";
+				else this.schema = table.tableSchem;
 				//
 				table.tableName = rs.getString("TABLE_NAME");
 				if (table.tableName==null) table.tableName = "";
