@@ -35,6 +35,7 @@ public class BmaException extends Exception
 		else {
 			error = list.getErrore(codErrore);
 			if (error == null) {
+				error = new BmaErrore();
 				error.setCodErrore(error.BMA_ERR_NON_PREVISTO);
 				error.setTipo(error.BMA_ERR_ABEND);
 				error.setMsgUtente(error.BMA_MSG_ERRORE_NON_PREVISTO);
