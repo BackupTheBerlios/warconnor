@@ -7,6 +7,8 @@
 	BmaErrore err = (BmaErrore)request.getSession().getAttribute(jsp.BMA_JSP_BEAN_ERRORE);
 	if (err==null) err = new BmaErrore();
   else request.getSession().removeAttribute("Errore");
+//	BmaFunzioneAttiva funzione = (BmaFunzioneAttiva)sessione.getFunzioneCorrente();
+//	if (funzione==null);
 %>
 
 <html>

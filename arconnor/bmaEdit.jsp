@@ -110,6 +110,31 @@
 <!-- TABELLA PER IL FORM PRINCIPALE -->
 <!-- END -->
 
+<!-- TABELLA PER IL MENU DETTAGLI -->
+<!-- START -->
+<br>
+<% if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA) && azioniMenu.getSize()>0) { %>
+<table width="578" align="center">
+	<tr>
+		<td class="DataLevel-1" width="100%">
+<%
+			for (int i=0;i<azioniMenu.getSize();i++) {
+				BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
+				if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) { %>
+			<img src='images/pallino_arancio.gif' border='0' align="top">
+			<a class="MenuOpzioni" href='javascript:invia("<%=m.getFunzione()%>","<%=m.getAzione()%>","<%=jsp.BMA_JSP_COMANDO_PREPARA%>","")'><%=m.getLabel()%></a>
+			&nbsp;
+<%
+				}
+			}		
+%>
+		</td>
+	</tr>
+</table>
+<% } %>
+<!-- TABELLA PER IL MENU DETTAGLI -->
+<!-- END -->
+
 
 <!-- TABELLA PER LA LISTA SECONDARIA -->
 <!-- START -->
@@ -117,20 +142,11 @@
 		elenco = elencoDetail;
 		codFunzioneEdit = codFunzioneDettaglio;
 %> 
-<br>
 <table width="578" align="center">
 	<tr>
 		<td class="DataLevel-1" width="40%"><%=sessione.getAlias(elenco.getChiave())%></td>
 		<td class="Action" align="right" width="60%">
 <%		
-			if (funzione.getCodAzione().equals(jsp.BMA_JSP_AZIONE_MODIFICA)) { 
-				for (int i=0;i<azioniMenu.getSize();i++) {
-					BmaMenu m = (BmaMenu)azioniMenu.getElement(i);
-					if (m.getTipo().equals(jsp.BMA_JSP_MENU_BARRA)) {
-						out.println(jsp.getHtmlBottone(funzione, m.getFunzione(), m.getAzione(), jsp.BMA_JSP_COMANDO_PREPARA, m.getLabel()));
-					}
-				}		
-			}
 			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_MODELLO_NEW,"","Nuovo da Modello"));
 			out.println(jsp.getHtmlBottone(funzione, codFunzioneEdit, jsp.BMA_JSP_AZIONE_NUOVO,"","Nuovo"));
 %>
