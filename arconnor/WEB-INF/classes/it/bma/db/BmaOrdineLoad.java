@@ -6,11 +6,9 @@ public class BmaOrdineLoad extends BmaServizioDb {
 	public BmaOrdineLoad() {
 		super();
 	}
-	
 	public void completaInputServizio(BmaInputServizio is) throws BmaException {
 		is.setInfoServizio("flgLoad", BMA_TRUE);
 	}
-	
 	public void gestisciOutputServizio(BmaOutputServizio os) throws BmaException {
 		BmaVector vMain = new BmaVector("LoadOrder");
 		String xml = os.getXmlOutput();
@@ -39,25 +37,22 @@ public class BmaOrdineLoad extends BmaServizioDb {
 		lista.getTabella().getColonne().add(campo);
 		Vector dati = lista.getValori();
 		for (int i=0;i<vMain.getSize();i++) {
-			JdbcTableList v = (JdbcTableList)vMain.getElement(i);
-			BmaVector vTables = v.getTableList().getBmaVector();
-			String codLivello = v.getChiave();
-			for (int j=0;j<vTables.getSize();j++) {
-				BmaParametro p = (BmaParametro)vTables.getElement(j);
+			BmaValuesList listaTabelle = (BmaValuesList)vMain.getElement(i);
+			String[] vTables = listaTabelle.getValues();
+			String codLivello = listaTabelle.getName();
+			for (int j=0;j<vTables.length;j++) {
 				Vector riga = new Vector();
 				riga.add(codLivello);
-				riga.add(p.getNome());
-				riga.add(p.getValore());
+				riga.add(getNumeroXChiave(j, 3));
+				riga.add(vTables[j]);
 				dati.add(riga);
 			}
 		}
 		sessione.setBeanApplicativo(BMA_JSP_BEAN_LISTA, lista);
 	}
-	
 	public String getFunzioneEditDettaglio() {
 		return "";
 	}
-	
 	public BmaDataForm impostaModulo() throws BmaException {
 		BmaDataForm modulo = new BmaDataForm("ORDINE-LOAD");
 		BmaDataField campo = null;
@@ -72,5 +67,4 @@ public class BmaOrdineLoad extends BmaServizioDb {
 		modulo.getDati().add(campo);
 		return modulo;
 	}
-	
 }
