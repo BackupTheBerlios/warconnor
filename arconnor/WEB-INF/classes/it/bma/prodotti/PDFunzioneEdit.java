@@ -8,4 +8,11 @@ public abstract class PDFunzioneEdit extends it.bma.web.BmaFunzioneEdit {
 		super();
 		jsp = new JspProdotti();
 	}
+	protected String getNomeTabella(String funzione) {
+		if (funzione.equals("PDPROFILI")) return "PD_PROFILIUTENTE";
+		else if (funzione.equals("PDPROFUTENTE")) return "PD_PROFILOFUNZIONI";
+		else if (funzione.equals("PDFUNZIONI")) return "PD_FUNZIONI";
+		else if (funzione.equals("PDCICLI")) return "PD_CICLOSTATI";
+		else return "";
+	}
 }

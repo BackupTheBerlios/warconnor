@@ -10,7 +10,7 @@ public abstract class BmaServizioDb extends BmaFunzioneServizi {
 	}
 	public String getNomeServizio(String funzione) {
 		if (funzione.equals("DBLOADORD")) return "BmaDataModel";
-		else if (funzione.equals("")) return "";
+		else if (funzione.equals("DBREPLAY")) return "BmaDataReplay";
 		else return "";
 	}
 	public void impostaAzioni() {

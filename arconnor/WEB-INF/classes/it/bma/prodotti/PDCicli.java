@@ -10,9 +10,6 @@ public class PDCicli extends PDFunzioneEdit {
 	public java.lang.String getFunzioneEditDettaglio() {
 		return "";
 	}
-	protected String getNomeTabella(String funzione) {
-		return "PD_CICLOSTATI";
-	}
 	protected void impostaAzioni() {
 		azioniMenu.clear();
 		jsp.impostaMenuPrincipale(sessione, azioniMenu);

@@ -10,9 +10,6 @@ public class PDProfiloFunzioni extends PDFunzioneEdit {
 	public java.lang.String getFunzioneEditDettaglio() {
 		return "";
 	}
-	protected String getNomeTabella(String funzione) {
-		return "PD_PROFILOFUNZIONI";
-	}
 	protected void impostaAzioni() {
 		azioniMenu.clear();
 		jsp.impostaMenuPrincipale(sessione, azioniMenu);

@@ -69,6 +69,15 @@
 			<prefix>PD_%</prefix>
 		</FonteJdbc>
 		<FonteJdbc>
+			<nome>PRODOTTI-DB2</nome>
+			<driver>COM.ibm.db2.jdbc.net.DB2Driver</driver>
+			<url>jdbc:db2://BKPD0755/PDAS</url>
+			<user>db2admin</user>
+			<pass>db2admin</pass>
+			<schema>DB2ADMIN</schema>
+			<prefix>PD_%</prefix>
+		</FonteJdbc>
+		<FonteJdbc>
 			<nome>AR2002</nome>
 			<driver>jdbc.gupta.sqlbase.SqlbaseDriver</driver>
 			<url>jdbc:sqlbase://pcwin001/AR2002</url>

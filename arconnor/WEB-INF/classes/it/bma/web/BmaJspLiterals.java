@@ -31,6 +31,7 @@ public interface BmaJspLiterals extends it.bma.comuni.BmaLiterals {
 	public final String BMA_JSP_BEAN_XML =						"beanXml";
 	public final String BMA_JSP_BEAN_ALIAS =					"beanAlias";
 	
+	public final String BMA_JSP_PREFISSO_MULTI =			"MultiValori";		// Prefisso per campi con più di un valore
 	public final String BMA_JSP_CAMPO_FUNZIONE =			"BmaFunzione";
 	public final String BMA_JSP_CAMPO_AZIONE = 				"BmaAzione";
 	public final String BMA_JSP_CAMPO_COMANDO =				"BmaComando";

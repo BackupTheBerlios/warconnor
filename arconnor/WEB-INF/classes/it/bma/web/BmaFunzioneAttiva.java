@@ -12,6 +12,7 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	private String desAzione = "";
 	private String desContesto = "";
 	private BmaHashtable parametri = new BmaHashtable("Parametri");
+	private BmaHashtable paramMulti = new BmaHashtable("ParametriMultipli");
 	private BmaHashtable datiInput = new BmaHashtable("DatiInput");
 	private BmaHashtable contesto = new BmaHashtable("Contesto");
 	private BmaHashtable beans = new BmaHashtable("Beans");
@@ -49,10 +50,20 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	}
 	public void aggiornaParametri(HttpServletRequest request) {
 		parametri.clear();
+		paramMulti.clear();
 		Enumeration e = request.getParameterNames();
 		while (e.hasMoreElements()) {
 			String n = (String)e.nextElement();
-			parametri.setString(n, request.getParameter(n));
+			int p = n.indexOf(BMA_JSP_PREFISSO_MULTI);
+			if (p>=0) {
+				String[] multi = request.getParameterValues(n);
+				BmaValuesList list = new BmaValuesList(n);
+				list.setValues(multi);
+				paramMulti.add(list);
+			}
+			else {
+				parametri.setString(n, request.getParameter(n));
+			}
 		}
 	}
 	public void clearBeans() {
@@ -89,10 +100,6 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	public Hashtable getChiaviContesto() {
 		return contesto.getStringTable();
 	}
-	/**
-	 * 
-	 * @return java.lang.String
-	 */
 	public java.lang.String getCodAzione() {
 		return codAzione;
 	}
@@ -121,6 +128,9 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 	public BmaHashtable getParametri() {
 		return parametri;
 	}
+	public BmaHashtable getParamMulti() {
+		return paramMulti;
+	}
 	protected String getXmlTag() {
 		return "StatoFunzione";
 	}
@@ -146,29 +156,18 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 			}
 		}
 	}
-	protected void impostaValoriAggiornamento(BmaDataForm modulo, Hashtable valori) {
-		Hashtable tmpContesto = contesto.getHashtable();
+	protected void mergeValoriModuloContesto(BmaDataForm modulo, Hashtable valori) {
 		BmaVector dati = modulo.getDati();
 		for (int i = 0; i < dati.getSize(); i++){
 			BmaDataField f = (BmaDataField)dati.getElement(i);
-			String valoreContesto = (String)tmpContesto.get(f.getNome());
-			if (valoreContesto==null) {
-				valori.put(f.getNome(), f.getValore());
-			}
-			else {
-				valori.put(f.getNome(), valoreContesto);
-			}
+			valori.put(f.getNome(), f.getValore());
 		}
-	}
-	protected void impostaParametriServizio(BmaDataForm modulo, BmaInputServizio is) {
-		Hashtable valori = new Hashtable();
-		impostaValoriAggiornamento(modulo, valori);
-		Enumeration e = valori.keys();
+		Enumeration e = contesto.getHashtable().keys();
 		while (e.hasMoreElements()) {
 			String k = (String)e.nextElement();
-			String v = (String)valori.get(k);
-			is.setInfoServizio(k, v);
-		}			
+			String v = contesto.getString(k);
+			valori.put(k, v);
+		}
 	}
 	public void initContesto(BmaUtente utente) {
 		contesto.clear();
@@ -217,8 +216,7 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 		livelloMenu = newLivelloMenu;
 	}
 	protected void verificaDatiInput(BmaDataForm modulo) throws BmaException {
-
-		BmaJsp jsp = new BmaJsp();
+		/* Controlla e formatta i dati di input alla funzione */
 		Hashtable tmpContesto = contesto.getHashtable();
 		Hashtable tmpDati = datiInput.getHashtable();
 		for (int i = 0; i < modulo.getDati().getSize(); i++) {
@@ -240,10 +238,9 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 				datiInput.setString(f.getNome(), valoreContesto);
 			}
 		}
-
 	}
 	protected boolean verificaVariazioni(BmaDataForm modulo) throws BmaException {
-
+		/* Verifica se ci sono differenze e aggiorna il modulo */
 		boolean differenze = false;
 		for (int i = 0; i < modulo.getDati().getSize(); i++) {
 			BmaDataField f = (BmaDataField)modulo.getDati().getElement(i);
@@ -255,6 +252,26 @@ public abstract class BmaFunzioneAttiva extends BmaObject implements BmaJspLiter
 			}
 		}	
 		return differenze;
-
+	}
+	protected void aggiornaModulo(BmaDataForm modulo) throws BmaException {
+		/* Aggiorna il modulo con i valori di input della funzione */
+		if (datiInput.size()==0) datiInput = parametri;
+		for (int i = 0; i < modulo.getDati().getSize(); i++) {
+			BmaDataField f = (BmaDataField)modulo.getDati().getElement(i);
+			String nuovoValore = (String)parametri.getHashtable().get(f.getNome());
+			if (nuovoValore==null) {
+				if (f.getTipoControllo().equals(BMA_CONTROLLO_BOOLEAN)) f.setValore(BMA_FALSE);
+			}
+			else {
+				if (f.getTipo().equals(BMA_SQL_TYS_DAT)) f.setValore(jsp.getDataInterna(nuovoValore));
+				else if (f.getTipo().equals(BMA_SQL_TYS_NUM)) f.setValore(jsp.getNumeroInterno(nuovoValore));
+				else if (f.getTipoControllo().equals(BMA_CONTROLLO_BOOLEAN)) {
+					if (nuovoValore.equals(BMA_TRUE)) f.setValore(BMA_TRUE);
+					else f.setValore(BMA_FALSE);
+				}
+				else if (f.getTipoControllo().equals(BMA_CONTROLLO_LINK)) f.setValore(jsp.getLinkInterno(nuovoValore));
+				else f.setValore(nuovoValore);
+			}
+		}
 	}
 }

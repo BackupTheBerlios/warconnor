@@ -203,7 +203,7 @@ public class BmaJsp extends BmaObject implements BmaJspLiterals {
 			if (campo.getValore().equals(BMA_TRUE)) sel = " checked";
 			h = h + "<input " + cls + " type=\"Checkbox\"" + sel +
 							" name=\"" + campo.getNome() + "\"" +
-							" value=\"" + campo.getValore() + "\">" + '\n';
+							" value=\"S\">" + '\n';
 		} 
 		else if (campo.getTipoControllo().equals(BMA_CONTROLLO_LISTA) && campo.getValoriControllo().size()>0) {
 			h = h + "<select " + cls + " name=\"" + campo.getNome() + "\">" + '\n';

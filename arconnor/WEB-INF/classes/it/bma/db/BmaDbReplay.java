@@ -6,52 +6,109 @@ public class BmaDbReplay extends BmaServizioDb {
 	public BmaDbReplay() {
 		super();
 	}
+	public boolean eseguiComando() throws BmaException {
+		String beanListaTabelle = "tablesNames";
+		String beanSelezionate = BMA_JSP_PREFISSO_MULTI + "TabelleSelezionate"; 
+		//
+		String codSelezione = getParametri().getString(BMA_JSP_CAMPO_SELEZIONE);
+		if (codSelezione==null || codSelezione.trim().length()==0) {
+			sessione.removeBeanApplicativo(BMA_JSP_BEAN_LISTA);
+			sessione.removeBeanApplicativo(beanListaTabelle);
+			sessione.removeBeanApplicativo(beanSelezionate);
+			impostaAzioni();
+			BmaDataForm modulo = impostaModulo();
+			sessione.setBeanApplicativo(BMA_JSP_BEAN_FORM, modulo);
+		}
+		else if (codSelezione.equals("ListaTabelle")) {
+			BmaValuesList selezionate = (BmaValuesList)getParamMulti().getElement(beanSelezionate);
+			if (selezionate!=null) sessione.setBeanApplicativo(beanSelezionate, selezionate);
+			sessione.removeBeanApplicativo(beanListaTabelle);
+			BmaDataForm modulo = (BmaDataForm)sessione.getBeanApplicativo(BMA_JSP_BEAN_FORM);
+			if (modulo==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente", "",  this);
+			aggiornaModulo(modulo);
+			BmaInputServizio is = new BmaInputServizio();
+			impostaParametriServizio(modulo, is);
+			is.setInfoServizio("loadTables", BMA_TRUE);
+			String codServizio = getNomeServizio(getCodFunzione());
+			BmaOutputServizio os = eseguiServizio(codServizio, is);
+			BmaVector v = new BmaVector(beanListaTabelle);
+			v.fromXml(os.getXmlOutput());
+			sessione.setBeanApplicativo(beanListaTabelle, v);
+			sessione.setBeanApplicativo(BMA_JSP_BEAN_FORM, modulo);
+		}
+		else if (codSelezione.equals("EseguiReplay")) {
+			BmaValuesList selezionate = (BmaValuesList)getParamMulti().getElement(beanSelezionate);
+			if (selezionate!=null) sessione.setBeanApplicativo(beanSelezionate, selezionate);
+			BmaDataForm modulo = (BmaDataForm)sessione.getBeanApplicativo(BMA_JSP_BEAN_FORM);
+			if (modulo==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente","",this);
+			aggiornaModulo(modulo);
+			BmaInputServizio is = new BmaInputServizio();
+			impostaParametriServizio(modulo, is);
+			completaInputServizio(is);
+			String codServizio = getNomeServizio(getCodFunzione());
+			BmaOutputServizio os = eseguiServizio(codServizio, is);
+			gestisciOutputServizio(os);
+		}
+		return false;
+	}
 	public void completaInputServizio(BmaInputServizio is) throws BmaException {
-		is.setInfoServizio("flgLoad", BMA_TRUE);
+		is.setInfoServizio("loadTables", BMA_FALSE);
+		String beanSelezionate = BMA_JSP_PREFISSO_MULTI + "TabelleSelezionate"; 
+		BmaValuesList selezionate = (BmaValuesList)sessione.getBeanApplicativo(beanSelezionate);
+		if (selezionate==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Nessuna Tabelle Selezionata", "", this);
+		String[] tabelle = selezionate.getValues();
+		for (int i=0;i<tabelle.length;i++) {
+			is.setInfoServizio(tabelle[i], tabelle[i]);
+		}
 	}
 	public void gestisciOutputServizio(BmaOutputServizio os) throws BmaException {
-		/*
-		BmaVector vMain = new BmaVector("DBReplay");
+		BmaVector vMain = new BmaVector("LogInfo");
 		String xml = os.getXmlOutput();
 		vMain.fromXml(xml);
 		BmaParametro pXml = new BmaParametro("xml", xml);
 		sessione.setBeanTemporaneo(BMA_JSP_BEAN_XML, pXml);
-		BmaDataList lista = new BmaDataList("LoadOrder");
+		BmaDataList lista = new BmaDataList("LogInfo");
 		BmaDataField campo = null;
-		campo = new BmaDataField();
-		campo.setNome("COD_LIVELLO");
-		campo.setDescrizione("Livello di Load");
-		campo.setTipo(BMA_SQL_TYP_CHAR);
-		campo.setLunghezza("30");
-		lista.getTabella().getColonne().add(campo);
-		campo = new BmaDataField();
-		campo.setNome("NUM_PROGRESSIVO");
-		campo.setDescrizione("Progressivo");
-		campo.setTipo(BMA_SQL_TYP_CHAR);
-		campo.setLunghezza("5");
-		lista.getTabella().getColonne().add(campo);
+		//
 		campo = new BmaDataField();
 		campo.setNome("COD_TABELLA");
 		campo.setDescrizione("Tabella");
 		campo.setTipo(BMA_SQL_TYP_CHAR);
-		campo.setLunghezza("30");
+		campo.setLunghezza("20");
 		lista.getTabella().getColonne().add(campo);
+		//
+		campo = new BmaDataField();
+		campo.setNome("COD_CHIAVE");
+		campo.setDescrizione("COD_CHIAVE");
+		campo.setTipo(BMA_SQL_TYP_CHAR);
+		campo.setLunghezza("10");
+		lista.getTabella().getColonne().add(campo);
+		//
+		campo = new BmaDataField();
+		campo.setNome("COD_AZIONE");
+		campo.setDescrizione("Azione");
+		campo.setTipo(BMA_SQL_TYP_CHAR);
+		campo.setLunghezza("15");
+		lista.getTabella().getColonne().add(campo);
+		//
+		campo = new BmaDataField();
+		campo.setNome("COD_INFO");
+		campo.setDescrizione("Info");
+		campo.setTipo(BMA_SQL_TYP_CHAR);
+		campo.setLunghezza("50");
+		lista.getTabella().getColonne().add(campo);
+		//
 		Vector dati = lista.getValori();
 		for (int i=0;i<vMain.getSize();i++) {
-			JdbcTableList v = (JdbcTableList)vMain.getElement(i);
-			BmaVector vTables = v.getTableList().getBmaVector();
-			String codLivello = v.getChiave();
-			for (int j=0;j<vTables.getSize();j++) {
-				BmaParametro p = (BmaParametro)vTables.getElement(j);
-				Vector riga = new Vector();
-				riga.add(codLivello);
-				riga.add(p.getNome());
-				riga.add(p.getValore());
-				dati.add(riga);
-			}
+			BmaLogInfo info = (BmaLogInfo)vMain.getElement(i);
+			Vector riga = new Vector();
+			riga.add(info.getTable());
+			riga.add(info.getKey());
+			riga.add(info.getAction());
+			riga.add(info.getInfo());
+			dati.add(riga);
 		}
 		sessione.setBeanApplicativo(BMA_JSP_BEAN_LISTA, lista);
-		 */
 	}
 	public String getFunzioneEditDettaglio() {
 		return "";
@@ -91,6 +148,7 @@ public class BmaDbReplay extends BmaServizioDb {
 		valoriReplay.put("MergeMain","Merge Main");
 		valoriReplay.put("MergeTarget","Merge Target");
 		campo.setValoriControllo(valoriReplay);
+		campo.setValore("MergeTarget");
 		modulo.getDati().add(campo);
 		/* Flag Solo Check */
 		campo = new BmaDataField();
@@ -101,23 +159,6 @@ public class BmaDbReplay extends BmaServizioDb {
 		campo.setTipoControllo(BMA_CONTROLLO_BOOLEAN);
 		campo.setValore(BMA_TRUE);
 		modulo.getDati().add(campo);
-		/* Verifica se prepare la lista tabelle */
-		String fonteCtr = getParametri().getString(BMA_JSP_CAMPO_FONTEDATI);
-		if (fonteCtr!=null && fonteCtr.trim().length()>0) {
-		}
-		
 		return modulo;
-	}
-	private Hashtable listaTabelle(String nomeSorgente) throws BmaException {
-		BmaInputServizio is = new BmaInputServizio();
-		is.setInfoServizio("loadTables", BMA_TRUE);
-		String codServizio = getNomeServizio(getCodFunzione());
-		BmaOutputServizio os = eseguiServizio(codServizio, is);
-		BmaVector v = new BmaVector("tablesNames");
-		v.fromXml(os.getXmlOutput());
-		for (int i=0;i<v.getSize();i++) {
-			
-		}
-		return new Hashtable();
 	}
 }

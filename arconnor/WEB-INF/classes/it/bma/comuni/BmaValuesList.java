@@ -24,7 +24,7 @@ public class BmaValuesList extends BmaObject {
 		name = aName;
 	}
 	public String[] getValues() {
-		if (values==null) return new String[0];
+		if (values==null || values.trim().length()==0) return new String[0];
 		return values.split(VALUES_TOKEN);
 	}
 	public void setValues(String[] valueArray) {

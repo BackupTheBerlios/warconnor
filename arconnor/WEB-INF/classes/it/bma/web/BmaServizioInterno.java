@@ -11,10 +11,9 @@ public abstract class BmaServizioInterno extends BmaObject implements BmaJspLite
 	}
 	public String esegui() throws BmaException {
 		String nSource = input.getInfoServizio(BMA_JSP_CAMPO_FONTEDATI);	
-		if (nSource==null) nSource = "";
+		if (nSource==null || nSource.trim().length()==0) nSource = userConfig.getFunzioneDefault();
 		BmaJdbcSource jSource = userConfig.getJdbcSource(nSource);	
 		BmaJdbcTrx trx = new BmaJdbcTrx(jSource);
-
 		try {
 			trx.open("system");
 			if (jModel==null) {
@@ -81,15 +80,16 @@ public abstract class BmaServizioInterno extends BmaObject implements BmaJspLite
 		output.setTimeStamp(is.getTimeStamp());
 		output.setApplicazione(is.getApplicazione());
 		setUserConfig(sessione.getUserConfig());
-		JdbcModel jModel = (JdbcModel)sessione.getBeanApplicativo(BMA_JSP_BEAN_JMODEL);
-		if (jModel!=null) {
-		/* Verifica se il servizio utilizza un'altra sorgente dati */
-			String nSource = input.getInfoServizio(BMA_JSP_CAMPO_FONTEDATI);	
-			if (nSource==null || nSource.trim().length()==0) nSource = userConfig.getFunzioneDefault();
-			String jSource = jModel.getJSource().getChiave();
-			if (!jSource.equals(nSource)) jModel = null;
+		/* Sezione di controllo della validità del jModel di sessione */
+		String nSource = input.getInfoServizio(BMA_JSP_CAMPO_FONTEDATI);	
+		if (nSource==null || nSource.trim().length()==0) nSource = userConfig.getFunzioneDefault();
+		JdbcModel jModelSessione = (JdbcModel)sessione.getBeanApplicativo(BMA_JSP_BEAN_JMODEL);
+		if (jModelSessione!=null) {
+			/* Verifica se il servizio utilizza un'altra sorgente dati */
+			String jSource = jModelSessione.getJSource().getChiave();
+			if (!jSource.equals(nSource)) jModelSessione = null;
 		}
-		setJModel(jModel);
+		jModel = jModelSessione;
 
 		init(is, output);
 		String esito = esegui();
@@ -99,6 +99,7 @@ public abstract class BmaServizioInterno extends BmaObject implements BmaJspLite
 			output.setCodiceEsito("0");
 			output.setMessaggioErrore("");
 			output.setInfoErrore("");
+			if (jModel!=null) sessione.setBeanApplicativo(BMA_JSP_BEAN_JMODEL, jModel);
 		}
 		return output;
 	}

@@ -109,7 +109,7 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				if (df==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente","",this);
 				verificaDatiInput(df);
 				if (verificaVariazioni(df)) {	// Chiamata per valorizzare i dati del modulo
-					impostaValoriAggiornamento(df, valori);
+					mergeValoriModuloContesto(df, valori);
 					driver.aggiorna(nomeTabella, valori, BMA_SQL_INSERT);
 				}
 			}
@@ -120,14 +120,14 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 				if (df==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente","",this);
 				verificaDatiInput(df);
 				if (verificaVariazioni(df)) {
-					impostaValoriAggiornamento(df, valori);
+					mergeValoriModuloContesto(df, valori);
 					driver.aggiorna(nomeTabella, valori, BMA_SQL_UPDATE);
 				}
 			}
 			if (codComando.equals(BMA_JSP_COMANDO_ELIMINA)) {
 				BmaDataForm df = (BmaDataForm)sessione.getBeanApplicativo(BMA_JSP_BEAN_FORM);
 				if (df==null) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Modulo Assente","",this);
-				impostaValoriAggiornamento(df, valori);
+				mergeValoriModuloContesto(df, valori);
 				driver.aggiorna(nomeTabella, valori, BMA_SQL_DELETE);
 			}
 		}

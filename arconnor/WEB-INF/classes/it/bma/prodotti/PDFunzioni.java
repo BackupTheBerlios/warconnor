@@ -10,9 +10,6 @@ public class PDFunzioni extends PDFunzioneEdit {
 	public java.lang.String getFunzioneEditDettaglio() {
 		return "";
 	}
-	protected String getNomeTabella(String funzione) {
-		return "PD_FUNZIONI";
-	}
 	protected void impostaAzioni() {
 		azioniMenu.clear();
 		jsp.impostaMenuPrincipale(sessione, azioniMenu);

@@ -97,8 +97,7 @@ public class BmaServlet extends HttpServlet implements it.bma.comuni.BmaLiterals
 			codComando = BMA_JSP_COMANDO_PREPARA;
 		}
 		else {
-			funzione.getParametri().setString(BMA_JSP_CAMPO_COMANDO, codComando);
-			funzione.getParametri().setString(BMA_JSP_CAMPO_SELEZIONE, codSelezione);
+			funzione.aggiornaParametri(request);
 			funzione.aggiornaDatiInput(request);
 		}
 		/* Esegue la funzione in un ciclo che risale la History di chiamata */
