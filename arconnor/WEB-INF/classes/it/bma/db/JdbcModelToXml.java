@@ -7,20 +7,25 @@ public class JdbcModelToXml {
 	public JdbcModelToXml() {
 	}
 	public static void main(String[] args) {
-		if (args.length==0) {
-      System.out.println("Impostare il path della cartella di lavoro");
+		if (args.length!=2) {
+      System.out.println("Impostare il path della cartella di lavoro e il nome del file di definizione della sorgente dati");
       return;
     }
-    String filePath = args[0];    
+    String filePath = args[0] + "/";    
+		String fileSource = args[1];
 		BmaJdbcSource source = new BmaJdbcSource("JMODEL");
 		BmaJdbcTrx trx = new BmaJdbcTrx(source);
 		JdbcModel jModel = new JdbcModel();
 		try {
-			source.fromXmlFile(filePath + "/source.xml");
+
+			source.fromXmlFile(filePath + fileSource);
+			String dbName = source.getChiave();
 			trx.open("IO");
-			jModel.load(trx, "", "PD_%");
+			jModel.load(trx, "", source.getPrefix());
 			trx.chiudi();
-			jModel.toXmlFile(filePath + "/jModel.xml");
+			jModel.xmlDomSave(filePath + dbName + "_model.xml");
+			// Test reload...
+			jModel.xmlDomLoad(filePath + dbName + "_model.xml");
 			System.out.println("Ok");
 		}
 		catch (BmaException e) {
