@@ -52,10 +52,14 @@ public int getSize() {
 public String getString(int i) {
 	if (i<0 || i>getSize()) return "";
 	String v = "";
-	BmaObject obj = (BmaObject)vect.elementAt(i);
-	if (obj!=null && obj.getClassName().equals("BmaParametro")) {
-		BmaParametro obj2 = (BmaParametro)obj;
-		v = obj2.getValore();
+	Object o = vect.elementAt(i);
+	if (o==null) return "";
+	if (o.getClass().getName().equals("java.lang.String")) {
+		v = (String)o;
+	}
+	else if (o.getClass().getName().equals("BmaParametro")) {
+		BmaParametro obj = (BmaParametro)o;
+		v = obj.getValore();
 	}
 	return v;
 }
@@ -73,6 +77,9 @@ public void setSize(int size) {
 }
 public void setString(String nome, String valore) {
 	add(new BmaParametro(nome, valore));
+}
+public void setString(String valore) {
+	vect.add(valore);
 }
 public void setVector(Vector newVector) {
 	vect = newVector;
