@@ -22,6 +22,8 @@ public class JspProdotti extends BmaJsp {
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
 		f = user.getFunzione("PDREMOVE"); 				// Remove Prodotto
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
+		f = user.getFunzione("PDRECODE"); 				// Ricodifica
+		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
 		f = user.getFunzione("PM_BLOCCHI"); 				// Blocchi
 		if (f!=null && f.isAzioneAmmessa(f.getAzioneDefault())) azioniMenu.add(new BmaMenu(liv, f, BMA_JSP_MENU_SINISTRA));
 		f = user.getFunzione("PM_FUNZIONI"); 				// PM_FUNZIONI
