@@ -2,6 +2,8 @@ package it.bma.comuni;
 
 import java.sql.*;
 import java.util.*;
+// XML
+import org.w3c.dom.*;
 
 public class JdbcModel extends BmaObject {
 	private BmaJdbcSource jSource = new BmaJdbcSource();
@@ -21,6 +23,41 @@ public class JdbcModel extends BmaObject {
 	public void setKeyUppercase(boolean value) {
 		keyUppercase = value;
 	}
+	public void xmlDomSave(String fileName) throws BmaException {
+		XMLDriver xDriver = new XMLDriver();
+		Document doc = xDriver.getDocument();
+		Element root = xDriver.setRootElement(doc, getXmlTag());
+		root.setAttribute("schema", schema);
+		root.setAttribute("prefix", prefix);
+		String temp = BMA_FALSE;
+		if (keyUppercase) temp = BMA_TRUE;
+		root.setAttribute("keyuppercase", temp);
+		Enumeration eTables = tables.elements();
+		while (eTables.hasMoreElements()) {
+			JdbcTable jTable = (JdbcTable)eTables.nextElement();
+			Element eTable = xDriver.addElement(root, jTable.getXmlTag());
+			jTable.toXmlDomElement(eTable, xDriver);
+		}
+		xDriver.serializeDocument(doc, fileName);
+	}
+	public void xmlDomLoad(String fileName) throws BmaException {
+		XMLDriver xDriver = new XMLDriver();
+		Document doc = xDriver.getDocumentFromXmlFile(fileName);
+		Element root = doc.getDocumentElement();
+		schema = root.getAttribute("schema");
+		prefix = root.getAttribute("prefix");
+		String temp = root.getAttribute("keyuppercase");
+		keyUppercase = temp.equals(BMA_TRUE);
+		tables.clear();
+		JdbcTable jTable = new JdbcTable();
+		NodeList list = root.getElementsByTagName(jTable.getXmlTag());
+		for (int i=0;i<list.getLength();i++) {
+			Element eTable = (Element)list.item(i);
+			jTable = new JdbcTable();
+			jTable.fromXmlDomElement(eTable, xDriver);
+			tables.add(jTable);
+		}		
+	}	
 	public BmaDataTable getDataTable(BmaJdbcTrx jTrx, String jName) throws BmaException {
 		BmaDataTable dTable = new BmaDataTable();
 		JdbcTable jTable = (JdbcTable)tables.getElement(jName);
@@ -377,7 +414,6 @@ public class JdbcModel extends BmaObject {
 		}
 		return vMain;
 	}
-
 	public BmaHashtable getTables() {
 		return tables;
 	}

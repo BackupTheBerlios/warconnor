@@ -17,29 +17,36 @@ public BmaException(String info, String infoEstese) {
 	error.setInfo(info);
 	error.setInfoEstese(infoEstese);
 }
+public BmaException(String codErrore, String info, String infoEstese, String nomeOggetto) {
+	getInstance(codErrore, info, infoEstese, nomeOggetto);
+}
 public BmaException(String codErrore, String info, String infoEstese, BmaObject obj) {
-	super(info);
+	getInstance(codErrore, info, infoEstese, obj.getClass().getName());
+}
+private BmaException getInstance(String codErrore, String info, String infoEstese, String nomeOggetto) {
+	BmaException instance = new BmaException(info);
 	BmaErrori list = BmaErrori.getInstance();
 	if (list == null) {
-		error = new BmaErrore();
-		error.setCodErrore(error.BMA_ERR_CONFIGURAZIONE);
-		error.setTipo(error.BMA_ERR_ABEND);
-		error.setMsgUtente(error.BMA_MSG_LISTA_ERRORI_VUOTA);
-		error.setMsgSistema(error.BMA_MSG_LISTA_ERRORI_VUOTA);
+		instance.error = new BmaErrore();
+		instance.error.setCodErrore(error.BMA_ERR_CONFIGURAZIONE);
+		instance.error.setTipo(error.BMA_ERR_ABEND);
+		instance.error.setMsgUtente(error.BMA_MSG_LISTA_ERRORI_VUOTA);
+		instance.error.setMsgSistema(error.BMA_MSG_LISTA_ERRORI_VUOTA);
 	}
 	else {
-		error = list.getErrore(codErrore);
+		instance.error = list.getErrore(codErrore);
 		if (error == null) {
-			error = new BmaErrore();
-			error.setCodErrore(error.BMA_ERR_NON_PREVISTO);
-			error.setTipo(error.BMA_ERR_ABEND);
-			error.setMsgUtente(error.BMA_MSG_ERRORE_NON_PREVISTO);
-			error.setMsgSistema(error.BMA_MSG_ERRORE_NON_PREVISTO + ": " + codErrore);
+			instance.error = new BmaErrore();
+			instance.error.setCodErrore(error.BMA_ERR_NON_PREVISTO);
+			instance.error.setTipo(error.BMA_ERR_ABEND);
+			instance.error.setMsgUtente(error.BMA_MSG_ERRORE_NON_PREVISTO);
+			instance.error.setMsgSistema(error.BMA_MSG_ERRORE_NON_PREVISTO + ": " + codErrore);
 		}
 	}
-	error.setInfo(info);
-	error.setInfoEstese(infoEstese);
-	error.setNomeOggetto(obj.getClass().getName());
+	instance.error.setInfo(info);
+	instance.error.setInfoEstese(infoEstese);
+	instance.error.setNomeOggetto(nomeOggetto);
+	return instance;
 }
 public BmaErrore getErrore() {
 	return error;
