@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<FunzioniProdotti>
+    <Blocco Id="0" NuovaPagina="N" Titolo="Introduzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="0.1" NuovaPagina="N" Titolo="Scopo del documento">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco>Questo allegato descrive il contenuto funzionale
+            dell&apos;applicazione per la gestione della <i>Nuova Scheda
+            Prodotto</i> - in breve <b>Prodotti</b>
+            <br/> E&apos; redatto da Banksiel nella versione riportata
+            in testata e forma parte integrante dell&apos;applicazione.</TestoBlocco>
+    </Blocco>
+    <Blocco Id="0.2" NuovaPagina="N" Titolo="Struttura dell&apos;applicazione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco>L&apos;applicazione <b>Prodotti</b> è strutturata
+            nei seguenti moduli applicativi: <ul>
+                <li>Modulo <b>Gestione Prodotto</b> (base)</li>
+                <li>Modulo Dati Tecnici Assicurazioni</li>
+                <li>Modulo Organizzazione</li>
+                <li>Modulo Cliente</li>
+                <li>Modulo Commerciale</li>
+            </ul> Ciascun modulo comprende funzionalità di natura
+            diversa e dirette a diverse tipologie di utenti. Pertanto le
+            funzioni elencate in questo documento sono state
+            ulteriormente suddivise nei seguenti contesti operativi: <ul>
+                <li>Contesto amministrativo per la predisposizione
+                    dell&apos;ambiente operativo<br/>(prevede anche il
+                    modulo speciale &quot;Codifiche&quot;);</li>
+                <li>Contesto di ricerca e selezione del prodotto</li>
+                <li>Contesto di gestione di uno specifico prodotto</li>
+            </ul> Ciascun contesto è poi articolato secondo i moduli
+            sopra descritti.</TestoBlocco>
+    </Blocco>
+    <Blocco Id="1" NuovaPagina="N" Titolo="Contesto Amministrativo">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco>Prova</TestoBlocco>
+    </Blocco>
+    <Blocco Id="1.1" NuovaPagina="N" Titolo="Modulo Codifiche">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.08" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.09" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.10" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.11" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.12" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.13" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.14" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.15" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.16" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.17" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.18" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.19" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.20" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.21" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.22" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.23" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.1.24" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.2.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3" NuovaPagina="N" Titolo="Modulo Organizzazione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.08" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.3.09" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4" NuovaPagina="N" Titolo="Modulo Cliente">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.4.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5" NuovaPagina="N" Titolo="Modulo Commerciale">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="1.5.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2" NuovaPagina="N" Titolo="Contesto Ricerca e selezione prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="2.1.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3" NuovaPagina="N" Titolo="Contesto di prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1" NuovaPagina="N" Titolo="Modulo Gestione Prodotto">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.08" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.09" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.10" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.1.11" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2" NuovaPagina="N" Titolo="Modulo Dati Tecnici">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.08" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.09" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.10" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.11" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.12" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.13" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.2.14" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3" NuovaPagina="N" Titolo="Modulo Organizzazione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.3.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4" NuovaPagina="N" Titolo="Modulo Cliente">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.4.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5" NuovaPagina="N" Titolo="Modulo Commerciale">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.01" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.02" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.03" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.04" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.05" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.06" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+    <Blocco Id="3.5.07" NuovaPagina="N" Titolo="Funzione">
+        <Funzione/>
+        <Immagine/>
+        <TestoBlocco/>
+    </Blocco>
+</FunzioniProdotti>
+
