@@ -1,6 +1,5 @@
 <%@ include file="../incInit.jsp"%>
 <%
-	jsp.config.setParametroApplicazione(jsp.config.BMA_CFGCOD_APP_FONTE_TARGET, "PDAS");
 	sessione.getAliasLabels().setString("PD_FUNZIONI", "Funzioni");
 		sessione.getAliasLabels().setString("COD_SOCIETA", "Società");
 		sessione.getAliasLabels().setString("COD_FUNZIONE", "Funzione");

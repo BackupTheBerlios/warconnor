@@ -26,6 +26,7 @@ public abstract class BmaConfigurazione extends BmaObject {
 
 	public final String BMA_CFGTIP_SOC = "SOCIETA";
 	public final String BMA_CFGTIP_APP = "APPLICAZIONE";
+	public final String BMA_CFGTIP_APP_FONTE = "FONTE-APPLICAZIONE";
 
 	// CODICI PARAMETRI CONFIGURAZIONE
 	public final String BMA_CFGCOD_SOC_CODICE = "SOCIETA";
@@ -71,6 +72,23 @@ public abstract class BmaConfigurazione extends BmaObject {
 	public java.lang.String getFonteDefault() {
 		return fonteDefault;
 	}
+  public String getNomeFonteApplicazione(String applicazione) {
+    Enumeration e = parametri.elements();
+    while (e.hasMoreElements()) {
+      ParametroConfigurazione pc = (ParametroConfigurazione)e.nextElement();
+      if (pc.getTipo().equals(BMA_CFGTIP_APP_FONTE) && 
+          pc.getNome().equals(applicazione)) return pc.getValore();
+    }   
+    return getFonteDefault();
+  }  
+  public BmaJdbcSource getFonteApplicazione(String applicazione) {
+    return getJdbcSource(getNomeFonteApplicazione(applicazione));
+  }  
+  
+	public BmaJdbcSource getJdbcSource(String nomeFonte) {
+    if (nomeFonte==null || nomeFonte.trim().length()==0) nomeFonte = getFonteDefault();
+    return (BmaJdbcSource)fontiJdbc.getElement(fonteDefault);
+	}
 	public BmaHashtable getFontiJdbc() {
 		return fontiJdbc;
 	}
@@ -80,7 +98,7 @@ public abstract class BmaConfigurazione extends BmaObject {
 		while (e.hasMoreElements()) {
 			String k = (String)e.nextElement();
 			BmaJdbcSource f = (BmaJdbcSource)fontiJdbc.getElement(k);
-			lista.put(k, f.getUrl());
+			lista.put(k, k + " (" + f.getUrl() + ")");
 		}
 		return lista;
 	}
@@ -90,10 +108,7 @@ public abstract class BmaConfigurazione extends BmaObject {
 	public BmaApplicationInfo getInfo() {
 		return info;
 	}
-	public BmaJdbcSource getJdbcSource(String nomeFonte) {
-		if (nomeFonte.trim().length()==0) return (BmaJdbcSource)fontiJdbc.getElement(fonteDefault);
-		else return (BmaJdbcSource)fontiJdbc.getElement(nomeFonte);
-	}
+
 	public Hashtable getListaParametri(String tipo) {
 		Hashtable lista = new Hashtable();
 		Enumeration e = parametri.elements();

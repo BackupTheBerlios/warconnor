@@ -92,9 +92,8 @@ public abstract class BmaFunzioneEdit extends BmaFunzioneAttiva {
 	protected BmaDataDriverGeneric getDriver() throws BmaException {
 		BmaDataDriverGeneric driver = new BmaDataDriverGeneric();
 		BmaUserConfig config = sessione.getUserConfig();
-		String nSource = config.getParametroApplicazione(config.BMA_CFGCOD_APP_FONTE_TARGET); 
-		if (nSource==null || nSource.trim().length()==0) nSource = config.getFonteDefault(); 
-		BmaJdbcSource jSource = (BmaJdbcSource)config.getFontiJdbc().getElement(nSource);
+    String app = sessione.getUtente().getCodApplicazione();
+		BmaJdbcSource jSource = config.getFonteApplicazione(app);
 		driver.setUserConfig(config);
 		driver.setJdbcSource(jSource);	
 		return driver;
