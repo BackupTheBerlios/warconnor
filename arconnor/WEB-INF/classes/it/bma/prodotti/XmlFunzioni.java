@@ -27,6 +27,11 @@ public class XmlFunzioni {
     super();
   }
   public static void main(String[] args) {
+    if (args.length==0) {
+      System.out.println("Indicare il file xsl-fo");
+      return;
+    }
+    String argXsl = args[0];
 		String baseDir = "C:/Progetti/warconnor_cvs/arconnor/bma/";
 		BmaJdbcSource source = new BmaJdbcSource("PDAS");
 		source.setDriver("ianywhere.ml.jdbcodbc.IDriver");
@@ -37,13 +42,13 @@ public class XmlFunzioni {
 		BmaJdbcTrx jTrx = new BmaJdbcTrx(source);
     XmlFunzioni app = new XmlFunzioni();
 		try {
-/*			
+/*      
       jTrx.open("System");
       String xml = app.makeXmlFunzioni(jTrx);
       jTrx.chiudi();
       source.writeFile(xml, baseDir + "FunzioniProdotti.xml", false);
 */
-			app.makePdf(baseDir + "FunzioniProdotti.xml", baseDir + "FunzioniProdotti_fo.xsl", baseDir + "FunzioniProdotti.pdf");
+			app.makePdf(baseDir + "FunzioniProdotti.xml", baseDir + argXsl, baseDir + "FunzioniProdotti.pdf");
 			System.out.println("Ok");
 		}
 		catch (BmaException e) {
@@ -73,7 +78,7 @@ public class XmlFunzioni {
       for (int i=0;i<dati.size();i++) {
         Vector riga = (Vector)dati.elementAt(i);
         String codBlocco = (String)riga.elementAt(0);
-        int numLivello = Integer.parseInt((String)riga.elementAt(1));
+        String numLivello = (String)riga.elementAt(1);
         String desTitolo = (String)riga.elementAt(2);
         String flgNuovaPagina = (String)riga.elementAt(3);
         String codFunzione = (String)riga.elementAt(4);
@@ -84,8 +89,12 @@ public class XmlFunzioni {
         blocco.setAttribute("Id", codBlocco);
         blocco.setAttribute("NuovaPagina", flgNuovaPagina);
         blocco.setAttribute("Titolo", desTitolo);
+        blocco.setAttribute("Livello", numLivello);
         
         Element funzione = document.createElement("Funzione");
+        if (codFunzione.trim().length()>0) {
+          bloccoFunzione(jTrx, funzione, codFunzione);
+        }
         Element immagine = document.createElement("Immagine");        
 				Element testo = document.createElement("TestoBlocco");
 				if (notBlocco.trim().length()>0) parseXhtml(testo, notBlocco);
@@ -114,6 +123,53 @@ public class XmlFunzioni {
 		catch (IOException io) {
 			throw new BmaException("IO Exception", io.getMessage());
 		}
+  }
+  private void bloccoFunzione(BmaJdbcTrx jTrx, Element nodoFunzione, String codFunzione) throws BmaException {
+    Document document = nodoFunzione.getOwnerDocument();
+    String sql = "";
+    sql = "SELECT COD_FUNZIONE, COD_IMMAGINE, " +
+          "       COD_PROFILOAZIONI, DES_FUNZIONE, " +
+          "       NOT_FUNZIONE, NOT_TECNICA, " +
+          "       RIF_ATTIVAZIONE " +
+          " FROM  PM_FUNZIONI " +
+          " WHERE COD_FUNZIONE='" + codFunzione + "'";
+    Vector dati = jTrx.eseguiSqlSelect(sql);
+    if (dati.size()!=1) throw new BmaException("Funzione inesistente", sql);
+    Vector riga = (Vector)dati.elementAt(0);
+    String codImmagine = (String)riga.elementAt(1);
+    String codProfiloAzioni = (String)riga.elementAt(2);
+    String desFunzione = (String)riga.elementAt(3);
+    String notFunzione = (String)riga.elementAt(4);
+    String notTecnica = (String)riga.elementAt(5);
+    String rifAttivazione = (String)riga.elementAt(6);
+    nodoFunzione.setAttribute("Id", codFunzione);
+    // Add Descrizione
+    Element eFunzione = document.createElement("Descrizione");
+    Text eText = document.createTextNode(desFunzione);
+    eFunzione.appendChild(eText);
+    nodoFunzione.appendChild(eFunzione);
+    // Add Immagine
+    eFunzione = document.createElement("Immagine");
+    // do something...
+    nodoFunzione.appendChild(eFunzione);
+    // Add Prifilo Azioni
+    eFunzione = document.createElement("ProfiloAzioni");
+    // do something...
+    nodoFunzione.appendChild(eFunzione);
+    // Add RifAttivazione
+    eFunzione = document.createElement("Attivazione");
+    eText = document.createTextNode(rifAttivazione);
+    eFunzione.appendChild(eText);
+    nodoFunzione.appendChild(eFunzione);
+    // Add Nota Funzione
+    eFunzione = document.createElement("Nota");
+		if (notFunzione.trim().length()>0) parseXhtml(eFunzione, notFunzione);
+    nodoFunzione.appendChild(eFunzione);
+    // Add Nota Tecnica
+    eFunzione = document.createElement("NotaTecnica");
+		if (notTecnica.trim().length()>0) parseXhtml(eFunzione, notTecnica);
+    nodoFunzione.appendChild(eFunzione);
+    
   }
 	private void parseXhtml(Element myNode, String xml) throws BmaException {
 		String s = "<?xml version='1.0' encoding='ISO-8859-1'?><xml>" + xml + "</xml>";
