@@ -236,7 +236,7 @@ public class XMLDriver implements BmaErrorCodes {
 				}
 			}
 			Driver driver = new Driver();
-			Logger logger = new ConsoleLogger(ConsoleLogger.LEVEL_INFO);
+			Logger logger = new ConsoleLogger(ConsoleLogger.LEVEL_ERROR);
 			driver.setLogger(logger);
 			MessageHandler.setScreenLogger(logger);
 			driver.setRenderer(Driver.RENDER_PDF);
