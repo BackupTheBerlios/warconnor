@@ -16,6 +16,7 @@ public class MP3Driver {
 	public final String TAG_TRACK = "Track";
 	public final String TAG_YEAR = "Year";
 	public final String TAG_COMMENT = "Comment";
+	public final String TAG_MUSICID = "MusicId";
 	String sFile = "";
 	String sMode = "r";
 	public MP3Driver() {
@@ -33,10 +34,10 @@ public class MP3Driver {
 		return f.exists();
 	}
 	public String[] getPropertiesNames() {
-		return new String[] {TAG_ARTIST, TAG_ALBUM, TAG_TITLE, TAG_GENRE, TAG_TRACK, TAG_YEAR, TAG_COMMENT};
+		return new String[] {TAG_ARTIST, TAG_ALBUM, TAG_TITLE, TAG_GENRE, TAG_TRACK, TAG_YEAR, TAG_COMMENT, TAG_MUSICID};
 	}
 	private boolean isComplete(Properties props) {
-		return isComplete(props, new String[]{TAG_COMMENT});
+		return isComplete(props, new String[]{TAG_COMMENT, TAG_MUSICID});
 	}
 	public boolean isComplete(Properties props, String[] excludeTags) {
 		String[] tags = getPropertiesNames();
@@ -55,11 +56,7 @@ public class MP3Driver {
 	public Properties getProperties() throws BmaException {
 		Properties props = new Properties();
 		try {
-			AbstractID3 mp3 = getID3v1();
-			if (mp3!=null) setID3v1Props((ID3v1_1)mp3, props);
-			if (isComplete(props)) return props;
-			
-			mp3 = getID3v2_2();
+			AbstractID3 mp3 = getID3v2_4();
 			if (mp3!=null) setID3v2Props((AbstractID3v2)mp3, props);
 			if (isComplete(props)) return props;
 			
@@ -67,8 +64,12 @@ public class MP3Driver {
 			if (mp3!=null) setID3v2Props((AbstractID3v2)mp3, props);
 			if (isComplete(props)) return props;
 			
-			mp3 = getID3v2_4();
+			mp3 = getID3v2_2();
 			if (mp3!=null) setID3v2Props((AbstractID3v2)mp3, props);
+			if (isComplete(props)) return props;
+			
+			mp3 = getID3v1();
+			if (mp3!=null) setID3v1Props((ID3v1_1)mp3, props);
 			if (isComplete(props)) return props;
 			
 			for (int i=0;i<getPropertiesNames().length;i++) {
@@ -118,6 +119,12 @@ public class MP3Driver {
 			tag = ((FrameBodyCOMM)frame.getBody()).getText();
 			if (tag!=null) props.setProperty(TAG_COMMENT, tag);
 		}
+		frame = mp3.getFrame("MCDI");
+		if (frame!=null) {
+			FrameBodyMCDI frameTemp = (FrameBodyMCDI)frame.getBody();
+			tag = ((FrameBodyMCDI)frame.getBody()).getDescription();
+			if (tag!=null) props.setProperty(TAG_MUSICID, tag);
+		}
 	}
 	private AbstractID3 getID3v1() throws IOException {
 		try {
@@ -128,6 +135,9 @@ public class MP3Driver {
 		catch (TagException tag) {
 			return null;
 		}
+		catch (NullPointerException np) {
+			return null;
+		}	
 	}
 	private AbstractID3 getID3v2_2() throws IOException {
 		try {
@@ -136,6 +146,9 @@ public class MP3Driver {
 			return vFile;
 		}
 		catch (TagException tag) {
+			return null;
+		}	
+		catch (NullPointerException np) {
 			return null;
 		}	
 	}
@@ -148,6 +161,9 @@ public class MP3Driver {
 		catch (TagException tag) {
 			return null;
 		}	
+		catch (NullPointerException np) {
+			return null;
+		}	
 	}
 	private AbstractID3 getID3v2_4() throws IOException {
 		try {
@@ -156,6 +172,9 @@ public class MP3Driver {
 			return vFile;
 		}
 		catch (TagException tag) {
+			return null;
+		}	
+		catch (NullPointerException np) {
 			return null;
 		}	
 	}

@@ -2,6 +2,7 @@ package it.bma.media;
 // Java
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 // XML
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -10,6 +11,10 @@ import org.apache.xml.serialize.*;
 // MP3
 import org.farng.mp3.*;
 import org.farng.mp3.id3.*;
+// CDDB
+import com.antelmann.cddb.*;
+import java.text.ParseException;
+
 // BMA
 import it.bma.comuni.*;
 import it.bma.web.*;
@@ -246,6 +251,7 @@ public class MDDriver extends BmaDataDriverGeneric {
 					valori.put("DES_GENRE", props.getProperty(mp3Driver.TAG_GENRE));
 					valori.put("DES_TITLE", props.getProperty(mp3Driver.TAG_TITLE));
 					valori.put("DES_YEAR", props.getProperty(mp3Driver.TAG_YEAR));
+					valori.put("DES_CDID", props.getProperty(mp3Driver.TAG_MUSICID));
 					jTrx.eseguiSqlUpdate(tabella.getSqlInsert(valori));
 				}
 			}
@@ -254,6 +260,83 @@ public class MDDriver extends BmaDataDriverGeneric {
 		catch (BmaException bma) {
 			if (jTrx.isAperta()) jTrx.invalida();
 			throw bma;
+		}
+	}
+	public void readCDDB(String codCartella) throws BmaException {
+		String sql = "";
+		BmaJdbcTrx jTrx = new BmaJdbcTrx(getJdbcSource());
+		try {
+			jTrx.open("System");
+			sql = "SELECT NOT_CARTELLA " +
+						" FROM	MD_CARTELLE " +
+						" WHERE COD_CARTELLA='" + codCartella + "'";
+			Vector dati = jTrx.eseguiSqlSelect(sql);
+			if (dati.size()!=1) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Cartella Inesistente: " + codCartella, sql, this);
+			dati = (Vector)dati.elementAt(0);
+			String notCartella = (String)dati.elementAt(0);
+			int pos = notCartella.indexOf("|");
+			if (pos<0) throw new BmaException(BMA_ERR_WEB_PARAMETRO, "Mancano parametri CDDB: " + notCartella, sql, this);
+			String cddbCat = notCartella.substring(0,pos);
+			String cddbId = notCartella.substring(pos + 1);
+			FreeDB cd = new FreeDB();
+			CDDBRecord cdRec = new CDDBRecord(cddbCat, cddbId, "");
+			CDInfo cdInfo = cd.readCDInfo(cdRec);
+			String xmcd = cdInfo.getXmcdContent();
+			CDDBXmcdParser cdParser = new CDDBXmcdParser(xmcd);
+			
+			BmaDataTable tabella = getJModel().getDataTable(jTrx, "MD_BRANITEMP");
+			int nTrack = cdParser.readNumberOfTracks();
+			for (int i=0; i<nTrack; i++) {
+				String sTrack = Integer.toString(i+1);
+				while (sTrack.length()<2) sTrack = "0" + sTrack;
+				sql = "SELECT NUM_PROGRESSIVO, DES_FILE " +
+							" FROM MD_BRANITEMP " +
+							" WHERE COD_CARTELLA='" + codCartella + "' " +
+							" AND DES_FILE LIKE '%" + sTrack + " -%'";
+				dati = jTrx.eseguiSqlSelect(sql);
+				if (dati.size()!=1) {
+					String word = getMaxWord(cdParser.readTrackTitle(i), 15);
+					int p = word.indexOf("'");
+					while (p>=0) {
+						word = word.substring(0, p) + "'" + word.substring(p);
+						p = word.indexOf("'", p+2);
+					}
+					sql = "SELECT NUM_PROGRESSIVO, DES_FILE " +
+								" FROM MD_BRANITEMP " +
+								" WHERE COD_CARTELLA='" + codCartella + "' " +
+								" AND DES_FILE LIKE '%" + word + "%'";
+					dati = jTrx.eseguiSqlSelect(sql);
+				}					
+				if (dati.size()==1) {
+					dati = (Vector)dati.elementAt(0);
+					String numProgressivo = (String)dati.elementAt(0);
+					String desFile = (String)dati.elementAt(1);
+					Hashtable valori = new Hashtable();
+					valori.put("COD_CARTELLA", codCartella);
+					valori.put("NUM_PROGRESSIVO", numProgressivo);
+					valori.put("DES_FILE", desFile);
+					valori.put("DES_TRACK", sTrack);
+					valori.put("DES_ALBUM", capitalizeWords(cdParser.readCDTitle()));
+					valori.put("DES_ARTIST", capitalizeWords(cdParser.readTrackArtist(i)));
+					valori.put("DES_GENRE", capitalizeWords(cdParser.readGenre()));
+					valori.put("DES_TITLE", capitalizeWords(cdParser.readTrackTitle(i)));
+					valori.put("DES_YEAR", Integer.toString(cdParser.readYear()));
+					jTrx.eseguiSqlUpdate(tabella.getSqlUpdate(valori));
+				}
+			}
+			jTrx.chiudi();
+		}
+		catch (BmaException bma) {
+			if (jTrx.isAperta()) jTrx.invalida();
+			throw bma;
+		}
+		catch (IOException io) {
+			if (jTrx.isAperta()) jTrx.invalida();
+			throw new BmaException("IOException", io.getMessage());
+		}
+		catch (ParseException pe) {
+			if (jTrx.isAperta()) jTrx.invalida();
+			throw new BmaException("ParseException", pe.getMessage());
 		}
 	}
 	public String checkBrani(String checkDir) throws BmaException {
@@ -360,5 +443,23 @@ public class MDDriver extends BmaDataDriverGeneric {
 			if (jTrx.isAperta()) jTrx.invalida();
 			throw bma;
 		}
-	}	
+	}
+	private String capitalizeWords(String in) {
+		Matcher m = Pattern.compile("\\b(\\w)").matcher(in.toLowerCase());
+		StringBuffer sb = new StringBuffer();
+		while (m.find()) {
+			m.appendReplacement(sb, m.group(1).toUpperCase());
+		}
+		m.appendTail(sb);
+		return sb.toString();
+	}
+	private String getMaxWord(String in, int len) {
+		if (in.length()<=len) return in;
+		int p = in.indexOf(" ");
+		while (p>=0) {
+			if (p>=len) return in.substring(0, p).trim();
+			p = in.indexOf(" ", p+1);
+		}
+		return in.substring(0, len).trim();
+	}
 }
