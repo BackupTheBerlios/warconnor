@@ -160,6 +160,10 @@ public class BmaServlet extends HttpServlet implements it.bma.comuni.BmaLiterals
 			else if (sessione.getUtente().getCodApplicazione().equalsIgnoreCase(BMA_JSP_APP_DBA)) {
 				eseguiFunzione(sessione, request, response);
 			}
+			// Attivazione applicazione MDA
+			else if (sessione.getUtente().getCodApplicazione().equalsIgnoreCase(BMA_JSP_APP_MDA)) {
+				eseguiFunzione(sessione, request, response);
+			}
 			// Attivazione applicazione PDAS
 			else if (sessione.getUtente().getCodApplicazione().equalsIgnoreCase(BMA_JSP_APP_PDAS)) {
 				eseguiFunzione(sessione, request, response);

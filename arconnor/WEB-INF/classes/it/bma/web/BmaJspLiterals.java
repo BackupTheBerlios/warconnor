@@ -13,6 +13,7 @@ public interface BmaJspLiterals extends it.bma.comuni.BmaLiterals {
 	public final String BMA_JSP_APP_ADMIN =						"ADM";	
 	public final String BMA_JSP_APP_DBA =							"DBA";	
 	public final String BMA_JSP_APP_PDAS =						"PDAS";	
+	public final String BMA_JSP_APP_MDA =							"MDA";	
 
 	public final String BMA_JSP_PAGINA_HOME =					"index.html";	
 	public final String BMA_JSP_PAGINA_ADMIN =				"admin.jsp";	
