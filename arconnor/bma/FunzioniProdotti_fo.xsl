@@ -29,6 +29,17 @@
 	    <xsl:apply-templates />
 		</fo:block>
 	</xsl:template>
+	<xsl:template match="Immagine">
+		<fo:block font-size="10pt" text-align="start" space-after.optimum="15pt">
+	    <xsl:apply-templates />
+		</fo:block>
+	</xsl:template>
+ 	<xsl:template match="Funzione">
+		<fo:block font-size="10pt" text-align="start" space-after.optimum="15pt">
+	    <xsl:apply-templates />
+		</fo:block>
+	</xsl:template>
+
 	
 	<xsl:template match="br"><fo:block/></xsl:template>
 	
